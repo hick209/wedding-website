@@ -5,10 +5,10 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face { font-family: Amsterdam; src: url('../fonts/AmsterdamOne.ttf'); } 
+@font-face { font-family: Amsterdam; src: url('../fonts/AmsterdamOne.ttf'); }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 body {
@@ -301,6 +301,7 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 1000px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   position: relative;
   width: 100%;
 }
@@ -1388,7 +1389,7 @@ form label {
   background: black;
   font-size: 14px;
   font-weight: bold;
-  font-family: Sofia Sans Condensed; 
+  font-family: Sofia Sans Condensed;
   top: 0;
   right: 0;
   top: 0;
@@ -1804,4 +1805,3 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
-
