@@ -43,11 +43,13 @@ function getCurentLanguage() {
 
 // Initial load with default language
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('lang-toggle').addEventListener('click', () => {
-    const nextLang = getCurentLanguage() === 'en' ? 'pt' : 'en';
-    applyTranslations(nextLang);
-  });
-
-  // Apply translations for initial load
+  // Change to currently selected language
   applyTranslations(getCurentLanguage());
 });
+
+function toggleLanguage() {
+  const nextLang = getCurentLanguage() === 'en' ? 'pt' : 'en';
+  console.log(`Changing language to ${nextLang}`);
+  applyTranslations(nextLang);
+  // return false;
+}
