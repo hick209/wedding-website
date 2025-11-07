@@ -35,6 +35,7 @@ function applyTranslations(lang) {
   const newUrl = new URL(window.location.href);
   newUrl.searchParams.set('lang', lang);
   window.history.pushState(null, '', newUrl.toString());
+  document.documentElement.lang = lang;
 }
 
 function getCurentLanguage() {
@@ -51,5 +52,4 @@ function toggleLanguage() {
   const nextLang = getCurentLanguage() === 'en' ? 'pt' : 'en';
   console.log(`Changing language to ${nextLang}`);
   applyTranslations(nextLang);
-  // return false;
 }
