@@ -6,6 +6,9 @@ const translations = {
     "tab.travel": "Travel & Stay",
     "tab.language": "🇧🇷 Português",
     "title.events": "Events",
+    "date.short": "2026.Sep.12",
+    "details.title": "We're celebrating 10 years together,",
+    "details.subtitle": "a decade of love, laughter and adventure!",
   },
   pt: {
     "tab.home": "Home",
@@ -14,6 +17,11 @@ const translations = {
     "tab.travel": "Viajar & Ficar",
     "tab.language": "🇺🇸 English",
     "title.events": "Eventos",
+    "date.short": "2026.Set.12",
+    // TODO translate
+    "details.title": "Estamos celebrando 10 anos juntos,",
+    // TODO translate
+    "details.subtitle": "uma decada de amor, risadas e aventuras!",
   },
 };
 
