@@ -6,11 +6,15 @@ const translations = {
     "tab.events": "Events",
     "tab.gallery": "Gallery",
     "tab.travel": "Travel & Stay",
-    "tab.language": "🇧🇷 Português",
+    "tab.language": "🇺🇸 English",
     "title.venue": "Venue",
     "title.itinerary": "Itinerary",
     "title.events": "Events",
     "date.short": "2026.Sep.12",
+    "date.days": "Days",
+    "date.hours": "Hours",
+    "date.minutes": "Minutes",
+    "date.seconds": "Seconds",
     "details.title": "We're celebrating 10 years together,",
     "details.subtitle": "a decade of love, laughter and adventure!",
   },
@@ -21,11 +25,15 @@ const translations = {
     "tab.events": "Eventos",
     "tab.gallery": "Galeria",
     "tab.travel": "Viajar & Ficar",
-    "tab.language": "🇺🇸 English",
+    "tab.language": "🇧🇷 Português",
     "title.venue": "Local do Casamento",
     "title.events": "Eventos",
     "title.itinerary": "Itinerário",
     "date.short": "2026.Set.12",
+    "date.days": "Dias",
+    "date.hours": "Horas",
+    "date.minutes": "Minutos",
+    "date.seconds": "Segundos",
     // TODO translate
     "details.title": "Estamos celebrando 10 anos juntos,",
     // TODO translate
@@ -62,6 +70,12 @@ function getCurentLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
   // Change to currently selected language
   applyTranslations(getCurentLanguage());
+
+  // Setup clock labels
+  document.querySelector('.flip-clock-divider.days > .flip-clock-label').setAttribute('data-i18n', 'date.days');
+  document.querySelector('.flip-clock-divider.hours > .flip-clock-label').setAttribute('data-i18n', 'date.hours');
+  document.querySelector('.flip-clock-divider.minutes > .flip-clock-label').setAttribute('data-i18n', 'date.minutes');
+  document.querySelector('.flip-clock-divider.seconds > .flip-clock-label').setAttribute('data-i18n', 'date.seconds');
 });
 
 function toggleLanguage() {
