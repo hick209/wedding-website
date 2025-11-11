@@ -1,10 +1,12 @@
 const translations = {
   en: {
     "tab.home": "Home",
+    "tab.venue": "Venue",
     "tab.events": "Events",
     "tab.gallery": "Gallery",
     "tab.travel": "Travel & Stay",
     "tab.language": "🇧🇷 Português",
+    "title.venue": "Venue",
     "title.events": "Events",
     "date.short": "2026.Sep.12",
     "details.title": "We're celebrating 10 years together,",
@@ -12,10 +14,12 @@ const translations = {
   },
   pt: {
     "tab.home": "Home",
+    "tab.venue": "Local",
     "tab.events": "Eventos",
     "tab.gallery": "Galeria",
     "tab.travel": "Viajar & Ficar",
     "tab.language": "🇺🇸 English",
+    "title.venue": "Local do Casamento",
     "title.events": "Eventos",
     "date.short": "2026.Set.12",
     // TODO translate
