@@ -1,6 +1,5 @@
 const translations = {
   en: {
-    "tab.home": "Home",
     "tab.venue": "Venue",
     "tab.itinerary": "Itinerary",
     "tab.events": "Events",
@@ -19,7 +18,6 @@ const translations = {
     "details.subtitle": "a decade of love, laughter and adventure!",
   },
   pt: {
-    "tab.home": "Home",
     "tab.venue": "Local",
     "tab.itinerary": "Itinerário",
     "tab.events": "Eventos",
@@ -34,9 +32,7 @@ const translations = {
     "date.hours": "Horas",
     "date.minutes": "Minutos",
     "date.seconds": "Segundos",
-    // TODO translate
     "details.title": "Estamos celebrando 10 anos juntos,",
-    // TODO translate
     "details.subtitle": "uma decada de amor, risadas e aventuras!",
   },
 };
