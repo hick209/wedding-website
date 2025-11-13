@@ -1,5 +1,5 @@
 $font-primary: 'Work Sans', Arial, sans-serif;
-$font-secondary: 'Sacramento', Arial, serif;
+$font-secondary: 'Amsterdam', Arial, serif;
 
 
 // Overrides
@@ -7,11 +7,11 @@ $grid-gutter-width: 40px !default;
 $border-radius-base:  4px !default;
 $padding-base-vertical: 14px !default;
 
-$brand-primary: #F14E95 !default;
+$brand-primary: #646464 !default;
 $brand-secondary: #118DF0 !default;
 
-$brand-white: #fff;
-$brand-black: #000;
+$brand-white: white;
+$brand-black: black;
 $brand-darker: #444;
 $brand-gray: #ccc;
 $brand-lighter: #e9e9e9;
@@ -75,6 +75,10 @@ $form-group-margin-bottom:       30px !default;
     url('../fonts/icomoon/icomoon.svg?srf3rx#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+@font-face {
+  font-family: Amsterdam;
+  src: url('../fonts/AmsterdamOne.ttf');
 }
 
 @mixin icomoon() {
@@ -199,13 +203,14 @@ h1, h2, h3, h4, h5, h6, figure {
       list-style: none;
       display: inline;
       a {
-        font-size: 14px;
+        font-size: 20px;
+        font-family: Sofia Sans Condensed;
         padding: 30px 10px;
         text-transform: uppercase;
         color: rgba(255,255,255,.5);
         @include transition(.5s);
         &:hover,&:focus, &:active {
-          color: rgba(255,255,255,1);
+          color: $brand-white;
         }
       }
       &.active {
@@ -215,6 +220,15 @@ h1, h2, h3, h4, h5, h6, figure {
       }
     }
   }
+}
+
+.fh5co-bg {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  float: left;
+  position: relative;
 }
 
 .fh5co-video {
@@ -271,13 +285,15 @@ h1, h2, h3, h4, h5, h6, figure {
     }
   }
 }
+
 .fh5co-cover {
-  height: 900px;
+  height: 1000px;
   background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
+  background-position: center center;
   position: relative;
   width: 100%;
+
   .overlay {
     z-index:0;
     position: absolute;
@@ -285,8 +301,22 @@ h1, h2, h3, h4, h5, h6, figure {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(147, 147, 147, .5);
   }
+
+  .subheader {
+    color: $brand-white;
+    margin: 24px 0 0 0;
+    font-family: cursive; /* TODO see if this is a good enough font */
+    font-size: 26px;
+  }
+
+  .save-the-date {
+    filter: invert(1) drop-shadow(2px 4px 6px $brand-black);
+    width: inherit;
+    height: 28vh;
+  }
+
   > .fh5co-container {
     position: relative;
     z-index: 10;
@@ -324,17 +354,18 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event {
   height: 850px;
   float: left;
+
   .display-t,
   .display-tc {
     height: 700px;
     display: table;
     width: 100%;
   }
-  .fh5co-heading{
-    h2{
-      color: $brand-white;
+  .fh5co-heading {
+    h2 {
+      color: $brand-primary;
     }
-    span{
+    span {
       color: rgba($brand-white,.5);
       text-transform: uppercase;
       font-size: 13px;
@@ -348,7 +379,7 @@ h1, h2, h3, h4, h5, h6, figure {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, .4);
+    background: rgba($brand-black, .04);
   }
   @media screen and (max-width: $screen-sm) {
     height: inherit;
@@ -359,9 +390,8 @@ h1, h2, h3, h4, h5, h6, figure {
     }
   }
 
-  .event-wrap{
-    border: 2px solid rgba($brand-white,.5);
-    background:rgba($brand-white,.1);
+  .event-wrap {
+    border: 2px solid rgba($brand-black, .5);
     padding: 30px;
     width: 100%;
     float: left;
@@ -369,24 +399,29 @@ h1, h2, h3, h4, h5, h6, figure {
     @media screen and (max-width: $screen-sm) {
       margin-bottom: 10px;
     }
-    h3{
-      font-size: 20px;
-      color: $brand-white;
-      border-bottom: 1px solid rgba($brand-white,.5);
+    h3 {
+      font-size: 14px;
+      color: $brand-black;
+      border-bottom: 1px solid rgba($brand-black, .5);
       display: block;
       padding-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 2px;
+      font-family: Sofia Sans Condensed;
+      font-size: 25px;
     }
-    p,span{
+    p,
+    span {
       display: block;
-      color: rgba($brand-white,.8);
-    }
-    i{
-      color: rgba($brand-white,1);
+      color: rgba($brand-black, .8);
+      font-family: Sofia Sans Condensed;
       font-size: 20px;
     }
-    .event-col{
+    i {
+      color: $brand-black;
+      font-size: 20px;
+    }
+    .event-col {
       width: 50%;
       float: left;
       margin-bottom: 30px;
@@ -481,19 +516,20 @@ form {
 }
 
 
-#fh5co-header,
 .fh5co-cover {
   .display-tc {
     display: table-cell!important;
     vertical-align: middle;
-    h1, h2 {
+    padding-top: 130px;
+    h1,
+    h2 {
       margin: 0;
       padding: 0;
-      color: rgba(255,255,255,1);
+      color: $brand-white;
     }
     h1 {
       margin-bottom: 0px;
-      font-size: 100px;
+      font-size: 65px;
       line-height: 1.5;
       font-family: $font-secondary;
       @media screen and (max-width: $screen-sm) {
@@ -506,21 +542,23 @@ form {
     h2 {
       font-size: 20px;
       line-height: 1.5;
-      margin-bottom: 30px;
+      margin-top: 20px;
+      font-family: Engagement;
       @media screen and (max-width: $screen-xs) {
         font-size: 16px;
       }
     }
     .btn {
-      padding: 15px 20px;
-      background: $brand-white!important;
+      padding: 20px 20px;
+      background: $brand-white !important;
       color: $brand-primary;
-      border: none!important;
-      font-size: 14px;
+      border: none !important;
+      font-size: 16px;
+      font-family: Sofia Sans Condensed;
       text-transform: uppercase;
       // @include border-radius(2px);
       &:hover {
-        background: $brand-white!important;
+        background: $brand-white !important;
         -webkit-box-shadow: 0px 14px 30px -15px rgba(0,0,0,0.75)!important;
         -moz-box-shadow: 0px 14px 30px -15px rgba(0,0,0,0.75)!important;
         box-shadow: 0px 14px 30px -15px rgba(0,0,0,0.75)!important;
@@ -597,6 +635,9 @@ form {
   z-index: 1901;
   width: 270px;
   background: lighten($brand-black, 0%);
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Sofia Sans Condensed;
   top: 0;
   right: 0;
   top: 0;
@@ -779,21 +820,6 @@ form {
   }
 }
 
-
-// Form Input Field
-.form-control {
-  box-shadow: none;
-  background: transparent;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 54px;
-  font-size: 18px;
-  font-weight: 300;
-    &:active, &:focus {
-      outline: none;
-    box-shadow: none;
-    border-color: $brand-primary;
-  }
-}
 
 .fh5co-loader {
   position: fixed;
