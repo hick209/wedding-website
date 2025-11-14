@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-cover {
-  height: 1000px;
+  height: 100lvh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -236,42 +236,11 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   z-index: 10;
 }
-@media screen and (max-width: 768px) {
-  .fh5co-cover {
-    height: 600px;
-  }
-}
 .fh5co-cover .display-t,
 .fh5co-cover .display-tc {
-  height: 900px;
-  display: table;
+  height: 100%;
   width: 100%;
-}
-@media screen and (max-width: 768px) {
-  .fh5co-cover .display-t,
-  .fh5co-cover .display-tc {
-    height: 600px;
-  }
-}
-.fh5co-cover.fh5co-cover-sm {
-  height: 600px;
-}
-@media screen and (max-width: 768px) {
-  .fh5co-cover.fh5co-cover-sm {
-    height: 400px;
-  }
-}
-.fh5co-cover.fh5co-cover-sm .display-t,
-.fh5co-cover.fh5co-cover-sm .display-tc {
-  height: 600px;
   display: table;
-  width: 100%;
-}
-@media screen and (max-width: 768px) {
-  .fh5co-cover.fh5co-cover-sm .display-t,
-  .fh5co-cover.fh5co-cover-sm .display-tc {
-    height: 400px;
-  }
 }
 
 #fh5co-event {
