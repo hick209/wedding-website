@@ -132,24 +132,24 @@
     $(".fh5co-loader").fadeOut("slow");
   };
 
-  // Parallax
-  var parallax = function() {
-    $(window).stellar({
-      horizontalScrolling: false,
-      responsive: true,
-    });
-  };
-
 
   $(function(){
     mobileMenuOutsideClick();
-    parallax();
     offcanvasMenu();
     burgerMenu();
     contentWayPoint();
     testimonialCarousel();
     goToTop();
     loaderPage();
+  });
+
+  // Parallax
+  document.addEventListener('DOMContentLoaded', () => {
+    $(window).stellar({
+      horizontalScrolling: false,
+      responsive: true,
+      // verticalOffset: 25,
+    });
   });
 
 }());
