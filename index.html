@@ -109,7 +109,9 @@
                 <br>
                 <p data-i18n="details.title" class="subheader" style="margin-bottom: 0px;">We're celebrating 10 years of marriage,</p>
                 <p data-i18n="details.subtitle" class="subheader" style="margin-top: 0px;">a decade of love, laughter, and adventure!</p>
-                <img class="save-the-date" src="images/save_the_date.svg" alt="Save the date">
+                <a id="save-date-img" href="#">
+                  <img class="save-the-date" src="images/save_the_date.svg" alt="Save the date">
+                </a>
                 <h2>
                   <span data-i18n="landing.date">2026.Sep.12</span>
                   <br/>
@@ -125,11 +127,7 @@
                   <div class="clock clock-fix"></div>
                 </div>
                 <p>
-                  <a
-                    href="ics/save-the-date.ics"
-                    download="ics/save-the-date.ics"
-                    class="btn btn-default btn-sm"
-                  >Save our date</a>
+                  <a id="save-date-btn" href="#" class="btn btn-default btn-sm" >Save our date</a>
                 </p>
               </div>
             </div>
@@ -282,6 +280,48 @@
     </div>
 
   </div>
+
+  <dialog class="modal-content" id="dialog-cal" closedby="any">
+    <div>
+      <p>Select your calendar</p>
+      <ul>
+        <li>
+          <a class="" href="webcal://nivaldo-roberta.com/save-the-date.ics">
+            <!-- TODO icon currently does not exist -->
+            <i class="icon-apple"></i>
+            <span class="underline hover:no-underline">Apple Calendar</span>
+          </a>
+        </li>
+        <li>
+          <a class="" href="https://calendar.google.com/calendar/r?cid=webcal://nivaldo-roberta.com/save-the-date.ics">
+            <!-- TODO icon currently does not exist -->
+            <i class="icon-googlecalendar"></i>
+            <span class="underline hover:no-underline">Google Calendar</span>
+          </a>
+        </li>
+        <li>
+          <a class="" href="https://outlook.office.com/calendar/0/addfromweb?url=webcal://nivaldo-roberta.com/save-the-date.ics">
+            <!-- TODO icon currently does not exist -->
+            <i class="icon-microsoft365"></i>
+            <span class="underline hover:no-underline">Microsoft365</span>
+          </a>
+        </li>
+        <li>
+          <a class="" href="webcal://nivaldo-roberta.com/save-the-date.ics">
+            <!-- TODO icon currently does not exist -->
+            <i class="icon-outlook"></i>
+            <span class="underline hover:no-underline">Outlook</span>
+          </a>
+        </li>
+        <li>
+          <a class="" href="save-the-date.ics" download="save-the-date.ics">
+            <i class="icon-calendar"></i>
+            <span class="underline hover:no-underline">iCal Feed</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </dialog>
 
   <div class="gototop js-top">
     <a href="#fh5co-header" class="js-gotop"><i class="icon-arrow-up"></i></a>
