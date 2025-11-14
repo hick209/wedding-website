@@ -281,42 +281,22 @@
 
   </div>
 
+  <!-- TODO css -->
   <dialog class="modal-content" id="dialog-cal" closedby="any">
     <div>
-      <p>Select your calendar</p>
+      <p data-i18n="dialog.select-cal">Select your calendar</p>
       <ul>
         <li>
-          <a class="" href="webcal://nivaldo-roberta.com/save-the-date.ics">
-            <!-- TODO icon currently does not exist -->
-            <i class="icon-apple"></i>
-            <span class="underline hover:no-underline">Apple Calendar</span>
-          </a>
-        </li>
-        <li>
-          <a class="" href="https://calendar.google.com/calendar/r?cid=webcal://nivaldo-roberta.com/save-the-date.ics">
+          <a id="gcal-btn" class="cal-btn" href="#" target="_blank">
             <!-- TODO icon currently does not exist -->
             <i class="icon-googlecalendar"></i>
-            <span class="underline hover:no-underline">Google Calendar</span>
+            <span class="">Google Calendar</span>
           </a>
         </li>
         <li>
-          <a class="" href="https://outlook.office.com/calendar/0/addfromweb?url=webcal://nivaldo-roberta.com/save-the-date.ics">
-            <!-- TODO icon currently does not exist -->
-            <i class="icon-microsoft365"></i>
-            <span class="underline hover:no-underline">Microsoft365</span>
-          </a>
-        </li>
-        <li>
-          <a class="" href="webcal://nivaldo-roberta.com/save-the-date.ics">
-            <!-- TODO icon currently does not exist -->
-            <i class="icon-outlook"></i>
-            <span class="underline hover:no-underline">Outlook</span>
-          </a>
-        </li>
-        <li>
-          <a class="" href="save-the-date.ics" download="save-the-date.ics">
+          <a class="cal-btn" href="save-the-date.ics" download="save-the-date.ics">
             <i class="icon-calendar"></i>
-            <span class="underline hover:no-underline">iCal Feed</span>
+            <span class="" data-i18n="dialog.other-cals">Other calendars (ics file)</span>
           </a>
         </li>
       </ul>

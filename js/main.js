@@ -110,8 +110,10 @@
   };
 
   // Save to calendar
-  let saveTheDate = () => {
-    let openCalDialog = () => document.getElementById("dialog-cal").showModal();
+  const saveTheDate = () => {
+    const dialog = document.getElementById("dialog-cal");
+    const openCalDialog = () => dialog.showModal();
+    $(".cal-btn").click(() => dialog.close());
     $("#save-date-img").click(openCalDialog);
     $("#save-date-btn").click(openCalDialog);
   };
