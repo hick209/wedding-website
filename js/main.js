@@ -111,11 +111,17 @@
 
   // Save to calendar
   const saveTheDate = () => {
-    const dialog = document.getElementById("dialog-cal");
-    const openCalDialog = () => dialog.showModal();
-    $(".cal-btn").click(() => dialog.close());
-    $("#save-date-img").click(openCalDialog);
-    $("#save-date-btn").click(openCalDialog);
+    const inviteFile = "save-the-date.ics";
+    $(".save-date-btn").attr({
+      "href": inviteFile,
+      "download": inviteFile,
+    });
+
+    // const dialog = document.getElementById("dialog-cal");
+    // const openCalDialog = () => dialog.showModal();
+    // $(".cal-btn").click(() => dialog.close());
+    // $("#save-date-img").click(openCalDialog);
+    // $("#save-date-btn").click(openCalDialog);
   };
 
 
