@@ -41,7 +41,7 @@ const translations = {
     "details.title": "Estamos celebrando 10 anos juntos,",
     "details.subtitle": "uma decada de amor, risadas e aventuras!",
     "about.title": "Junte-se a Nós",
-    "about.description": "Junte-se a nós para uma elegante celebração de 3 dias, repleta de festividades e cercados pelas pessoas que mais importam para nós – nossos queridos amigos e família. Reserve a data para um fim de semana de memórias, marcos e alegria.",
+    "about.description": "Junte-se a nós para uma celebração de 3 dias, repleta de festividades e cercados pelas pessoas que mais importam para nós – nossos queridos amigos e família. Reserve a data para um fim de semana de memórias, e momentos de alegria.",
     "dialog.select-cal": "Qual calendário?",
     "dialog.other-cals": "Outros calendários (arquivo .ics)",
   },
