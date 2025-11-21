@@ -159,6 +159,15 @@ npx http-server -p 8000
 3. Test changes in browser
 4. Commit both SCSS source and compiled CSS files
 
+## Pending Work
+
+See `TODO.md` for detailed pending tasks and future enhancements. Key items:
+
+1. **Video Popup** (`index.html:270-276`) - Currently has placeholder link, needs Vimeo/YouTube URL
+2. **GitHub Footer** (`index.html:333-337`) - Commented out, needs URL update before uncommenting
+3. **Image Cleanup** - Several unused images retained for potential future use
+4. **Itinerary Content** - Lorem ipsum placeholder text needs to be replaced with actual event details
+
 ## Browser Compatibility Notes
 - IE 9+ support (conditional comments in HTML)
 - Uses vendor prefixes via SCSS mixins
