@@ -179,20 +179,22 @@ npx http-server -p 8000
 See `TODO.md` for comprehensive task list. Key priorities for **Milestone 1** completion:
 
 ### High Priority (Blockers for "Save the Date" launch)
-1. **Event Context/Info** - Add explanation of 10-year celebration and multi-day format
-2. **FAQ Section** - Answer common questions (daily attendance, dress code, etc.)
-3. **Travel Guidance** - Information for international guests (airports, transportation, visas)
-4. **Link Preview Fix** - OG image not displaying on social media ([known issue](https://stackoverflow.com/q/21636503/1848826))
-5. **Date Size** - Make date more prominent on desktop
+1. **FAQ Section** - Answer common questions (daily attendance, dress code, etc.)
+2. **Travel Guidance** - Information for international guests (airports, transportation, visas)
+3. **Link Preview Fix** - OG image not displaying on social media ([known issue](https://stackoverflow.com/q/21636503/1848826))
+4. **Date Size** - Make date more prominent on desktop
 
 ### Medium Priority
-6. **CSS Mobile Improvements** - Address "looks off" issues on mobile
-7. **Parallax Fix** - Background "jumping" issue
+5. **CSS Mobile Improvements** - Address "looks off" issues on mobile
+6. **Parallax Fix** - Background "jumping" issue
 
 ### Lower Priority (Future Enhancement)
-8. **Video Popup** (`index.html:270-276`) - Optional venue video
-9. **GitHub Footer** (`index.html:333-337`) - Commented out, needs URL update
-10. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+7. **Video Popup** (`index.html:270-276`) - Optional venue video
+8. **GitHub Footer** (`index.html:333-337`) - Commented out, needs URL update
+9. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+
+### Completed Milestone 1 Items
+- ✅ Event Context/Info - "Join Us" section added explaining 3-day celebration
 
 ### Milestone 2 (Future)
 - RSVP functionality with database backend

@@ -15,9 +15,10 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Removed unused CSS/JS libraries
 - [x] Created documentation (CLAUDE.md)
 - [x] Created .gitignore for CSS source maps
+- [x] Add info about what is going on
 
 #### Remaining Blockers
-- [ ] Add info about what is going on / why we are doing the party
+- [ ] Add info about why we are doing the party
 - [ ] Make date bigger (at least for desktop)
 - [ ] Add FAQ section - answer "do I need to be there everyday?"
 - [ ] Add travel guidance for people from outside of Brazil
