@@ -9,6 +9,21 @@ This is a static wedding website for Nivaldo & Roberta's 10-year celebration (Se
 Website URL: https://www.nivaldo-roberta.com/
 Domain: www.nivaldo-roberta.com
 
+### Project Goals
+
+**Milestone 1: "Save the Date" Website** (Current Phase)
+- Provide basic event information to guests
+- Enable calendar integration for date saving
+- Offer bilingual support (EN/PT) for international guests
+- Display venue location and basic details
+
+**Milestone 2: RSVP Functionality** (Future)
+- Allow guests to confirm attendance
+- Complete detailed itinerary
+- Implement backend/database for RSVP storage
+
+See `TODO.md` for detailed task breakdown and progress tracking.
+
 ## Technology Stack
 
 - **Frontend**: Vanilla JavaScript (ES6), jQuery, Bootstrap 3
@@ -161,12 +176,27 @@ npx http-server -p 8000
 
 ## Pending Work
 
-See `TODO.md` for detailed pending tasks and future enhancements. Key items:
+See `TODO.md` for comprehensive task list. Key priorities for **Milestone 1** completion:
 
-1. **Video Popup** (`index.html:270-276`) - Currently has placeholder link, needs Vimeo/YouTube URL
-2. **GitHub Footer** (`index.html:333-337`) - Commented out, needs URL update before uncommenting
-3. **Image Cleanup** - Several unused images retained for potential future use
-4. **Itinerary Content** - Lorem ipsum placeholder text needs to be replaced with actual event details
+### High Priority (Blockers for "Save the Date" launch)
+1. **Event Context/Info** - Add explanation of 10-year celebration and multi-day format
+2. **FAQ Section** - Answer common questions (daily attendance, dress code, etc.)
+3. **Travel Guidance** - Information for international guests (airports, transportation, visas)
+4. **Link Preview Fix** - OG image not displaying on social media ([known issue](https://stackoverflow.com/q/21636503/1848826))
+5. **Date Size** - Make date more prominent on desktop
+
+### Medium Priority
+6. **CSS Mobile Improvements** - Address "looks off" issues on mobile
+7. **Parallax Fix** - Background "jumping" issue
+
+### Lower Priority (Future Enhancement)
+8. **Video Popup** (`index.html:270-276`) - Optional venue video
+9. **GitHub Footer** (`index.html:333-337`) - Commented out, needs URL update
+10. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+
+### Milestone 2 (Future)
+- RSVP functionality with database backend
+- Complete event itinerary details
 
 ## Browser Compatibility Notes
 - IE 9+ support (conditional comments in HTML)
