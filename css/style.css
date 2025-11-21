@@ -740,6 +740,37 @@ form label {
   outline: none !important;
 }
 
+.fh5co-footer {
+  padding: 30px 0;
+  background: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+.fh5co-footer p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+}
+.fh5co-footer a {
+  color: #646464;
+  text-decoration: none;
+}
+.fh5co-footer a:hover {
+  color: rgb(74.5, 74.5, 74.5);
+}
+.fh5co-footer .github-icon {
+  height: 16px;
+  width: 16px;
+  vertical-align: text-bottom;
+  margin-left: 3px;
+  opacity: 0.7;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.fh5co-footer a:hover .github-icon {
+  opacity: 1;
+}
+
 .fh5co-loader {
   position: fixed;
   left: 0px;

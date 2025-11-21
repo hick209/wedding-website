@@ -58,23 +58,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 
 **Alternative:** Consider using venue video from Instagram ([example](https://www.instagram.com/p/DK2O9RcgGdO/))
 
-### 2. GitHub Footer Link
-**Location:** `index.html:333-337`
-**Status:** Commented out
-**Priority:** Low
-
-**Current State:**
-- Footer link to GitHub repository is commented out
-- References `images/github-logo.png` (file exists in repo)
-- Currently points to original template repo URL
-
-**What Needs to be Done:**
-1. Update GitHub URL to your repository: `https://github.com/hick209/wedding-website`
-2. Verify `images/github-logo.png` exists and looks good
-3. Consider styling/placement - currently uses deprecated `<center>` tag
-4. Uncomment when ready
-
-### 3. Event Information / Context
+### 2. Event Information / Context
 **Status:** Not started
 **Priority:** High (Milestone 1 blocker)
 
@@ -85,7 +69,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 
 **Suggested Location:** Add a new section between header and venue, or enhance the landing page description
 
-### 4. FAQ Section
+### 3. FAQ Section
 **Status:** Not started
 **Priority:** High (Milestone 1 blocker)
 
@@ -96,7 +80,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 - Can I bring guests/children?
 - What's the weather like in September?
 
-### 5. Travel Guidance
+### 4. Travel Guidance
 **Status:** Not started
 **Priority:** High (Milestone 1 blocker)
 
@@ -109,7 +93,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 - Currency exchange tips
 - Accommodation options near venue
 
-### 6. Link Preview Image Fix
+### 5. Link Preview Image Fix
 **Status:** Known issue
 **Priority:** Medium
 
@@ -177,3 +161,5 @@ This document tracks pending tasks and future improvements for the wedding websi
 - ✅ Domain setup (www.nivaldo-roberta.com)
 - ✅ Location added under date
 - ✅ Video removed (was placeholder)
+- ✅ Event context section added ("Join Us")
+- ✅ GitHub footer added with modern semantic HTML

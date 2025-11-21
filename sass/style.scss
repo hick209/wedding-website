@@ -794,6 +794,37 @@ form {
 }
 
 
+// Footer
+.fh5co-footer {
+  padding: 30px 0;
+  background: rgba($brand-black, 0.02);
+  border-top: 1px solid rgba($brand-black, 0.05);
+  p {
+    margin: 0;
+    color: rgba($brand-black, 0.5);
+    font-size: 14px;
+  }
+  a {
+    color: $brand-primary;
+    text-decoration: none;
+    &:hover {
+      color: darken($brand-primary, 10%);
+    }
+  }
+  .github-icon {
+    height: 16px;
+    width: 16px;
+    vertical-align: text-bottom;
+    margin-left: 3px;
+    opacity: 0.7;
+    @include transition(.3s);
+  }
+  a:hover .github-icon {
+    opacity: 1;
+  }
+}
+
+
 .fh5co-loader {
   position: fixed;
   left: 0px;
