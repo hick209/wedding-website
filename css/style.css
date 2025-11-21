@@ -521,20 +521,6 @@ form label {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.owl-carousel .owl-controls .owl-dot span {
-  background: rgb(229.5, 229.5, 229.5);
-}
-.owl-carousel .owl-controls .owl-dot span:hover, .owl-carousel .owl-controls .owl-dot span:focus {
-  background: #cccccc;
-}
-.owl-carousel .owl-controls .owl-dot:hover span, .owl-carousel .owl-controls .owl-dot:focus span {
-  background: #cccccc;
-}
-.owl-carousel .owl-controls .owl-dot.active span {
-  background: transparent;
-  border: 2px solid #646464;
-}
-
 #fh5co-offcanvas {
   position: absolute;
   z-index: 1901;

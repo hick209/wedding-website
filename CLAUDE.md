@@ -16,7 +16,6 @@ Domain: www.nivaldo-roberta.com
 - **Key Libraries**:
   - FlipClock.js - countdown timer
   - Moment.js with timezone support
-  - Owl Carousel - image gallery
   - Magnific Popup - lightbox
   - Waypoints - scroll animations
   - Stellar.js - parallax effects

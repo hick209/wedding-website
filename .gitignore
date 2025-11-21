@@ -1,0 +1,12 @@
+# CSS Source Maps
+*.css.map
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
