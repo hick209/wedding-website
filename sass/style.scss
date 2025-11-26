@@ -866,3 +866,323 @@ form {
 .wip {
   display: none !important;
 }
+
+// ========================================================
+// Flip Clock Countdown Timer Styles
+// ========================================================
+// Responsive countdown clock styling using FlipClock.js
+// Bootstrap screen variables are leveraged for consistency
+
+// Base flip-clock-wrapper styles
+.flip-clock-wrapper {
+  margin: 2em auto !important;
+  display: inline-block !important;
+  width: auto !important;
+  
+  @media screen and (max-width: $screen-sm-max) {
+    margin: 1em auto !important;
+  }
+  
+  @media screen and (max-width: $screen-xs) {
+    margin: 0.5em auto !important;
+  }
+}
+
+// Flip clock divider labels
+.flip-clock-divider {
+  .flip-clock-label {
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    font-family: Sofia Sans Condensed !important;
+  }
+}
+
+// Flipbox container with responsive adjustments
+.flipTimebox {
+  // -------- Tablet landscape / Small laptops (768px - 991px) --------
+  @media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+    .flip-clock-wrapper ul {
+      height: 55px;
+      line-height: 55px;
+      width: 45px;
+      margin: 3px;
+
+      li {
+        line-height: 55px;
+
+        a div.up:after {
+          top: 26px;
+        }
+      }
+
+      li a div div.inn {
+        font-size: 42px;
+      }
+    }
+
+    .flip-clock-divider {
+      height: 55px;
+
+      &.days .flip-clock-label {
+        right: -60px;
+      }
+      &.hours .flip-clock-label {
+        right: -64px;
+      }
+      &.minutes .flip-clock-label {
+        right: -70px;
+      }
+      &.seconds .flip-clock-label {
+        right: -71px;
+      }
+    }
+
+    .flip-clock-dot {
+      height: 7px;
+      width: 7px;
+      left: 8px;
+
+      &.top {
+        top: 19px;
+      }
+      &.bottom {
+        bottom: 10px;
+      }
+    }
+
+    .flip-clock-meridium {
+      font-size: 22px !important;
+    }
+  }
+
+  // -------- Small devices (portrait tablets and small phones: up to 767px) --------
+  @media screen and (max-width: $screen-xs-max) {
+    .flip-clock-wrapper ul {
+      height: 50px;
+      line-height: 50px;
+      width: 37px;
+      margin: 2px;
+      
+      li {
+        line-height: 50px;
+        
+        a div.up:after {
+          top: 24px;
+        }
+      }
+      
+      li a div div.inn {
+        font-size: 38px;
+      }
+    }
+    
+    .flip-clock-divider {
+      height: 50px;
+      
+      &.days .flip-clock-label {
+        right: -58px;
+      }
+      &.hours .flip-clock-label {
+        right: -62px;
+      }
+      &.minutes .flip-clock-label {
+        right: -68px;
+      }
+      &.seconds .flip-clock-label {
+        right: -69px;
+      }
+    }
+    
+    .flip-clock-dot {
+      height: 6px;
+      width: 6px;
+      left: 7px;
+      
+      &.top {
+        top: 17px;
+      }
+      &.bottom {
+        bottom: 8px;
+      }
+    }
+    
+    .flip-clock-meridium {
+      font-size: 20px !important;
+    }
+  }
+  
+  // -------- Extra small devices (569px - 767px: larger tablets) --------
+  @media screen and (min-width: 569px) and (max-width: $screen-xs-max) {
+    // Inherits styles from previous breakpoint unless overridden
+  }
+  
+  // -------- Smaller tablets (480px - 568px) --------
+  @media screen and (max-width: 568px) {
+    .flip-clock-wrapper ul {
+      margin: 2px;
+    }
+    
+    .flip-clock-divider {
+      width: 5px;
+      
+      &.days .flip-clock-label {
+        right: -58px;
+      }
+      &.hours .flip-clock-label {
+        right: -62px;
+      }
+      &.minutes .flip-clock-label {
+        right: -68px;
+      }
+      &.seconds .flip-clock-label {
+        right: -69px;
+      }
+    }
+    
+    .flip-clock-dot {
+      height: 5px;
+      width: 5px;
+      left: 0;
+    }
+    
+    .flip-clock-meridium {
+      font-size: 18px !important;
+    }
+  }
+  
+  // -------- Phones (up to 480px) --------
+  @media screen and (max-width: $screen-xs) {
+    margin: 50px 0 100px 20px;
+    
+    .flip-clock-wrapper {
+      ul {
+        li a div div.inn {
+          font-size: 28px;
+        }
+        
+        li {
+          width: 30px;
+        }
+        
+        &.flip {
+          width: 27px;
+          background-color: transparent;
+          box-shadow: none;
+          margin-left: -8px;
+        }
+      }
+    }
+    
+    .flip-clock-divider {
+      .flip-clock-label {
+        font-size: 1em;
+      }
+      
+      &.days .flip-clock-label {
+        right: -33px;
+      }
+      &.hours .flip-clock-label {
+        right: -37px;
+      }
+      &.minutes .flip-clock-label {
+        right: -43px;
+      }
+      &.seconds .flip-clock-label {
+        right: -45px;
+      }
+    }
+    
+    .flip-clock-dot {
+      margin-left: -10px;
+    }
+    
+    .flip-clock-meridium {
+      font-size: 14px !important;
+    }
+  }
+  
+  // -------- Very small phones (361px - 480px) --------
+  @media screen and (max-width: 360px) {
+    .flip-clock-wrapper {
+      ul {
+        li {
+          width: 25px;
+        }
+        
+        &.flip {
+          width: 25px;
+          margin-left: -14px;
+        }
+      }
+    }
+    
+    .flip-clock-divider {
+      .flip-clock-label {
+        font-size: 1em;
+        width: 3px;
+      }
+      
+      &.days .flip-clock-label {
+        right: -1px;
+      }
+      &.hours .flip-clock-label {
+        right: 2px;
+      }
+      &.minutes .flip-clock-label {
+        right: 6px;
+      }
+      &.seconds .flip-clock-label {
+        right: 9px;
+      }
+    }
+    
+    .flip-clock-dot {
+      margin-left: -16px;
+    }
+    
+    margin: 50px 0 100px 20px;
+  }
+  
+  // -------- Extra tiny phones (320px and below) --------
+  @media screen and (max-width: 320px) {
+    .flip-clock-wrapper {
+      ul {
+        li {
+          width: 22px;
+        }
+        
+        &.flip {
+          width: 22px;
+          margin-left: -16px;
+        }
+      }
+    }
+    
+    .flip-clock-divider {
+      &.days .flip-clock-label {
+        right: 3px;
+      }
+      &.hours .flip-clock-label {
+        right: 6px;
+      }
+      &.minutes .flip-clock-label {
+        right: 11px;
+      }
+      &.seconds .flip-clock-label {
+        right: 14px;
+      }
+    }
+    
+    .flip-clock-dot {
+      margin-left: -18px;
+    }
+  }
+}
+
+// Modules box styling (for small screens)
+.flipTimemodulesboxes {
+  @media screen and (max-width: $screen-xs) {
+    padding: 0;
+  }
+}
