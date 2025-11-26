@@ -138,9 +138,6 @@
     width: 25px;
     margin-left: -14px;
   }
-  .flipTimebox .flip-clock-wrapper {
-    padding-left: 5px;
-  }
   .flipTimebox .flip-clock-wrapper ul li {
     width: 25px;
   }
@@ -152,9 +149,6 @@
   }
 }
 @media screen and (max-width: 320px) {
-  .flipTimebox .flip-clock-wrapper {
-    padding-left: 5px;
-  }
   .flipTimebox .flip-clock-wrapper ul.flip {
     width: 22px;
     margin-left: -16px;
@@ -180,12 +174,24 @@
 }
 
 .flip-clock-wrapper {
-  margin: 4em !important;
+  margin: 2em auto !important;
+  display: inline-block !important;
+  width: auto !important;
+}
+@media screen and (max-width: 768px) {
+  .flip-clock-wrapper {
+    margin: 1em auto !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .flip-clock-wrapper {
+    margin: 0.5em auto !important;
+  }
 }
 
 .flip-clock-divider .flip-clock-label {
   color: white !important;
   font-size: 14px !important;
   font-weight: bold !important;
-  font-family: Sofia Sans Condensed !important; 
+  font-family: Sofia Sans Condensed !important;
 }
