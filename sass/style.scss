@@ -878,11 +878,11 @@ form {
   margin: 2em auto !important;
   display: inline-block !important;
   width: auto !important;
-  
+
   @media screen and (max-width: $screen-sm-max) {
     margin: 1em auto !important;
   }
-  
+
   @media screen and (max-width: $screen-xs) {
     margin: 0.5em auto !important;
   }
@@ -900,6 +900,9 @@ form {
 
 // Flipbox container with responsive adjustments
 .flipTimebox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
   // -------- Tablet landscape / Small laptops (768px - 991px) --------
   @media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max) {
     .flip-clock-wrapper ul {
@@ -963,23 +966,23 @@ form {
       line-height: 50px;
       width: 37px;
       margin: 2px;
-      
+
       li {
         line-height: 50px;
-        
+
         a div.up:after {
           top: 24px;
         }
       }
-      
+
       li a div div.inn {
         font-size: 38px;
       }
     }
-    
+
     .flip-clock-divider {
       height: 50px;
-      
+
       &.days .flip-clock-label {
         right: -58px;
       }
@@ -993,12 +996,12 @@ form {
         right: -69px;
       }
     }
-    
+
     .flip-clock-dot {
       height: 6px;
       width: 6px;
       left: 7px;
-      
+
       &.top {
         top: 17px;
       }
@@ -1006,26 +1009,26 @@ form {
         bottom: 8px;
       }
     }
-    
+
     .flip-clock-meridium {
       font-size: 20px !important;
     }
   }
-  
+
   // -------- Extra small devices (569px - 767px: larger tablets) --------
   @media screen and (min-width: 569px) and (max-width: $screen-xs-max) {
     // Inherits styles from previous breakpoint unless overridden
   }
-  
+
   // -------- Smaller tablets (480px - 568px) --------
   @media screen and (max-width: 568px) {
     .flip-clock-wrapper ul {
       margin: 2px;
     }
-    
+
     .flip-clock-divider {
       width: 5px;
-      
+
       &.days .flip-clock-label {
         right: -58px;
       }
@@ -1039,32 +1042,32 @@ form {
         right: -69px;
       }
     }
-    
+
     .flip-clock-dot {
       height: 5px;
       width: 5px;
       left: 0;
     }
-    
+
     .flip-clock-meridium {
       font-size: 18px !important;
     }
   }
-  
+
   // -------- Phones (up to 480px) --------
   @media screen and (max-width: $screen-xs) {
-    margin: 50px 0 100px 20px;
-    
+    margin: 50px 0 50px 20px;
+
     .flip-clock-wrapper {
       ul {
         li a div div.inn {
           font-size: 28px;
         }
-        
+
         li {
           width: 30px;
         }
-        
+
         &.flip {
           width: 27px;
           background-color: transparent;
@@ -1073,12 +1076,12 @@ form {
         }
       }
     }
-    
+
     .flip-clock-divider {
       .flip-clock-label {
         font-size: 1em;
       }
-      
+
       &.days .flip-clock-label {
         right: -33px;
       }
@@ -1092,16 +1095,16 @@ form {
         right: -45px;
       }
     }
-    
+
     .flip-clock-dot {
       margin-left: -10px;
     }
-    
+
     .flip-clock-meridium {
       font-size: 14px !important;
     }
   }
-  
+
   // -------- Very small phones (361px - 480px) --------
   @media screen and (max-width: 360px) {
     .flip-clock-wrapper {
@@ -1109,20 +1112,20 @@ form {
         li {
           width: 25px;
         }
-        
+
         &.flip {
           width: 25px;
           margin-left: -14px;
         }
       }
     }
-    
+
     .flip-clock-divider {
       .flip-clock-label {
         font-size: 1em;
         width: 3px;
       }
-      
+
       &.days .flip-clock-label {
         right: -1px;
       }
@@ -1136,14 +1139,14 @@ form {
         right: 9px;
       }
     }
-    
+
     .flip-clock-dot {
       margin-left: -16px;
     }
-    
+
     margin: 50px 0 100px 20px;
   }
-  
+
   // -------- Extra tiny phones (320px and below) --------
   @media screen and (max-width: 320px) {
     .flip-clock-wrapper {
@@ -1151,14 +1154,14 @@ form {
         li {
           width: 22px;
         }
-        
+
         &.flip {
           width: 22px;
           margin-left: -16px;
         }
       }
     }
-    
+
     .flip-clock-divider {
       &.days .flip-clock-label {
         right: 3px;
@@ -1173,7 +1176,7 @@ form {
         right: 14px;
       }
     }
-    
+
     .flip-clock-dot {
       margin-left: -18px;
     }

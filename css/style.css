@@ -843,6 +843,10 @@ form label {
   font-family: Sofia Sans Condensed !important;
 }
 
+.flipTimebox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .flipTimebox .flip-clock-wrapper ul {
     height: 55px;
@@ -965,7 +969,7 @@ form label {
 }
 @media screen and (max-width: 480px) {
   .flipTimebox {
-    margin: 50px 0 100px 20px;
+    margin: 50px 0 50px 20px;
   }
   .flipTimebox .flip-clock-wrapper ul li a div div.inn {
     font-size: 28px;
