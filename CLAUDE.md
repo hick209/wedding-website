@@ -102,7 +102,7 @@ npx http-server -p 8000
   ```
 - Uses FlipClock.js with DailyCounter face
 - Clock labels are translated dynamically after DOM load
-- **Mobile centering**: Handled by `css/responsive-clock.css` with flexbox layout. The wrapper uses `display: inline-block` and `width: auto` to override FlipClock's default `width: 100%`, allowing proper centering while maintaining the library's internal float-based layout for correct element ordering.
+- **Mobile centering**: Handled by `sass/style.scss` with flexbox layout. The wrapper uses `display: inline-block` and `width: auto` to override FlipClock's default `width: 100%`, allowing proper centering while maintaining the library's internal float-based layout for correct element ordering.
 
 ### Calendar Integration
 - ICS file: `save-the-date.ics` (multi-language VEVENT)
