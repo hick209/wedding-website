@@ -212,6 +212,16 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   width: 100%;
 }
+.fh5co-cover .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media screen and (max-width: 480px) {
+  .fh5co-cover .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
 .fh5co-cover .overlay {
   z-index: 0;
   position: absolute;
@@ -227,10 +237,31 @@ h1, h2, h3, h4, h5, h6, figure {
   font-family: cursive; /* TODO see if this is a good enough font */
   font-size: 26px;
 }
+@media screen and (max-width: 768px) {
+  .fh5co-cover .subheader {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fh5co-cover .subheader {
+    font-size: 18px;
+  }
+}
 .fh5co-cover .save-the-date {
   filter: invert(1) drop-shadow(2px 4px 6px black);
   width: inherit;
   height: 28vh;
+  max-width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-cover .save-the-date {
+    height: 22vh;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fh5co-cover .save-the-date {
+    height: 18vh;
+  }
 }
 .fh5co-cover > .fh5co-container {
   position: relative;
