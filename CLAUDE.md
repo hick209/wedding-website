@@ -146,15 +146,15 @@ npx http-server -p 8000
 - Lines 1-24: Variables and brand colors
 - Lines 28-50: SCSS mixins for browser compatibility
 - Color scheme: Primary #646464, Secondary #118DF0
-
-### `css/responsive-clock.css`
-- Mobile-responsive styles for FlipClock.js countdown timer
-- Multiple media query breakpoints: 767px, 568px, 480px, 360px, 320px
-- **Critical centering rules** (lines 176-189):
-  - `.flip-clock-wrapper`: Uses `display: inline-block`, `width: auto`, and `margin: auto` to enable centering
-  - `.flipTimebox`: Flexbox container with `justify-content: center` to center the clock
-  - Negative margins are neutralized (set to 0) to prevent left-alignment
-- **Do NOT modify** the `float: left` behavior on clock internal elements - FlipClock.js requires this for proper element ordering
+- **Lines 869-1190: FlipClock countdown timer responsive styles**
+  - Uses Bootstrap screen variables (`$screen-xs`, `$screen-sm`, `$screen-md`, etc.)
+  - Multiple media query breakpoints: 991px, 767px, 568px, 480px, 360px, 320px
+  - **Critical centering rules**:
+    - `.flip-clock-wrapper`: Uses `display: inline-block`, `width: auto`, and `margin: auto` to enable centering
+    - `.flipTimebox`: Flexbox container with `justify-content: center` to center the clock
+    - Negative margins neutralized (set to 0) to prevent left-alignment
+  - **Important**: Do NOT modify the `float: left` behavior on clock internal elements - FlipClock.js requires this for proper element ordering
+  - **768-991px fix**: Media query added to prevent wrapping on tablet landscape/small laptops
 
 ## Common Tasks
 
@@ -206,6 +206,8 @@ See `TODO.md` for comprehensive task list. Key priorities for **Milestone 1** co
 - ✅ Event Context/Info - "Join Us" section added explaining 3-day celebration
 - ✅ GitHub Footer - Added with modern semantic HTML and styling
 - ✅ Flip Clock Mobile Centering - Fixed left-alignment issue on mobile devices (width ≤ 767px)
+- ✅ Flip Clock Wrapping - Fixed wrapping at 768-991px (tablet landscape) by adding media query with constrained element sizes
+- ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables for better maintainability
 
 ### Milestone 2 (Future)
 - RSVP functionality with database backend
