@@ -17,10 +17,10 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Created .gitignore for CSS source maps
 - [x] Add info about what is going on
 - [x] Fix link preview image bug ([reference](https://stackoverflow.com/q/21636503/1848826))
+- [x] Add info about why we are doing the party
+- [x] Make date bigger (at least for desktop)
 
 #### Remaining Blockers
-- [ ] Add info about why we are doing the party
-- [ ] Make date bigger (at least for desktop)
 - [ ] Add FAQ section - answer "do I need to be there everyday?"
 - [ ] Add travel guidance for people from outside of Brazil
 
@@ -120,7 +120,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 
 ### UX/Design Improvements
 - [ ] The flipclock wraps between page width 992-1200px, and 361-365px.
-- [ ] Make date bigger on desktop
+- [x] Make date bigger on desktop
 - [ ] Adjust CSS for mobile (currently "looks off")
 - [ ] Fix background parallax "jumping" issue
 - [ ] Improve CSS for landscape orientation on mobile (partially addressed)

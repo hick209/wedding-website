@@ -493,6 +493,27 @@ form label {
 .fh5co-cover .display-tc h2 a {
   color: white;
 }
+.fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+@media screen and (max-width: 992px) {
+  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
+    font-size: 35px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+}
 .fh5co-cover .display-tc .btn {
   padding: 20px 20px;
   background: white !important;

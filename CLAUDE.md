@@ -191,23 +191,23 @@ See `TODO.md` for comprehensive task list. Key priorities for **Milestone 1** co
 ### High Priority (Blockers for "Save the Date" launch)
 1. **FAQ Section** - Answer common questions (daily attendance, dress code, etc.)
 2. **Travel Guidance** - Information for international guests (airports, transportation, visas)
-3. **Link Preview Fix** - OG image not displaying on social media ([known issue](https://stackoverflow.com/q/21636503/1848826))
-4. **Date Size** - Make date more prominent on desktop
 
 ### Medium Priority
-5. **CSS Mobile Improvements** - Address "looks off" issues on mobile
-6. **Parallax Fix** - Background "jumping" issue
+3. **CSS Mobile Improvements** - Address "looks off" issues on mobile
+4. **Parallax Fix** - Background "jumping" issue
 
 ### Lower Priority (Future Enhancement)
-7. **Video Popup** (`index.html:270-276`) - Optional venue video
-8. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+5. **Video Popup** (`index.html:270-276`) - Optional venue video
+6. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
 
 ### Completed Milestone 1 Items
 - ✅ Event Context/Info - "Join Us" section added explaining 3-day celebration
 - ✅ GitHub Footer - Added with modern semantic HTML and styling
+- ✅ Link Preview Fix - Converted OG image from SVG to PNG for social media compatibility
 - ✅ Flip Clock Mobile Centering - Fixed left-alignment issue on mobile devices (width ≤ 767px)
-- ✅ Flip Clock Wrapping - Fixed wrapping at 768-991px (tablet landscape) by adding media query with constrained element sizes
+- ✅ Flip Clock Wrapping - Fixed wrapping at all viewport ranges (992-1200px, 768-991px, 361-365px) using container width adjustments instead of complex element sizing
 - ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables for better maintainability
+- ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling for all viewports
 
 ### Milestone 2 (Future)
 - RSVP functionality with database backend
