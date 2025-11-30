@@ -16,13 +16,13 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Created documentation (CLAUDE.md)
 - [x] Created .gitignore for CSS source maps
 - [x] Add info about what is going on
+- [x] Fix link preview image bug ([reference](https://stackoverflow.com/q/21636503/1848826))
 
 #### Remaining Blockers
 - [ ] Add info about why we are doing the party
 - [ ] Make date bigger (at least for desktop)
 - [ ] Add FAQ section - answer "do I need to be there everyday?"
 - [ ] Add travel guidance for people from outside of Brazil
-- [ ] Fix link preview image bug ([reference](https://stackoverflow.com/q/21636503/1848826))
 
 ### Milestone 2: RSVP Functionality
 **Goal:** People can confirm whether they will attend
