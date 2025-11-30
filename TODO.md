@@ -119,7 +119,8 @@ This document tracks pending tasks and future improvements for the wedding websi
 ## Nice to Have Enhancements
 
 ### UX/Design Improvements
-- [ ] The flipclock wraps between page width 992-1200px, and 361-365px.
+- [x] The flipclock wraps between page width 992-1200px.
+- [ ] The flipclock wraps between page width 361-365px.
 - [x] Make date bigger on desktop
 - [ ] Adjust CSS for mobile (currently "looks off")
 - [ ] Fix background parallax "jumping" issue
