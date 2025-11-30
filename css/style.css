@@ -1054,7 +1054,7 @@ form label {
     margin-left: -16px;
   }
   .flipTimebox {
-    margin: 50px 0 100px 20px;
+    margin: 50px 0 100px 15px;
   }
 }
 @media screen and (max-width: 320px) {
