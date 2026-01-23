@@ -79,10 +79,7 @@ Since this is a static website, simply open `index.html` in a browser or use any
 
 ```bash
 # Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx http-server -p 8000
+python -m http.server 8000 --bind 0.0.0.0
 ```
 
 ## Key Features & Architecture
@@ -186,28 +183,28 @@ npx http-server -p 8000
 
 ## Pending Work
 
-See `TODO.md` for comprehensive task list. Key priorities for **Milestone 1** completion:
+See `TODO.md` for comprehensive task list.
 
-### High Priority (Blockers for "Save the Date" launch)
-1. **FAQ Section** - Answer common questions (daily attendance, dress code, etc.)
-2. **Travel Guidance** - Information for international guests (airports, transportation, visas)
-
-### Medium Priority
-3. **CSS Mobile Improvements** - Address "looks off" issues on mobile
-4. **Parallax Fix** - Background "jumping" issue
+### Remaining for Milestone 1
+- **Parallax Fix** - Background "jumping" issue (nice-to-have)
 
 ### Lower Priority (Future Enhancement)
-5. **Video Popup** (`index.html:270-276`) - Optional venue video
-6. **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+- **Video Popup** (`index.html:270-276`) - Optional venue video
+- **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
+- **"Our Story" Page** - Dedicated page with couple's journey and photo timeline
 
 ### Completed Milestone 1 Items
-- ✅ Event Context/Info - "Join Us" section added explaining 3-day celebration
+- ✅ FAQ Section - Bootstrap accordion with 5 questions covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
+- ✅ Travel & Stay Section - 6 info cards: Getting Here, Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack (EN/PT)
+- ✅ Attendance Clarifications - Updated content to explain 3-day event is for hotel guests only, ceremony-only option (after 3pm) for others, venue exclusively booked
+- ✅ Personal Story - Added about.story with couple's 10-year journey (moving countries, home, two boys)
+- ✅ Event Context/Info - "Join Us" section added explaining celebration
 - ✅ GitHub Footer - Added with modern semantic HTML and styling
 - ✅ Link Preview Fix - Converted OG image from SVG to PNG for social media compatibility
 - ✅ Flip Clock Mobile Centering - Fixed left-alignment issue on mobile devices (width ≤ 767px)
-- ✅ Flip Clock Wrapping - Fixed wrapping at all viewport ranges (992-1200px, 768-991px, 361-365px) using container width adjustments instead of complex element sizing
-- ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables for better maintainability
-- ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling for all viewports
+- ✅ Flip Clock Wrapping - Fixed wrapping at all viewport ranges (992-1200px, 768-991px, 361-365px)
+- ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables
+- ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling
 
 ### Milestone 2 (Future)
 - RSVP functionality with database backend
