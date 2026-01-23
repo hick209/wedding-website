@@ -4,6 +4,9 @@
 # macOS
 .DS_Store
 
+# Original unoptimized images (local backup only)
+images/originals/
+
 # Editor directories
 .vscode/
 .idea/

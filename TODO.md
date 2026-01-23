@@ -123,7 +123,11 @@ This document tracks pending tasks and future improvements for the wedding websi
   - Could include a photo timeline or carousel
 
 ### Technical Improvements
-- [ ] Optimize images for web (compress JPGs, use WebP)
+- [x] **Optimize images for web** ✅ Completed
+  - Hero image: 3.4MB → 720KB (79% reduction)
+  - Gallery images: ~4.6MB → ~1.8MB combined (60% reduction)
+  - Unused images moved to `images/archive/` for future "Our Story" page
+  - Original backups in `images/originals/` (gitignored)
 - [ ] Add loading states/animations
 - [ ] Performance optimization (lazy loading images, etc.)
 - [ ] Consider modern CSS framework migration
