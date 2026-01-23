@@ -110,7 +110,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] The flipclock wraps between page width 361-365px.
 - [x] Make date bigger on desktop
 - [x] Adjust CSS for mobile (currently "looks off")
-- [ ] Fix background parallax "jumping" issue
+- [x] Fix background parallax "jumping" issue (used lvh instead of dvh/vh)
 - [x] Improve CSS for landscape orientation on mobile (partially addressed)
 
 ### Content Enhancements
@@ -130,6 +130,7 @@ This document tracks pending tasks and future improvements for the wedding websi
   - Gallery images: ~4.6MB → ~1.8MB combined (60% reduction)
   - Unused images moved to `images/archive/` for future "Our Story" page
   - Original backups in `images/originals/` (gitignored)
+- [x] **Clean section IDs** - Removed 'fh5co-' prefix for cleaner URLs (#venue instead of #fh5co-venue)
 - [ ] Add loading states/animations
 - [ ] Performance optimization (lazy loading images, etc.)
 - [ ] Consider modern CSS framework migration

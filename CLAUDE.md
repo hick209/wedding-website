@@ -188,9 +188,6 @@ ipconfig getifaddr en0
 
 See `TODO.md` for comprehensive task list.
 
-### Remaining for Milestone 1
-- **Parallax Fix** - Background "jumping" issue (nice-to-have)
-
 ### Lower Priority (Future Enhancement)
 - **Video Popup** (`index.html:270-276`) - Optional venue video
 - **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
@@ -199,6 +196,8 @@ See `TODO.md` for comprehensive task list.
 ### Completed Milestone 1 Items
 - ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
 - ✅ Travel & Stay Section - 6 info cards with corrected visa info (UK/EU visa-free, US/Canada need visa): Getting Here, Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack (EN/PT)
+- ✅ Parallax Fix - Changed viewport units from dvh/vh to lvh to prevent jumping when mobile browser UI appears/disappears
+- ✅ Clean Section IDs - Removed 'fh5co-' prefix from section IDs for cleaner URLs (e.g., #venue instead of #fh5co-venue)
 - ✅ Attendance Clarifications - Updated content to explain 3-day event is for hotel guests only, ceremony-only option (after 3pm) for others, venue exclusively booked
 - ✅ Personal Story - Added about.story with couple's 10-year journey (moving countries, home, two boys)
 - ✅ Event Context/Info - "Join Us" section added explaining celebration
