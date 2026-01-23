@@ -89,7 +89,7 @@ const translations = {
     "faq.q1.answer": "A celebração de 3 dias (11-13 de Set) é para os hóspedes que ficarão no hotel do evento, que reservamos exclusivamente para nosso casamento. Se você não ficará hospedado no hotel, está convidado a participar da cerimônia no dia 12 de setembro - por favor chegue após às 15h. Compartilharemos o horário exato da cerimônia com seu convite formal.",
     "faq.q2.question": "👗 O que devo vestir?",
     "faq.q2.answer": "O dress code é elegante casual. Para a cerimônia, sugerimos traje semi-formal. Para o dia de chegada e brunch de despedida, smart-casual confortável é perfeito. O local é um hotel fazenda, então deixe os saltos altos em casa - haverá grama e áreas ao ar livre!",
-    "faq.q3.question": "🏨 A hospedagem está incluída?",
+    "faq.q3.question": "🏨 A hospedagem está inclusa?",
     "faq.q3.answer": "Reservamos o local inteiro (Recanto da Paz Hotel Fazenda) exclusivamente para nossa celebração - serão apenas nossos convidados! A hospedagem no local é limitada, então entraremos em contato sobre disponibilidade de quartos. Para convidados que não ficarão no local, compartilharemos recomendações de hotéis próximos com seu convite.",
     "faq.q4.question": "👨‍👩‍👧‍👦 Posso levar acompanhantes ou crianças?",
     "faq.q4.answer": "Amamos os pequenos! Crianças são bem-vindas em nossa celebração. Quanto a acompanhantes adicionais, por favor nos avise no RSVP para que possamos planejar adequadamente. Seu convite formal especificará os convidados incluídos.",
