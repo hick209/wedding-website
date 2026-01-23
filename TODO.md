@@ -126,6 +126,11 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [ ] Add more photos to gallery section
 - [ ] Add venue video (see [Instagram example](https://www.instagram.com/p/DK2O9RcgGdO/))
 - [ ] Add social media sharing buttons
+- [ ] **"Our Story" page** - A dedicated page telling the couple's journey:
+  - Never had a wedding party when married; saved up for this 10-year celebration
+  - Timeline: Brazil → USA, buying their home, travels, welcoming their two boys
+  - Photo gallery of key moments from the past 10 years
+  - Could include a photo timeline or carousel
 
 ### Technical Improvements
 - [ ] Optimize images for web (compress JPGs, use WebP)
