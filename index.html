@@ -78,6 +78,7 @@
               <li class="active wip"><a href="#itinerary" data-i18n="tab.itinerary">Itinerary</a></li>
               <li class="active"><a href="#faq" data-i18n="tab.faq">FAQ</a></li>
               <li class="active"><a href="#travel" data-i18n="tab.travel">Travel & Stay</a></li>
+              <li class="active"><a href="javascript:openRsvpDialog();" data-i18n="tab.rsvp">RSVP</a></li>
               <li class="active wip"><a href="#gallery" data-i18n="tab.gallery">Gallery</a></li>
               <li class="active" title="🇧🇷 🔄 🇺🇸">
                 <a href="javascript:toggleLanguage();" data-i18n="tab.language">Language</a>
@@ -124,6 +125,7 @@
                 </div>
                 <p>
                   <a class="btn btn-default btn-sm save-date-btn">Save our date</a>
+                  <a class="btn btn-default btn-sm rsvp-btn" data-i18n="rsvp.button">RSVP</a>
                 </p>
               </div>
             </div>
@@ -489,6 +491,89 @@
     </div>
   </dialog>
 
+  <dialog class="modal-content" id="dialog-rsvp" closedby="any">
+    <div class="dialog-header">
+      <h3 data-i18n="rsvp.title">RSVP</h3>
+      <button type="button" class="dialog-close" onclick="closeRsvpDialog()">&times;</button>
+    </div>
+    <div class="dialog-body">
+      <p data-i18n="rsvp.subtitle">Please confirm your attendance</p>
+      <form id="rsvp-form">
+        <!-- Name lookup -->
+        <div class="form-group">
+          <label for="rsvp-name" data-i18n="rsvp.name">Your Name</label>
+          <input type="text" class="form-control" id="rsvp-name"
+                 list="guest-names" required autocomplete="off">
+          <datalist id="guest-names"></datalist>
+          <small class="text-danger" id="name-error" style="display:none"
+                 data-i18n="rsvp.nameNotFound">Name not found in guest list</small>
+        </div>
+
+        <!-- Attendance -->
+        <div class="form-group">
+          <label data-i18n="rsvp.attending">Will you attend?</label>
+          <div class="radio">
+            <label><input type="radio" name="attending" value="yes" required>
+              <span data-i18n="rsvp.yes">Yes, I'll be there!</span></label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="attending" value="no">
+              <span data-i18n="rsvp.no">Sorry, I can't make it</span></label>
+          </div>
+        </div>
+
+        <!-- Conditional fields (shown when attending=yes) -->
+        <div id="attendance-details" style="display:none">
+          <!-- Hotel stay -->
+          <div class="form-group">
+            <label data-i18n="rsvp.hotelStay">Will you stay at the venue hotel?</label>
+            <div class="radio">
+              <label><input type="radio" name="hotel" value="yes">
+                <span data-i18n="rsvp.hotelYes">Yes, for the full 3-day event</span></label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="hotel" value="no">
+                <span data-i18n="rsvp.hotelNo">No, I'll attend the ceremony only</span></label>
+            </div>
+          </div>
+
+          <!-- Guest counts -->
+          <div class="form-group">
+            <label data-i18n="rsvp.adults">Number of Adults</label>
+            <input type="number" class="form-control" id="rsvp-adults" min="1" value="1">
+          </div>
+          <div class="form-group">
+            <label data-i18n="rsvp.childrenPaying">Children (6-12 years, half price)</label>
+            <input type="number" class="form-control" id="rsvp-children-paying" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label data-i18n="rsvp.childrenFree">Children (under 6, free)</label>
+            <input type="number" class="form-control" id="rsvp-children-free" min="0" value="0">
+          </div>
+
+          <!-- Notes -->
+          <div class="form-group">
+            <label data-i18n="rsvp.notes">Dietary restrictions or notes (optional)</label>
+            <textarea class="form-control" id="rsvp-notes" rows="2"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary btn-block" id="rsvp-submit">
+          <span data-i18n="rsvp.submit">Submit RSVP</span>
+        </button>
+
+        <!-- Success/Error messages -->
+        <div id="rsvp-success" class="alert alert-success" style="display:none; margin-top:15px">
+          <span data-i18n="rsvp.success">Thank you! Your RSVP has been recorded.</span>
+        </div>
+        <div id="rsvp-error" class="alert alert-danger" style="display:none; margin-top:15px">
+          <span data-i18n="rsvp.error">Something went wrong. Please try again or contact us.</span>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
   <div class="gototop js-top">
     <a href="#header" class="js-gotop"><i class="icon-arrow-up"></i></a>
   </div>
@@ -516,6 +601,8 @@
   <script src="js/main.js"></script>
   <!-- i18n -->
   <script src="js/translations.js"></script>
+  <!-- RSVP -->
+  <script src="js/rsvp.js"></script>
 
   <footer class="fh5co-footer" role="contentinfo">
     <div class="container">

@@ -24,14 +24,29 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Add FAQ section - answer "do I need to be there everyday?"
 - [x] Add travel guidance for people from outside of Brazil
 
-### Milestone 2: RSVP Functionality
+### Milestone 2: RSVP Functionality ✅
 **Goal:** People can confirm whether they will attend
 
-#### Blockers
-- [ ] Add RSVP button
-- [ ] Complete itinerary details (currently has Lorem ipsum text)
-- [ ] Store RSVP info into a database
-- [ ] Backend/API for RSVP handling
+#### Completed
+- [x] Add RSVP section to index.html with form
+- [x] Add RSVP nav link
+- [x] Create js/rsvp.js with form handling logic
+- [x] Add RSVP translations (EN + PT) to js/translations.js
+- [x] Add RSVP styling to sass/style.scss
+- [x] Create apps-script/ directory with Code.gs and README.md (for version control)
+- [x] Deploy Google Apps Script and update APPS_SCRIPT_URL in js/rsvp.js
+- [x] Convert RSVP from full-page section to dialog modal
+  - RSVP button added next to "Save Our Date" in header
+  - Nav link opens dialog instead of scrolling to section
+  - Uses HTML5 `<dialog>` element with showModal()/close()
+  - Dialog auto-closes after successful submission
+
+#### Remaining Steps (Manual)
+- [x] Add "RSVP Date" column (I) to Google Spreadsheet
+- [x] Test end-to-end RSVP flow
+  - JSONP implemented for GET requests (bypasses CORS for local testing)
+  - POST uses `no-cors` fallback when CORS fails
+  - Verified guest name loading and RSVP submission work correctly
 
 ## Pending Features
 
