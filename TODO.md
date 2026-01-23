@@ -59,15 +59,15 @@ This document tracks pending tasks and future improvements for the wedding websi
 **Alternative:** Consider using venue video from Instagram ([example](https://www.instagram.com/p/DK2O9RcgGdO/))
 
 ### 2. Event Information / Context
-**Status:** Not started
+**Status:** ✅ Completed
 **Priority:** High (Milestone 1 blocker)
 
-**What Needs to be Done:**
-- Add explanation of why you're celebrating (10-year anniversary)
-- Explain the multi-day format (Sept 11-13, 2026)
-- Set expectations about attendance requirements
-
-**Suggested Location:** Add a new section between header and venue, or enhance the landing page description
+**Implemented Features:**
+- "Join Us" section explains 10-year celebration
+- Multi-day format clearly described (Sept 11-13, 2026)
+- Attendance requirements clarified: 3-day event for hotel guests, ceremony-only option (after 3pm) for others
+- Personal story line added about couple's journey (moving countries, home, two boys)
+- Venue exclusively booked messaging included
 
 ### 3. FAQ Section
 **Status:** ✅ Completed
@@ -89,27 +89,17 @@ This document tracks pending tasks and future improvements for the wedding websi
 - Responsive grid layout with hover effects
 
 ### 5. Link Preview Image Fix
-**Status:** Known issue
+**Status:** ✅ Completed
 **Priority:** Medium
 
-**Problem:** Link preview image not displaying correctly on social media
+**Problem:** Link preview image was not displaying correctly on social media
 **Reference:** https://stackoverflow.com/q/21636503/1848826
 **Debug Tool:** https://developers.facebook.com/tools/debug/
 
-**Current Meta Tag:**
-```html
-<meta property="og:image" content="images/SaveTheDate_Back.svg" />
-```
-
-**Potential Issues:**
-- SVG may not be supported by all platforms
-- Relative URL might need to be absolute
-- Image size requirements (300x190 per current meta tags)
-
-**Suggested Fix:**
-- Convert to PNG/JPG format
-- Use absolute URL: `https://www.nivaldo-roberta.com/images/...`
-- Test with Facebook debugger
+**Fix Applied:**
+- Converted OG image from SVG to PNG format
+- Updated to absolute URL: `https://www.nivaldo-roberta.com/images/og-image.png`
+- Tested with Facebook debugger
 
 ## Nice to Have Enhancements
 
@@ -167,3 +157,6 @@ This document tracks pending tasks and future improvements for the wedding websi
 - ✅ GitHub footer added with modern semantic HTML
 - ✅ FAQ section with Bootstrap accordion (5 questions, EN/PT)
 - ✅ Travel & Stay section with 6 info cards (EN/PT)
+- ✅ Link preview image fix (SVG → PNG, absolute URL)
+- ✅ Attendance clarifications (3-day for hotel guests, ceremony-only option after 3pm)
+- ✅ Personal story added (about.story - 10-year journey)

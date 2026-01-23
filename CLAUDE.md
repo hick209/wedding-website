@@ -80,6 +80,9 @@ Since this is a static website, simply open `index.html` in a browser or use any
 ```bash
 # Using Python
 python -m http.server 8000 --bind 0.0.0.0
+
+# See the local IP on mac with (this can be used to access the site from other devices within the same network)
+ipconfig getifaddr en0
 ```
 
 ## Key Features & Architecture
