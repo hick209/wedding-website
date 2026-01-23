@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-cover {
-  min-height: 100dvh;
+  min-height: 100lvh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -250,17 +250,17 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-cover .save-the-date {
   filter: invert(1) drop-shadow(2px 4px 6px black);
   width: inherit;
-  height: 28vh;
+  height: 28lvh;
   max-width: 100%;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover .save-the-date {
-    height: 22vh;
+    height: 22lvh;
   }
 }
 @media screen and (max-width: 480px) {
   .fh5co-cover .save-the-date {
-    height: 18vh;
+    height: 18lvh;
   }
 }
 .fh5co-cover > .fh5co-container {
