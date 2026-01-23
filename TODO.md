@@ -75,6 +75,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 
 **Implemented Features:**
 - Bootstrap accordion with 5 FAQ items
+- Emojis added to each question for easier visual scanning (📅👗🏨👨‍👩‍👧‍👦☀️)
 - Bilingual support (EN/PT)
 - Questions covered: attendance requirements, dress code, accommodation, guests/children, weather
 
@@ -85,6 +86,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 **Implemented Features:**
 - 6 travel info cards with icons
 - Topics: Getting Here (GRU airport), Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack
+- Corrected visa info: UK/EU visa-free, US/Canada need visa
 - Bilingual support (EN/PT)
 - Responsive grid layout with hover effects
 

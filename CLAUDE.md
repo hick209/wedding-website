@@ -197,8 +197,8 @@ See `TODO.md` for comprehensive task list.
 - **"Our Story" Page** - Dedicated page with couple's journey and photo timeline
 
 ### Completed Milestone 1 Items
-- ✅ FAQ Section - Bootstrap accordion with 5 questions covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
-- ✅ Travel & Stay Section - 6 info cards: Getting Here, Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack (EN/PT)
+- ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
+- ✅ Travel & Stay Section - 6 info cards with corrected visa info (UK/EU visa-free, US/Canada need visa): Getting Here, Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack (EN/PT)
 - ✅ Attendance Clarifications - Updated content to explain 3-day event is for hotel guests only, ceremony-only option (after 3pm) for others, venue exclusively booked
 - ✅ Personal Story - Added about.story with couple's 10-year journey (moving countries, home, two boys)
 - ✅ Event Context/Info - "Join Us" section added explaining celebration
