@@ -208,6 +208,7 @@ See `TODO.md` for comprehensive task list.
 - ✅ Flip Clock Wrapping - Fixed wrapping at all viewport ranges (992-1200px, 768-991px, 361-365px)
 - ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables
 - ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling
+- ✅ Image Optimization - Reduced actively used images from ~8MB to ~2.5MB (69% reduction), archived unused images for future "Our Story" page
 
 ### Milestone 2 (Future)
 - RSVP functionality with database backend
