@@ -21,8 +21,8 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Make date bigger (at least for desktop)
 
 #### Remaining Blockers
-- [ ] Add FAQ section - answer "do I need to be there everyday?"
-- [ ] Add travel guidance for people from outside of Brazil
+- [x] Add FAQ section - answer "do I need to be there everyday?"
+- [x] Add travel guidance for people from outside of Brazil
 
 ### Milestone 2: RSVP Functionality
 **Goal:** People can confirm whether they will attend
@@ -70,28 +70,23 @@ This document tracks pending tasks and future improvements for the wedding websi
 **Suggested Location:** Add a new section between header and venue, or enhance the landing page description
 
 ### 3. FAQ Section
-**Status:** Not started
+**Status:** ✅ Completed
 **Priority:** High (Milestone 1 blocker)
 
-**Common Questions to Address:**
-- Do I need to be there every day?
-- What should I wear?
-- Is accommodation included?
-- Can I bring guests/children?
-- What's the weather like in September?
+**Implemented Features:**
+- Bootstrap accordion with 5 FAQ items
+- Bilingual support (EN/PT)
+- Questions covered: attendance requirements, dress code, accommodation, guests/children, weather
 
 ### 4. Travel Guidance
-**Status:** Not started
+**Status:** ✅ Completed
 **Priority:** High (Milestone 1 blocker)
 
-**Reference:** [Example travel section](https://wedding-invitation-website.vercel.app/#stay)
-
-**Information to Include:**
-- Airport information (GRU - São Paulo International)
-- Transportation to Atibaia
-- Visa requirements for international guests
-- Currency exchange tips
-- Accommodation options near venue
+**Implemented Features:**
+- 6 travel info cards with icons
+- Topics: Getting Here (GRU airport), Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack
+- Bilingual support (EN/PT)
+- Responsive grid layout with hover effects
 
 ### 5. Link Preview Image Fix
 **Status:** Known issue
@@ -165,3 +160,5 @@ This document tracks pending tasks and future improvements for the wedding websi
 - ✅ Video removed (was placeholder)
 - ✅ Event context section added ("Join Us")
 - ✅ GitHub footer added with modern semantic HTML
+- ✅ FAQ section with Bootstrap accordion (5 questions, EN/PT)
+- ✅ Travel & Stay section with 6 info cards (EN/PT)
