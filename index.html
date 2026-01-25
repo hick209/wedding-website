@@ -499,15 +499,34 @@
     <div class="dialog-body">
       <p data-i18n="rsvp.subtitle">Please confirm your attendance</p>
       <form id="rsvp-form">
-        <!-- Name lookup -->
+        <!-- Name -->
         <div class="form-group">
           <label for="rsvp-name" data-i18n="rsvp.name">Your Name</label>
           <input type="text" class="form-control" id="rsvp-name"
-                 list="guest-names" required autocomplete="off">
-          <datalist id="guest-names"></datalist>
+                 required autocomplete="name">
           <small class="text-danger" id="name-error" style="display:none"
-                 data-i18n="rsvp.nameNotFound">Name not found in guest list</small>
+                 data-i18n="rsvp.nameError">Please enter your name (at least 3 characters)</small>
         </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="rsvp-email" data-i18n="rsvp.emailLabel">Email</label>
+          <input type="email" class="form-control" id="rsvp-email"
+                 data-i18n-placeholder="rsvp.emailPlaceholder" placeholder="your@email.com"
+                 autocomplete="email">
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="rsvp-phone" data-i18n="rsvp.phoneLabel">Phone (WhatsApp)</label>
+          <input type="tel" class="form-control" id="rsvp-phone"
+                 data-i18n-placeholder="rsvp.phonePlaceholder" placeholder="+1 (555) 123-4567"
+                 autocomplete="tel">
+        </div>
+
+        <!-- Contact error (at least one required) -->
+        <small class="text-danger" id="contact-error" style="display:none"
+               data-i18n="rsvp.contactError">Please provide email or phone number</small>
 
         <!-- Attendance -->
         <div class="form-group">

@@ -1,97 +1,55 @@
 /**
  * RSVP Form Handler
  *
- * Handles the RSVP form submission and guest name validation.
- * Communicates with Google Apps Script backend to update the spreadsheet.
+ * Handles the RSVP form submission with validation.
+ * Communicates with Google Apps Script backend to store submissions.
  */
 
-// TODO: Replace with your deployed Apps Script URL
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDX2GYe_dScbo325fdGeCiqIqr2VbcZKcOVOmTGCvio1Mf2WXUNP7H6SUaE0Jw3_jo/exec';
-
-let guestNames = [];
-let isLoadingNames = false;
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeyVbg_OklaIbMzNKJRS9-BG2LveJLzXlvK1kMCJ7AXlW7o_BvUT-CO2u5-1ikz0by/exec';
 
 /**
- * Load guest names from the backend for autocomplete/validation
- * Uses JSONP to bypass CORS restrictions on localhost
- */
-async function loadGuestNames() {
-  if (isLoadingNames) return;
-  isLoadingNames = true;
-
-  try {
-    // Use JSONP to bypass CORS (works from any origin)
-    const data = await loadGuestNamesJsonp();
-    guestNames = data.names || [];
-
-    // Populate datalist for autocomplete
-    const datalist = document.getElementById('guest-names');
-    if (datalist) {
-      datalist.innerHTML = ''; // Clear existing options
-      guestNames.forEach(name => {
-        const option = document.createElement('option');
-        option.value = name;
-        datalist.appendChild(option);
-      });
-    }
-
-    console.log(`Loaded ${guestNames.length} guest names`);
-  } catch (error) {
-    console.error('Failed to load guest names:', error);
-    // Don't show error to user - form will still work, just without autocomplete
-  } finally {
-    isLoadingNames = false;
-  }
-}
-
-/**
- * Load guest names using JSONP (bypasses CORS)
- */
-function loadGuestNamesJsonp() {
-  return new Promise((resolve, reject) => {
-    const callbackName = 'rsvpCallback_' + Date.now();
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error('JSONP request timeout'));
-    }, 10000);
-
-    // Create global callback function
-    window[callbackName] = (data) => {
-      cleanup();
-      resolve(data);
-    };
-
-    function cleanup() {
-      clearTimeout(timeout);
-      delete window[callbackName];
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    }
-
-    // Create and inject script element
-    const script = document.createElement('script');
-    script.src = APPS_SCRIPT_URL + '?callback=' + callbackName;
-    script.onerror = () => {
-      cleanup();
-      reject(new Error('JSONP script load failed'));
-    };
-    document.head.appendChild(script);
-  });
-}
-
-/**
- * Validate that a name exists in the guest list (case-insensitive)
- * If guest names haven't loaded (CORS error on localhost), skip validation
+ * Validate name (at least 3 characters)
  */
 function validateName(name) {
-  if (!name) return false;
-  // If guest names couldn't be loaded, skip client-side validation
-  // The server will validate the name
-  if (guestNames.length === 0) return true;
-  return guestNames.some(n =>
-    n.toLowerCase().trim() === name.toLowerCase().trim()
-  );
+  return name && name.trim().length >= 3;
+}
+
+/**
+ * Validate email format
+ */
+function validateEmail(email) {
+  if (!email) return true; // Empty is OK (phone might be provided instead)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+/**
+ * Validate phone format (at least 11 digits after removing formatting)
+ */
+function validatePhone(phone) {
+  if (!phone) return true; // Empty is OK (email might be provided instead)
+  const digitsOnly = phone.replace(/\D/g, '');
+  return digitsOnly.length >= 11;
+}
+
+/**
+ * Validate that at least one valid contact method is provided
+ * Returns an object with 'valid' boolean and optional 'reason' for error display
+ */
+function validateContact() {
+  const email = document.getElementById('rsvp-email').value.trim();
+  const phone = document.getElementById('rsvp-phone').value.trim();
+
+  // At least one must be provided
+  if (!email && !phone) return { valid: false, reason: 'missing' };
+
+  // If email provided, it must be valid
+  if (email && !validateEmail(email)) return { valid: false, reason: 'invalidEmail' };
+
+  // If phone provided, it must be valid
+  if (phone && !validatePhone(phone)) return { valid: false, reason: 'invalidPhone' };
+
+  return { valid: true };
 }
 
 /**
@@ -135,12 +93,56 @@ function setupNameInput() {
 }
 
 /**
+ * Hide contact error when user starts typing in email or phone
+ */
+function setupContactInputs() {
+  const emailInput = document.getElementById('rsvp-email');
+  const phoneInput = document.getElementById('rsvp-phone');
+  const contactError = document.getElementById('contact-error');
+
+  if (!contactError) return;
+
+  [emailInput, phoneInput].forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => {
+        contactError.style.display = 'none';
+      });
+    }
+  });
+}
+
+/**
  * Reset form state (hide messages, re-enable button)
  */
 function resetFormState() {
   document.getElementById('rsvp-success').style.display = 'none';
   document.getElementById('rsvp-error').style.display = 'none';
   document.getElementById('name-error').style.display = 'none';
+  document.getElementById('contact-error').style.display = 'none';
+}
+
+/**
+ * Get error message for contact validation failure
+ */
+function getContactErrorMessage(reason) {
+  // Try to get translations if available
+  if (typeof translations !== 'undefined' && typeof getCurentLanguage === 'function') {
+    const lang = getCurentLanguage();
+    if (reason === 'invalidEmail' && translations[lang]['rsvp.invalidEmail']) {
+      return translations[lang]['rsvp.invalidEmail'];
+    }
+    if (reason === 'invalidPhone' && translations[lang]['rsvp.invalidPhone']) {
+      return translations[lang]['rsvp.invalidPhone'];
+    }
+    if (translations[lang]['rsvp.contactError']) {
+      return translations[lang]['rsvp.contactError'];
+    }
+  }
+
+  // Fallback messages
+  if (reason === 'invalidEmail') return 'Please enter a valid email address';
+  if (reason === 'invalidPhone') return 'Please enter a valid phone number (at least 8 digits)';
+  return 'Please provide email or phone number';
 }
 
 /**
@@ -154,10 +156,19 @@ async function handleSubmit(event) {
   const name = nameInput.value.trim();
   const nameError = document.getElementById('name-error');
 
-  // Validate name exists in guest list
+  // Validate name (at least 3 characters)
   if (!validateName(name)) {
     nameError.style.display = 'block';
     nameInput.focus();
+    return;
+  }
+
+  // Validate contact info (at least one valid email or phone)
+  const contactResult = validateContact();
+  if (!contactResult.valid) {
+    const contactError = document.getElementById('contact-error');
+    contactError.textContent = getContactErrorMessage(contactResult.reason);
+    contactError.style.display = 'block';
     return;
   }
 
@@ -172,6 +183,8 @@ async function handleSubmit(event) {
   // Build RSVP data payload
   const data = {
     name: name,
+    email: document.getElementById('rsvp-email').value.trim(),
+    phone: document.getElementById('rsvp-phone').value.trim(),
     attending: isAttending ? 'Sim' : 'Não',
     stayingHotel: '',
     adults: 0,
@@ -282,10 +295,6 @@ function openRsvpDialog() {
   const dialog = document.getElementById('dialog-rsvp');
   if (dialog) {
     dialog.showModal();
-    // Load guest names if not already loaded
-    if (guestNames.length === 0) {
-      loadGuestNames();
-    }
   }
 }
 
@@ -317,6 +326,7 @@ function initRSVP() {
   // Setup event handlers
   setupAttendanceToggle();
   setupNameInput();
+  setupContactInputs();
   form.addEventListener('submit', handleSubmit);
 
   // Setup RSVP button click handlers

@@ -2,7 +2,7 @@
  * Google Apps Script for Wedding RSVP
  *
  * This script handles RSVP submissions from the wedding website
- * and updates the guest spreadsheet.
+ * and appends them to a dedicated submissions sheet.
  *
  * Deployment:
  * 1. Open spreadsheet → Extensions → Apps Script
@@ -12,53 +12,16 @@
  * 5. Copy the web app URL to js/rsvp.js
  */
 
-const SHEET_NAME = 'Guest list';
+const SUBMISSIONS_SHEET = 'RSVP Submissions';
 
 /**
- * GET handler - Returns list of guest names for autocomplete/validation
- * Supports JSONP via ?callback=functionName parameter (bypasses CORS)
- */
-function doGet(e) {
-  try {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-    const names = sheet.getRange('A2:A').getValues().flat().filter(n => n);
-    const jsonData = JSON.stringify({ names: names });
-
-    // Check for JSONP callback parameter (e may be undefined when testing in editor)
-    const callback = e && e.parameter && e.parameter.callback;
-    if (callback) {
-      // Return JSONP response (bypasses CORS)
-      return ContentService
-        .createTextOutput(callback + '(' + jsonData + ')')
-        .setMimeType(ContentService.MimeType.JAVASCRIPT);
-    }
-
-    // Regular JSON response
-    return ContentService
-      .createTextOutput(jsonData)
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (error) {
-    const errorJson = JSON.stringify({ error: error.message });
-    const callback = e && e.parameter && e.parameter.callback;
-
-    if (callback) {
-      return ContentService
-        .createTextOutput(callback + '(' + errorJson + ')')
-        .setMimeType(ContentService.MimeType.JAVASCRIPT);
-    }
-
-    return ContentService
-      .createTextOutput(errorJson)
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-/**
- * POST handler - Updates guest RSVP in spreadsheet
+ * POST handler - Appends RSVP submission to spreadsheet
  *
  * Expected payload:
  * {
- *   name: string,           // Guest name (must match spreadsheet)
+ *   name: string,           // Guest name
+ *   email: string,          // Email address (optional if phone provided)
+ *   phone: string,          // Phone number (optional if email provided)
  *   attending: string,      // "Sim" or "Não"
  *   stayingHotel: string,   // "Sim" or "Não" or ""
  *   adults: number,         // Number of adults
@@ -70,41 +33,32 @@ function doGet(e) {
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
 
-    // Find row by name (case-insensitive)
-    const names = sheet.getRange('A2:A').getValues().flat();
-    const rowIndex = names.findIndex(n =>
-      n.toString().toLowerCase() === data.name.toLowerCase()
-    );
-
-    if (rowIndex === -1) {
-      return ContentService
-        .createTextOutput(JSON.stringify({
-          success: false,
-          error: 'Name not found'
-        }))
-        .setMimeType(ContentService.MimeType.JSON);
+    // Get or create the submissions sheet
+    let sheet = ss.getSheetByName(SUBMISSIONS_SHEET);
+    if (!sheet) {
+      sheet = ss.insertSheet(SUBMISSIONS_SHEET);
+      // Add headers
+      sheet.getRange(1, 1, 1, 10).setValues([[
+        'Name', 'Email', 'Phone', 'Attending', 'Hotel',
+        'Adults', 'Children (6-12)', 'Children (<6)', 'Notes', 'Timestamp'
+      ]]);
     }
 
-    const row = rowIndex + 2; // +2 for header row and 0-index
-
-    // Update columns:
-    // C: Confirmou que vai (Attending)
-    // D: Staying in Hotel
-    // E: Adultos
-    // F: Criancas pagantes meia
-    // G: Criancas nao pagante
-    // H: Notes
-    // I: RSVP Date (timestamp)
-
-    sheet.getRange(row, 3).setValue(data.attending);       // C
-    sheet.getRange(row, 4).setValue(data.stayingHotel);    // D
-    sheet.getRange(row, 5).setValue(data.adults);          // E
-    sheet.getRange(row, 6).setValue(data.childrenPaying);  // F
-    sheet.getRange(row, 7).setValue(data.childrenFree);    // G
-    sheet.getRange(row, 8).setValue(data.notes);           // H
-    sheet.getRange(row, 9).setValue(new Date());           // I
+    // Append new row
+    sheet.appendRow([
+      data.name,
+      data.email || '',
+      data.phone || '',
+      data.attending,
+      data.stayingHotel,
+      data.adults,
+      data.childrenPaying,
+      data.childrenFree,
+      data.notes,
+      new Date(),
+    ]);
 
     return ContentService
       .createTextOutput(JSON.stringify({ success: true }))
@@ -123,8 +77,13 @@ function doPost(e) {
 /**
  * Test function - Run this to verify spreadsheet access
  */
-function testGetNames() {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-  const names = sheet.getRange('A2:A').getValues().flat().filter(n => n);
-  Logger.log('Guest names: ' + JSON.stringify(names));
+function testAppend() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SUBMISSIONS_SHEET);
+  if (!sheet) {
+    Logger.log('Submissions sheet not found - will be created on first submission');
+  } else {
+    const lastRow = sheet.getLastRow();
+    Logger.log('Submissions sheet exists with ' + lastRow + ' rows');
+  }
 }

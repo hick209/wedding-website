@@ -77,6 +77,14 @@ const translations = {
     "rsvp.submitting": "Sending...",
     "rsvp.success": "Thank you! Your RSVP has been recorded.",
     "rsvp.error": "Something went wrong. Please try again or contact us.",
+    "rsvp.emailLabel": "Email",
+    "rsvp.emailPlaceholder": "your@email.com",
+    "rsvp.phoneLabel": "Phone (WhatsApp)",
+    "rsvp.phonePlaceholder": "+1 (555) 123-4567",
+    "rsvp.contactError": "Please provide email or phone number",
+    "rsvp.invalidEmail": "Please enter a valid email address",
+    "rsvp.invalidPhone": "Please enter a valid phone number (at least 11 digits)",
+    "rsvp.nameError": "Please enter your name (at least 3 characters)",
   },
   pt: {
     "tab.venue": "Local",
@@ -156,6 +164,14 @@ const translations = {
     "rsvp.submitting": "Enviando...",
     "rsvp.success": "Obrigado! Sua confirmação foi registrada.",
     "rsvp.error": "Algo deu errado. Tente novamente ou entre em contato.",
+    "rsvp.emailLabel": "Email",
+    "rsvp.emailPlaceholder": "seu@email.com",
+    "rsvp.phoneLabel": "Telefone (WhatsApp)",
+    "rsvp.phonePlaceholder": "+55 (11) 99999-9999",
+    "rsvp.contactError": "Por favor, informe email ou telefone",
+    "rsvp.invalidEmail": "Por favor, insira um email válido",
+    "rsvp.invalidPhone": "Por favor, insira um telefone válido (mínimo 11 dígitos)",
+    "rsvp.nameError": "Por favor, insira seu nome (mínimo 3 caracteres)",
   },
 };
 
@@ -172,6 +188,15 @@ function applyTranslations(lang) {
       return;
     }
     element.textContent = translations[lang][key];
+  });
+
+  // Handle placeholder translations
+  const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+  placeholderElements.forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      element.placeholder = translations[lang][key];
+    }
   });
 
   const newUrl = new URL(window.location.href);

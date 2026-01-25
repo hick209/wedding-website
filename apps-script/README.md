@@ -4,14 +4,13 @@ This directory contains the Google Apps Script code that serves as the backend f
 
 ## Files
 
-- `Code.gs` - Main script file with GET/POST handlers
+- `Code.gs` - Main script file with POST handler
 
 ## How It Works
 
 The script is deployed as a web app that:
-1. **GET requests** - Returns a list of guest names for autocomplete/validation
-   - Supports JSONP via `?callback=functionName` parameter (bypasses CORS for local testing)
-2. **POST requests** - Updates the guest's RSVP information in the spreadsheet
+1. **POST requests** - Appends RSVP submissions to a dedicated "RSVP Submissions" sheet
+2. Automatically creates the sheet with headers if it doesn't exist
 
 ## Deployment Instructions
 
@@ -27,7 +26,7 @@ The script is deployed as a web app that:
 
 5. Configure deployment:
    - Select type: **Web app**
-   - Description: "RSVP Handler v1"
+   - Description: "RSVP Handler v2"
    - Execute as: **Me** (your account)
    - Who has access: **Anyone**
 
@@ -44,18 +43,12 @@ The script is deployed as a web app that:
 
 ### Testing
 
-After deployment, you can test the endpoints:
-
-**Test GET (list names):**
-Open the web app URL in a browser - should return JSON with guest names.
-
-**Test GET with JSONP (for local development):**
-Open `YOUR_WEB_APP_URL?callback=myFunction` - returns JavaScript that calls `myFunction({names: [...]})`.
+After deployment, you can test the endpoint:
 
 **Test POST (submit RSVP):**
 ```bash
-curl -X POST -H "Content-Type: application/json" \
-  -d '{"name":"Test Guest","attending":"Sim","stayingHotel":"Sim","adults":2,"childrenPaying":0,"childrenFree":0,"notes":""}' \
+curl -X POST -H "Content-Type: text/plain" \
+  -d '{"name":"Test Guest","email":"test@example.com","phone":"+1234567890","attending":"Sim","stayingHotel":"Sim","adults":2,"childrenPaying":0,"childrenFree":0,"notes":""}' \
   "YOUR_WEB_APP_URL"
 ```
 
@@ -71,34 +64,34 @@ When you make changes to `Code.gs`:
 
 Note: The URL stays the same when updating an existing deployment.
 
-## Column Mapping
+## Column Mapping (RSVP Submissions Sheet)
 
-| Column | Header | Updated by RSVP |
-|--------|--------|-----------------|
-| A | Name | No (lookup key) |
-| B | Save the Date | No |
-| C | Confirmou que vai | Yes |
-| D | Staying in Hotel | Yes |
-| E | Adultos | Yes |
-| F | Criancas pagantes meia | Yes |
-| G | Criancas nao pagante | Yes |
-| H | Notes | Yes |
-| I | RSVP Date | Yes (auto timestamp) |
+| Column | Header | Description |
+|--------|--------|-------------|
+| A | Name | Guest name |
+| B | Email | Email address |
+| C | Phone | Phone number |
+| D | Attending | "Sim" or "Não" |
+| E | Hotel | "Sim" or "Não" |
+| F | Adults | Number of adults |
+| G | Children (6-12) | Children paying half price |
+| H | Children (<6) | Children free |
+| I | Notes | Dietary restrictions, etc. |
+| J | Timestamp | Auto-generated submission time |
 
 ## Troubleshooting
 
-**"Script function not found: doGet"**
+**"Script function not found: doPost"**
 - Make sure you saved the script after pasting
 
 **"Authorization required"**
-- Run the `testGetNames` function first to trigger authorization
+- Run the `testAppend` function first to trigger authorization
 - Grant the required permissions
 
 **CORS errors on localhost**
-- The GET endpoint supports JSONP which bypasses CORS
-- The JavaScript automatically uses JSONP for loading guest names
 - POST requests use `no-cors` mode as a fallback for local testing
+- The submission still works but you won't see the response
 
-**"Name not found" error**
-- Check that the name matches exactly (case-insensitive)
-- Verify the sheet name is "Guest list" or update `SHEET_NAME` constant
+**Sheet not created**
+- The "RSVP Submissions" sheet is auto-created on first submission
+- Run `testAppend()` to verify spreadsheet access
