@@ -114,10 +114,13 @@ function setupContactInputs() {
  * Reset form state (hide messages, re-enable button)
  */
 function resetFormState() {
-  document.getElementById('rsvp-success').style.display = 'none';
-  document.getElementById('rsvp-error').style.display = 'none';
-  document.getElementById('name-error').style.display = 'none';
-  document.getElementById('contact-error').style.display = 'none';
+  const rsvpError = document.getElementById('rsvp-error');
+  const nameError = document.getElementById('name-error');
+  const contactError = document.getElementById('contact-error');
+
+  if (rsvpError) rsvpError.style.display = 'none';
+  if (nameError) nameError.style.display = 'none';
+  if (contactError) contactError.style.display = 'none';
 }
 
 /**
@@ -199,16 +202,9 @@ async function handleSubmit(event) {
     data.notes = document.getElementById('rsvp-notes').value.trim();
   }
 
-  // Update UI to show loading state
-  const submitBtn = document.getElementById('rsvp-submit');
-  const originalBtnHtml = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<span data-i18n="rsvp.submitting">Sending...</span>';
-
-  // Re-apply translations for the loading text
-  if (typeof applyTranslations === 'function' && typeof getCurentLanguage === 'function') {
-    applyTranslations(getCurentLanguage());
-  }
+  // Show loading state
+  const dialog = document.getElementById('dialog-rsvp');
+  dialog.dataset.state = 'loading';
 
   try {
     let response;
@@ -250,37 +246,25 @@ async function handleSubmit(event) {
     }
 
     if (result.success) {
-      // Show success message
-      document.getElementById('rsvp-success').style.display = 'block';
-
       if (result.noCorsMode) {
         console.log('RSVP submitted (no-cors mode - verify in spreadsheet)');
       }
 
-      // Reset form
+      // Reset form (hidden while in success state)
       document.getElementById('rsvp-form').reset();
       document.getElementById('attendance-details').style.display = 'none';
 
-      // Close dialog after a short delay so user can see success message
-      setTimeout(() => {
-        closeRsvpDialog();
-      }, 2000);
+      // Show success state
+      dialog.dataset.state = 'success';
     } else {
       console.error('RSVP failed:', result.error);
+      dialog.dataset.state = 'form';
       document.getElementById('rsvp-error').style.display = 'block';
     }
   } catch (error) {
     console.error('RSVP submission failed:', error);
+    dialog.dataset.state = 'form';
     document.getElementById('rsvp-error').style.display = 'block';
-  } finally {
-    // Restore button state
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalBtnHtml;
-
-    // Re-apply translations
-    if (typeof applyTranslations === 'function' && typeof getCurentLanguage === 'function') {
-      applyTranslations(getCurentLanguage());
-    }
   }
 }
 
@@ -301,7 +285,8 @@ function closeRsvpDialog() {
   const dialog = document.getElementById('dialog-rsvp');
   if (dialog) {
     dialog.close();
-    // Reset form state on close
+    // Reset to form state for next open
+    dialog.dataset.state = 'form';
     resetFormState();
     document.getElementById('rsvp-form')?.reset();
     const details = document.getElementById('attendance-details');

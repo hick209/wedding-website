@@ -39,14 +39,15 @@ This document tracks pending tasks and future improvements for the wedding websi
   - RSVP button added next to "Save Our Date" in header
   - Nav link opens dialog instead of scrolling to section
   - Uses HTML5 `<dialog>` element with showModal()/close()
-  - Dialog auto-closes after successful submission
+- [x] Three-state dialog: form → loading → success
+  - Loading state shows spinner while submitting
+  - Success state shows confirmation with OK button
+- [x] Privacy-friendly approach: submissions append to sheet (no guest list exposure)
+- [x] Contact validation: requires email OR phone with format validation
 
 #### Remaining Steps (Manual)
 - [x] Add "RSVP Date" column (I) to Google Spreadsheet
 - [x] Test end-to-end RSVP flow
-  - JSONP implemented for GET requests (bypasses CORS for local testing)
-  - POST uses `no-cors` fallback when CORS fails
-  - Verified guest name loading and RSVP submission work correctly
 
 ## Pending Features
 

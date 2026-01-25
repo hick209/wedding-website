@@ -17,10 +17,10 @@ Domain: www.nivaldo-roberta.com
 - Offer bilingual support (EN/PT) for international guests
 - Display venue location and basic details
 
-**Milestone 2: RSVP Functionality** (Future)
-- Allow guests to confirm attendance
-- Complete detailed itinerary
-- Implement backend/database for RSVP storage
+**Milestone 2: RSVP Functionality** (Complete)
+- Allow guests to confirm attendance via dialog modal
+- Three-state dialog: form → loading → success
+- Google Apps Script backend for storing submissions
 
 See `TODO.md` for detailed task breakdown and progress tracking.
 
@@ -43,8 +43,12 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 ├── js/
 │   ├── clock.js           # Countdown timer configuration
 │   ├── main.js            # Core functionality (menu, animations, calendar)
+│   ├── rsvp.js            # RSVP form handling and submission
 │   ├── translations.js    # i18n system for EN/PT
 │   └── [vendor libs]      # Third-party libraries
+├── apps-script/
+│   ├── Code.gs            # Google Apps Script backend for RSVP
+│   └── README.md          # Deployment instructions
 ├── sass/
 │   ├── style.scss         # Main stylesheet with variables and mixins
 │   ├── bootstrap.scss     # Bootstrap customizations
@@ -137,6 +141,12 @@ ipconfig getifaddr en0
 - `contentWayPoint()`: Scroll-triggered animations
 - `offcanvasMenu()` & `burgerMenu()`: Mobile navigation
 
+### `js/rsvp.js`
+- RSVP dialog with three states: form, loading, success
+- `handleSubmit()`: Validates form and POSTs to Google Apps Script
+- `openRsvpDialog()` / `closeRsvpDialog()`: Dialog state management
+- Contact validation: requires email OR phone (with format validation)
+
 ### `js/translations.js`
 - `applyTranslations(lang)`: Main translation function
 - `createGoogleCalendarLink(lang)`: Generates locale-specific calendar URLs
@@ -209,9 +219,11 @@ See `TODO.md` for comprehensive task list.
 - ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling
 - ✅ Image Optimization - Reduced actively used images from ~8MB to ~2.5MB (69% reduction), archived unused images for future "Our Story" page
 
-### Milestone 2 (Future)
-- RSVP functionality with database backend
-- Complete event itinerary details
+### Milestone 2 (Complete)
+- ✅ RSVP functionality with Google Apps Script backend
+- ✅ Dialog modal with three states: form, loading, success
+- ✅ Bilingual support (EN/PT) for all RSVP text
+- Complete event itinerary details (pending)
 
 ## Browser Compatibility Notes
 - IE 9+ support (conditional comments in HTML)

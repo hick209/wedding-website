@@ -85,6 +85,9 @@ const translations = {
     "rsvp.invalidEmail": "Please enter a valid email address",
     "rsvp.invalidPhone": "Please enter a valid phone number (at least 11 digits)",
     "rsvp.nameError": "Please enter your name (at least 3 characters)",
+    "rsvp.successTitle": "Thank you!",
+    "rsvp.successMessage": "Your RSVP has been recorded.",
+    "rsvp.ok": "OK",
   },
   pt: {
     "tab.venue": "Local",
@@ -172,6 +175,9 @@ const translations = {
     "rsvp.invalidEmail": "Por favor, insira um email válido",
     "rsvp.invalidPhone": "Por favor, insira um telefone válido (mínimo 11 dígitos)",
     "rsvp.nameError": "Por favor, insira seu nome (mínimo 3 caracteres)",
+    "rsvp.successTitle": "Obrigado!",
+    "rsvp.successMessage": "Sua confirmação foi registrada.",
+    "rsvp.ok": "OK",
   },
 };
 
