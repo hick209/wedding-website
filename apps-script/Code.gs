@@ -23,7 +23,6 @@ const SUBMISSIONS_SHEET = 'RSVP Submissions';
  *   email: string,          // Email address (optional if phone provided)
  *   phone: string,          // Phone number (optional if email provided)
  *   attending: string,      // "Sim" or "Não"
- *   stayingHotel: string,   // "Sim" or "Não" or ""
  *   adults: number,         // Number of adults
  *   childrenPaying: number, // Children 6-12 (half price)
  *   childrenFree: number,   // Children under 6 (free)
@@ -40,8 +39,8 @@ function doPost(e) {
     if (!sheet) {
       sheet = ss.insertSheet(SUBMISSIONS_SHEET);
       // Add headers
-      sheet.getRange(1, 1, 1, 10).setValues([[
-        'Name', 'Email', 'Phone', 'Attending', 'Hotel',
+      sheet.getRange(1, 1, 1, 9).setValues([[
+        'Name', 'Email', 'Phone', 'Attending',
         'Adults', 'Children (6-12)', 'Children (<6)', 'Notes', 'Timestamp'
       ]]);
     }
@@ -52,7 +51,6 @@ function doPost(e) {
       data.email || '',
       data.phone || '',
       data.attending,
-      data.stayingHotel,
       data.adults,
       data.childrenPaying,
       data.childrenFree,

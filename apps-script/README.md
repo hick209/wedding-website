@@ -72,12 +72,11 @@ Note: The URL stays the same when updating an existing deployment.
 | B | Email | Email address |
 | C | Phone | Phone number |
 | D | Attending | "Sim" or "Não" |
-| E | Hotel | "Sim" or "Não" |
-| F | Adults | Number of adults |
-| G | Children (6-12) | Children paying half price |
-| H | Children (<6) | Children free |
-| I | Notes | Dietary restrictions, etc. |
-| J | Timestamp | Auto-generated submission time |
+| E | Adults | Number of adults |
+| F | Children (6-12) | Children paying half price |
+| G | Children (<6) | Children free |
+| H | Notes | Dietary restrictions, etc. |
+| I | Timestamp | Auto-generated submission time |
 
 ## Troubleshooting
 

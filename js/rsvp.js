@@ -68,7 +68,6 @@ function setupAttendanceToggle() {
 
       // If not attending, clear the detail fields
       if (!isAttending) {
-        document.querySelectorAll('input[name="hotel"]').forEach(r => r.checked = false);
         document.getElementById('rsvp-adults').value = '1';
         document.getElementById('rsvp-children-paying').value = '0';
         document.getElementById('rsvp-children-free').value = '0';
@@ -186,7 +185,6 @@ async function handleSubmit(event) {
     email: document.getElementById('rsvp-email').value.trim(),
     phone: document.getElementById('rsvp-phone').value.trim(),
     attending: isAttending ? 'Sim' : 'Não',
-    stayingHotel: '',
     adults: 0,
     childrenPaying: 0,
     childrenFree: 0,
@@ -195,8 +193,6 @@ async function handleSubmit(event) {
 
   // Only include details if attending
   if (isAttending) {
-    const hotelRadio = document.querySelector('input[name="hotel"]:checked');
-    data.stayingHotel = hotelRadio?.value === 'yes' ? 'Sim' : 'Não';
     data.adults = parseInt(document.getElementById('rsvp-adults').value) || 1;
     data.childrenPaying = parseInt(document.getElementById('rsvp-children-paying').value) || 0;
     data.childrenFree = parseInt(document.getElementById('rsvp-children-free').value) || 0;
