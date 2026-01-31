@@ -49,6 +49,34 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Add "RSVP Date" column (I) to Google Spreadsheet
 - [x] Test end-to-end RSVP flow
 
+### Milestone 3: Our Story Timeline ✅
+**Goal:** Add a photo-centric timeline telling the couple's 10-year journey
+
+#### Completed
+- [x] Add "Our Story" section to index.html (at bottom, before footer)
+- [x] Add "Our Story" nav link
+- [x] Create vertical timeline with alternating left/right cards
+- [x] Add 8 milestone events (2016-2026)
+- [x] Embed proposal video in 2018 card (YouTube)
+- [x] Add timeline styles to sass/style.scss (~150 lines)
+- [x] Add translations (EN + PT) to js/translations.js (~40 keys)
+- [x] Create placeholder images in images/story/
+- [x] Responsive design: single column on mobile
+- [x] Scroll animations with Waypoints (animate-box)
+
+#### Timeline Events
+1. 2016 - The Beginning (expanded)
+2. 2017 - A Bold Move (expanded)
+3. 2018 - Getting Married (expanded + video)
+4. 2019 - Exploring the World (expanded)
+5. 2020 - Putting Down Roots (brief)
+6. 2021 - Welcome Levy (expanded)
+7. 2023 - Welcome Leo (expanded)
+8. 2026 - Celebrating 10 Years (brief)
+
+#### Remaining Steps (Manual)
+- [ ] Replace placeholder images with actual photos
+
 ## Pending Features
 
 ### 1. Video Popup Configuration
@@ -134,11 +162,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [ ] Add more photos to gallery section
 - [ ] Add venue video (see [Instagram example](https://www.instagram.com/p/DK2O9RcgGdO/))
 - [ ] Add social media sharing buttons
-- [ ] **"Our Story" page** - A dedicated page telling the couple's journey:
-  - Never had a wedding party when married; saved up for this 10-year celebration
-  - Timeline: Brazil → USA, buying their home, travels, welcoming their two boys
-  - Photo gallery of key moments from the past 10 years
-  - Could include a photo timeline or carousel
+- [x] **"Our Story" section** - Photo-centric vertical timeline telling the couple's journey (see Milestone 3)
 
 ### Technical Improvements
 - [x] **Optimize images for web** ✅ Completed
@@ -183,3 +207,11 @@ This document tracks pending tasks and future improvements for the wedding websi
 - ✅ Link preview image fix (SVG → PNG, absolute URL)
 - ✅ Attendance clarifications (3-day for hotel guests, ceremony-only option after 3pm)
 - ✅ Personal story added (about.story - 10-year journey)
+
+### Milestone 3 Progress
+- ✅ "Our Story" timeline section with 8 milestone events (2016-2026)
+- ✅ Vertical timeline with alternating left/right photo cards
+- ✅ Embedded proposal video in 2018 card
+- ✅ Bilingual support (EN/PT) with ~40 translation keys
+- ✅ Responsive design (single column on mobile)
+- ✅ Scroll animations with Waypoints

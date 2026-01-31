@@ -642,6 +642,157 @@ form {
   }
 }
 
+// ===================================
+// Our Story Timeline
+// ===================================
+
+.story-timeline {
+  position: relative;
+  padding: 20px 0;
+
+  // Vertical line down the center
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: $brand-secondary;
+    top: 0;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+
+  &.timeline-left {
+    left: 0;
+    padding-right: 60px;
+    text-align: right;
+    .timeline-card { margin-left: auto; }
+    .timeline-badge { right: -15px; }
+  }
+
+  &.timeline-right {
+    left: 50%;
+    padding-left: 60px;
+    text-align: left;
+    .timeline-badge { left: -15px; }
+  }
+}
+
+.timeline-badge {
+  position: absolute;
+  top: 30px;
+  width: 70px;
+  height: 30px;
+  background: $brand-secondary;
+  color: $brand-white;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 15px;
+  z-index: 10;
+}
+
+.timeline-card {
+  background: $brand-white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba($brand-black, 0.1);
+  max-width: 400px;
+  @include transition(.3s);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba($brand-black, 0.15);
+  }
+}
+
+.timeline-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.timeline-video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.timeline-content {
+  padding: 25px;
+  text-align: left;
+
+  h3 {
+    font-family: $font-secondary;
+    font-size: 24px;
+    line-height: 2.0;
+    color: $brand-primary;
+    margin: 0 0 15px 0;
+  }
+
+  p {
+    font-size: 15px;
+    color: $brand-body-color;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Expanded description styling
+  &.expanded p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+// Mobile: Single column
+@media screen and (max-width: $screen-sm) {
+  .story-timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding: 20px 20px 20px 50px;
+
+    &.timeline-left,
+    &.timeline-right {
+      left: 0;
+      padding-left: 50px;
+      padding-right: 20px;
+      text-align: left;
+
+      .timeline-card {
+        margin-left: 0;
+        max-width: 100%;
+      }
+      .timeline-badge {
+        left: 5px;
+        right: auto;
+      }
+    }
+  }
+
+  .timeline-image { height: 200px; }
+  .timeline-content {
+    padding: 20px;
+    h3 { font-size: 20px; }
+  }
+}
+
 
 // off canvas
 #fh5co-offcanvas {

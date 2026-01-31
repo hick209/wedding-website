@@ -22,6 +22,11 @@ Domain: www.nivaldo-roberta.com
 - Three-state dialog: form → loading → success
 - Google Apps Script backend for storing submissions
 
+**Milestone 3: Our Story Timeline** (Complete)
+- Photo-centric vertical timeline with 8 milestone events (2016-2026)
+- Alternating left/right cards with embedded proposal video (2018)
+- Bilingual support (EN/PT) with scroll animations
+
 See `TODO.md` for detailed task breakdown and progress tracking.
 
 ## Technology Stack
@@ -55,6 +60,8 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 │   └── bootstrap/         # Bootstrap SASS components
 ├── css/                   # Compiled CSS files
 ├── images/                # Photos and graphics
+│   ├── story/             # "Our Story" timeline images (placeholder)
+│   └── archive/           # Archived photos for future use
 ├── fonts/                 # Custom fonts (icomoon icons, Amsterdam font)
 ├── fav/                   # Favicon and manifest files
 └── save-the-date.ics      # Calendar invite file
@@ -201,7 +208,9 @@ See `TODO.md` for comprehensive task list.
 ### Lower Priority (Future Enhancement)
 - **Video Popup** (`index.html:270-276`) - Optional venue video
 - **Itinerary Content** - Currently Lorem ipsum, needed for Milestone 2
-- **"Our Story" Page** - Dedicated page with couple's journey and photo timeline
+
+### Completed Milestone 3 Items
+- ✅ "Our Story" Timeline - Photo-centric vertical timeline with 8 milestone events (2016-2026)
 
 ### Completed Milestone 1 Items
 - ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
@@ -230,3 +239,71 @@ See `TODO.md` for comprehensive task list.
 - Uses vendor prefixes via SCSS mixins
 - Modernizr for feature detection
 - respond.min.js for IE8 media queries
+
+## Milestone 3: "Our Story" Section (Complete)
+**Goal:** Photo-centric vertical timeline telling the couple's 10-year journey
+
+### Architecture
+- Section in `index.html` (at bottom, before footer)
+- `<div id="story">` with "Our Story" nav link
+- Same CSS/JS - no new file includes needed
+
+### Design
+- Vertical timeline with alternating left/right photo cards
+- Each card: large photo (or video), year badge, title, description
+- Blue vertical line connecting all events (#118DF0)
+- Key milestones (2016, 2018, 2021, 2023) have expanded descriptions
+- 2018 card includes embedded YouTube proposal video
+- Mobile: single column, full-width cards (<768px)
+- Animations: fade-in on scroll (Waypoints)
+- Styling: h3 line-height 2.0, p line-height 1.7, margin 15px between title/description
+
+### Timeline Events (8 cards)
+
+| Year | Title (EN) | Title (PT) | Special |
+|------|------------|------------|---------|
+| 2016 | The Beginning | O Começo | **Expanded** - Met, moved in quickly, Chile trip |
+| 2017 | A Bold Move | Uma Grande Mudança | **Expanded** - Facebook offer, distance risk, leap of faith |
+| 2018 | Getting Married | O Casamento | **Expanded + Video** - Proposal, Roberta's brave move to US |
+| 2019 | Exploring the World | Explorando o Mundo | **Expanded** - No wedding party, Paris photos, honeymoon Venice/Rome |
+| 2020 | Putting Down Roots | Criando Raízes | Brief - First house, expecting |
+| 2021 | Welcome Levy | Bem-vindo Levy | **Expanded** - First son born |
+| 2023 | Welcome Leo | Bem-vindo Leo | **Expanded** - Second son, family complete |
+| 2026 | Celebrating 10 Years | Celebrando 10 Anos | Brief - The celebration, "hope to see you there" |
+
+### Reference Media
+- Proposal video: https://www.youtube.com/watch?v=kd2htsyJSbU (embedded in 2018 card)
+- Archived photos: `images/archive/` (9 professional photos from 2019)
+
+### Files to Modify
+- `index.html` - Add "Our Story" nav link + story section at bottom
+- `sass/style.scss` - Add timeline component styles (~130 lines)
+- `js/translations.js` - Add story translations (EN + PT, ~40 keys)
+- `images/story/` - 8 placeholder images (user replaces later)
+
+### Raw Event Notes (for reference)
+<details>
+<summary>Full relationship timeline (click to expand)</summary>
+
+**2016**: Met in São Paulo, moved in together, first international trip to Chile
+
+**2017**: Facebook offer, visited Foz do Iguaçu/Campos do Jordão/Monte Belo/Ilhabela, Nivaldo moved to US
+
+**2018**: Proposal, wedding, Roberta moved to US, first car, Lake Tahoe/Sequoia/Monterey/Seattle, first Halloween party tradition
+
+**2019**: Visited Switzerland/India/Germany/NYC/London/Paris/Italy, first electric car, Paris photo shoot
+
+**2020**: Bought first house, pregnant with Levy
+
+**2021**: Levy born
+
+**2022**: Moved to Georgia
+
+**2023**: Leo born
+
+**2024**: Built a pool
+
+**2025**: Levy started preschool
+
+**2026**: 10 years together - celebration!
+</details>
