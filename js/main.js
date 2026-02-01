@@ -125,6 +125,61 @@
   };
 
 
+  // Timeline Carousel Auto-scroll
+  const initTimelineCarousels = () => {
+    const carousels = document.querySelectorAll('.timeline-carousel');
+
+    carousels.forEach((carousel) => {
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+
+      // Skip if only 1 image
+      if (slides.length <= 1) return;
+
+      let currentIndex = 0;
+      let intervalId = null;
+      const autoScrollDelay = 4000; // 4 seconds
+
+      const showSlide = (index) => {
+        slides.forEach((s) => s.classList.remove('active'));
+        dots.forEach((d) => d.classList.remove('active'));
+        slides[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+        currentIndex = index;
+      };
+
+      const nextSlide = () => {
+        const next = (currentIndex + 1) % slides.length;
+        showSlide(next);
+      };
+
+      const startAutoScroll = () => {
+        intervalId = setInterval(nextSlide, autoScrollDelay);
+      };
+
+      const stopAutoScroll = () => {
+        if (intervalId) clearInterval(intervalId);
+      };
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', stopAutoScroll);
+      carousel.addEventListener('mouseleave', startAutoScroll);
+
+      // Click dots to navigate
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          stopAutoScroll();
+          startAutoScroll();
+        });
+      });
+
+      // Start auto-scroll
+      startAutoScroll();
+    });
+  };
+
+
   $(() => {
     mobileMenuOutsideClick();
     offcanvasMenu();
@@ -133,6 +188,7 @@
     goToTop();
     loaderPage();
     saveTheDate();
+    initTimelineCarousels();
   });
 
   // Parallax

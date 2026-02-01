@@ -722,6 +722,66 @@ form {
   background-position: center;
 }
 
+// ===================================
+// Timeline Image Carousel
+// ===================================
+
+.timeline-carousel {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  @include transition(.6s);
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba($brand-white, 0.5);
+  cursor: pointer;
+  @include transition(.3s);
+
+  &.active {
+    background: $brand-white;
+  }
+
+  &:hover {
+    background: rgba($brand-white, 0.8);
+  }
+}
+
 .timeline-video {
   width: 100%;
   aspect-ratio: 16/9;
@@ -787,6 +847,7 @@ form {
   }
 
   .timeline-image { height: 200px; }
+  .timeline-carousel { height: 200px; }
   .timeline-content {
     padding: 20px;
     h3 { font-size: 20px; }
