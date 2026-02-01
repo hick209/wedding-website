@@ -770,15 +770,10 @@ form {
   height: 8px;
   border-radius: 50%;
   background: rgba($brand-white, 0.5);
-  cursor: pointer;
   @include transition(.3s);
 
   &.active {
     background: $brand-white;
-  }
-
-  &:hover {
-    background: rgba($brand-white, 0.8);
   }
 }
 

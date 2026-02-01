@@ -710,16 +710,12 @@ form label {
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
 }
 .carousel-dot.active {
   background: white;
-}
-.carousel-dot:hover {
-  background: rgba(255, 255, 255, 0.8);
 }
 
 .timeline-video {

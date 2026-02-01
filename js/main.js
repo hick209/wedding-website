@@ -138,7 +138,7 @@
 
       let currentIndex = 0;
       let intervalId = null;
-      const autoScrollDelay = 4000; // 4 seconds
+      const autoScrollDelay = 3000; // 3 seconds
 
       const showSlide = (index) => {
         slides.forEach((s) => s.classList.remove('active'));
@@ -164,15 +164,6 @@
       // Pause on hover
       carousel.addEventListener('mouseenter', stopAutoScroll);
       carousel.addEventListener('mouseleave', startAutoScroll);
-
-      // Click dots to navigate
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          showSlide(index);
-          stopAutoScroll();
-          startAutoScroll();
-        });
-      });
 
       // Start auto-scroll
       startAutoScroll();
