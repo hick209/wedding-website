@@ -170,6 +170,10 @@ This document tracks pending tasks and future improvements for the wedding websi
   - Gallery images: ~4.6MB → ~1.8MB combined (60% reduction)
   - Unused images moved to `images/archive/` for future "Our Story" page
   - Original backups in `images/originals/` (gitignored)
+- [x] **Optimize story images** ✅ Completed
+  - 48 timeline photos: 168MB → 6MB (96% reduction)
+  - Resized to 800px width for retina displays
+  - Original backups in `images/story/originals/` (gitignored)
 - [x] **Clean section IDs** - Removed 'fh5co-' prefix for cleaner URLs (#venue instead of #fh5co-venue)
 - [ ] Add loading states/animations
 - [ ] Performance optimization (lazy loading images, etc.)

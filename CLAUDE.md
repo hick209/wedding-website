@@ -227,6 +227,7 @@ See `TODO.md` for comprehensive task list.
 - ✅ Code Consolidation - Merged `css/responsive-clock.css` into `sass/style.scss` using Bootstrap variables
 - ✅ Date Size - Made date (2026.Sep.12) 3x bigger on desktop (60px) with responsive scaling
 - ✅ Image Optimization - Reduced actively used images from ~8MB to ~2.5MB (69% reduction), archived unused images for future "Our Story" page
+- ✅ Story Image Optimization - Reduced 48 timeline photos from 168MB to 6MB (96% reduction), resized to 800px for retina
 
 ### Milestone 2 (Complete)
 - ✅ RSVP functionality with Google Apps Script backend
