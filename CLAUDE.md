@@ -25,6 +25,7 @@ Domain: www.nivaldo-roberta.com
 **Milestone 3: Our Story Timeline** (Complete)
 - Photo-centric vertical timeline with 8 milestone events (2016-2026)
 - Auto-scrolling photo carousels (3-second intervals, 49 photos total)
+- Lazy loading with Intersection Observer (images load 200px before viewport)
 - 2018 card: proposal video + photo carousel stacked
 - Bilingual support (EN/PT) with scroll animations
 - Images optimized: 168MB → 6MB (96% reduction)
@@ -216,6 +217,7 @@ See `TODO.md` for comprehensive task list.
 - ✅ Auto-scrolling Carousels - 49 photos across all cards with 3-second intervals, pause-on-hover
 - ✅ 2018 Card Enhancement - Stacked video + photo carousel
 - ✅ Story Image Optimization - 168MB → 6MB (96% reduction), 800px width for retina
+- ✅ Lazy Loading - Intersection Observer defers carousel images until near viewport
 
 ### Completed Milestone 1 Items
 - ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)

@@ -176,7 +176,7 @@ This document tracks pending tasks and future improvements for the wedding websi
   - Original backups in `images/story/originals/` (gitignored)
 - [x] **Clean section IDs** - Removed 'fh5co-' prefix for cleaner URLs (#venue instead of #fh5co-venue)
 - [ ] Add loading states/animations
-- [ ] Performance optimization (lazy loading images, etc.)
+- [x] **Lazy loading images** - Intersection Observer defers story carousel images until near viewport
 - [ ] Consider modern CSS framework migration
 
 ## Reference Resources
