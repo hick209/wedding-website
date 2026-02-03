@@ -125,11 +125,25 @@
   };
 
 
-  // Timeline Carousel Auto-scroll
+  // Timeline Carousel with Lazy Loading
   const initTimelineCarousels = () => {
     const carousels = document.querySelectorAll('.timeline-carousel');
 
-    carousels.forEach((carousel) => {
+    // Load images for a carousel from data-bg attributes
+    const loadCarouselImages = (carousel) => {
+      const slides = carousel.querySelectorAll('.carousel-slide[data-bg]');
+      slides.forEach((slide) => {
+        const bgUrl = slide.dataset.bg;
+        if (bgUrl) {
+          slide.style.backgroundImage = `url('${bgUrl}')`;
+          slide.removeAttribute('data-bg');
+        }
+      });
+      carousel.classList.add('loaded');
+    };
+
+    // Initialize auto-scroll for a carousel
+    const initCarouselAutoScroll = (carousel) => {
       const slides = carousel.querySelectorAll('.carousel-slide');
       const dots = carousel.querySelectorAll('.carousel-dot');
 
@@ -167,7 +181,32 @@
 
       // Start auto-scroll
       startAutoScroll();
-    });
+    };
+
+    // Use Intersection Observer for lazy loading
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const carousel = entry.target;
+            loadCarouselImages(carousel);
+            initCarouselAutoScroll(carousel);
+            observer.unobserve(carousel);
+          }
+        });
+      }, {
+        rootMargin: '200px 0px', // Load 200px before entering viewport
+        threshold: 0
+      });
+
+      carousels.forEach((carousel) => observer.observe(carousel));
+    } else {
+      // Fallback for older browsers: load all immediately
+      carousels.forEach((carousel) => {
+        loadCarouselImages(carousel);
+        initCarouselAutoScroll(carousel);
+      });
+    }
   };
 
 
