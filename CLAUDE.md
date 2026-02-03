@@ -11,7 +11,7 @@ Domain: www.nivaldo-roberta.com
 
 ### Project Goals
 
-**Milestone 1: "Save the Date" Website** (Current Phase)
+**Milestone 1: "Save the Date" Website** (Complete)
 - Provide basic event information to guests
 - Enable calendar integration for date saving
 - Offer bilingual support (EN/PT) for international guests
@@ -24,8 +24,10 @@ Domain: www.nivaldo-roberta.com
 
 **Milestone 3: Our Story Timeline** (Complete)
 - Photo-centric vertical timeline with 8 milestone events (2016-2026)
-- Alternating left/right cards with embedded proposal video (2018)
+- Auto-scrolling photo carousels (3-second intervals, 49 photos total)
+- 2018 card: proposal video + photo carousel stacked
 - Bilingual support (EN/PT) with scroll animations
+- Images optimized: 168MB → 6MB (96% reduction)
 
 See `TODO.md` for detailed task breakdown and progress tracking.
 
@@ -60,8 +62,7 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 │   └── bootstrap/         # Bootstrap SASS components
 ├── css/                   # Compiled CSS files
 ├── images/                # Photos and graphics
-│   ├── story/             # "Our Story" timeline images (placeholder)
-│   └── archive/           # Archived photos for future use
+│   └── story/             # "Our Story" timeline images (49 optimized photos)
 ├── fonts/                 # Custom fonts (icomoon icons, Amsterdam font)
 ├── fav/                   # Favicon and manifest files
 └── save-the-date.ics      # Calendar invite file
@@ -147,6 +148,7 @@ ipconfig getifaddr en0
 - `saveTheDate()`: Handles calendar file download
 - `contentWayPoint()`: Scroll-triggered animations
 - `offcanvasMenu()` & `burgerMenu()`: Mobile navigation
+- `initTimelineCarousels()`: Auto-scrolling photo carousels for "Our Story" timeline
 
 ### `js/rsvp.js`
 - RSVP dialog with three states: form, loading, success
@@ -211,6 +213,9 @@ See `TODO.md` for comprehensive task list.
 
 ### Completed Milestone 3 Items
 - ✅ "Our Story" Timeline - Photo-centric vertical timeline with 8 milestone events (2016-2026)
+- ✅ Auto-scrolling Carousels - 49 photos across all cards with 3-second intervals, pause-on-hover
+- ✅ 2018 Card Enhancement - Stacked video + photo carousel
+- ✅ Story Image Optimization - 168MB → 6MB (96% reduction), 800px width for retina
 
 ### Completed Milestone 1 Items
 - ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
@@ -251,10 +256,11 @@ See `TODO.md` for comprehensive task list.
 
 ### Design
 - Vertical timeline with alternating left/right photo cards
-- Each card: large photo (or video), year badge, title, description
+- Each card: photo carousel (1-10 images per card), year badge, title, description
+- Auto-scrolling carousels with 3-second intervals and pause-on-hover
 - Blue vertical line connecting all events (#118DF0)
 - Key milestones (2016, 2018, 2021, 2023) have expanded descriptions
-- 2018 card includes embedded YouTube proposal video
+- 2018 card: stacked layout with YouTube video + photo carousel below
 - Mobile: single column, full-width cards (<768px)
 - Animations: fade-in on scroll (Waypoints)
 - Styling: h3 line-height 2.0, p line-height 1.7, margin 15px between title/description
@@ -274,13 +280,13 @@ See `TODO.md` for comprehensive task list.
 
 ### Reference Media
 - Proposal video: https://www.youtube.com/watch?v=kd2htsyJSbU (embedded in 2018 card)
-- Archived photos: `images/archive/` (9 professional photos from 2019)
 
 ### Files to Modify
 - `index.html` - Add "Our Story" nav link + story section at bottom
-- `sass/style.scss` - Add timeline component styles (~130 lines)
+- `sass/style.scss` - Add timeline + carousel component styles (~80 lines)
+- `js/main.js` - Add `initTimelineCarousels()` for auto-scroll functionality
 - `js/translations.js` - Add story translations (EN + PT, ~40 keys)
-- `images/story/` - 8 placeholder images (user replaces later)
+- `images/story/` - 49 optimized photos (YYYY-N.jpg naming, 800px width for retina)
 
 ### Raw Event Notes (for reference)
 <details>
