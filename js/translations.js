@@ -176,7 +176,7 @@ const translations = {
     // RSVP Section
     "tab.rsvp": "Confirmar / RSVP",
     "rsvp.title": "Confirmar Presença",
-    "rsvp.button": "Confirmar",
+    "rsvp.button": "Confirmar / RSVP",
     "rsvp.subtitle": "Por favor confirme sua presença",
     "rsvp.name": "Seu Nome",
     "rsvp.nameNotFound": "Nome não encontrado na lista. Entre em contato conosco.",
