@@ -118,10 +118,10 @@ This document tracks pending tasks and future improvements for the wedding websi
 **Priority:** High (Milestone 1 blocker)
 
 **Implemented Features:**
-- Bootstrap accordion with 5 FAQ items
-- Emojis added to each question for easier visual scanning (📅👗🏨👨‍👩‍👧‍👦☀️)
+- Bootstrap accordion with 6 FAQ items
+- Emojis added to each question for easier visual scanning (📅👗🏨👨‍👩‍👧‍👦☀️🎁)
 - Bilingual support (EN/PT)
-- Questions covered: attendance requirements, dress code, accommodation, guests/children, weather
+- Questions covered: attendance requirements, dress code, accommodation, guests/children, weather, gifts
 
 ### 4. Travel Guidance
 **Status:** ✅ Completed
@@ -206,7 +206,7 @@ This document tracks pending tasks and future improvements for the wedding websi
 - ✅ Video removed (was placeholder)
 - ✅ Event context section added ("Join Us")
 - ✅ GitHub footer added with modern semantic HTML
-- ✅ FAQ section with Bootstrap accordion (5 questions, EN/PT)
+- ✅ FAQ section with Bootstrap accordion (6 questions, EN/PT)
 - ✅ Travel & Stay section with 6 info cards (EN/PT)
 - ✅ Link preview image fix (SVG → PNG, absolute URL)
 - ✅ Attendance clarifications (3-day for hotel guests, ceremony-only option after 3pm)

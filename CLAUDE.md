@@ -220,7 +220,7 @@ See `TODO.md` for comprehensive task list.
 - ✅ Lazy Loading - Intersection Observer defers carousel images until near viewport
 
 ### Completed Milestone 1 Items
-- ✅ FAQ Section - Bootstrap accordion with 5 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather (EN/PT)
+- ✅ FAQ Section - Bootstrap accordion with 6 questions (emojis for visual scanning), covering attendance, dress code, accommodation, guests/children, weather, gifts (EN/PT)
 - ✅ Travel & Stay Section - 6 info cards with corrected visa info (UK/EU visa-free, US/Canada need visa): Getting Here, Transportation, Where to Stay, Visa Requirements, Currency & Payments, What to Pack (EN/PT)
 - ✅ Parallax Fix - Changed viewport units from dvh/vh to lvh to prevent jumping when mobile browser UI appears/disappears
 - ✅ Clean Section IDs - Removed 'fh5co-' prefix from section IDs for cleaner URLs (e.g., #venue instead of #fh5co-venue)
