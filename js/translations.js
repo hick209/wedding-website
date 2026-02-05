@@ -20,6 +20,7 @@ const translations = {
     "about.title": "Join Us",
     "about.description": "We're hosting an intimate celebration at Recanto da Paz, exclusively reserved for our wedding. Guests staying at the venue will enjoy a 3-day weekend of festivities (Sept 11-13). If you can't join us for the full weekend, we'd love to see you at the ceremony on September 12th (after 3pm). Save the date!",
     "about.story": "After 10 years of adventures – moving countries, building our home, and welcoming our two boys – we're finally celebrating our love with everyone who matters most.",
+    "about.noGifts": "Your presence is our present – no gifts needed, just you!",
     "about.soon": "Details coming soon!",
     "dialog.select-cal": "Which calendar?",
     "dialog.other-cals": "Other calendars (.ics file)",
@@ -38,6 +39,8 @@ const translations = {
     "faq.q4.answer": "We love your little ones! Children are welcome at our celebration. As for additional guests, please let us know in your RSVP so we can plan accordingly. Your formal invitation will specify the guests included.",
     "faq.q5.question": "☀️ What's the weather like in September?",
     "faq.q5.answer": "September in Atibaia is the beginning of spring in Brazil! Expect mild temperatures around 15-25°C (60-77°F). Evenings can be cool, so bring a light jacket. It's generally dry, but we recommend having a light layer just in case.",
+    "faq.q6.question": "🎁 What about gifts?",
+    "faq.q6.answer": "Your presence is the greatest gift! We don't have a registry – the only thing we ask is that you spend these 3 days celebrating with us. That's all we need.",
 
     // Travel Section
     "travel.title": "Travel & Stay",
@@ -131,6 +134,7 @@ const translations = {
     "about.title": "Junte-se a Nós",
     "about.description": "Estamos organizando uma celebração intimista no Recanto da Paz, reservado exclusivamente para nosso casamento. Os hóspedes do local aproveitarão um fim de semana de 3 dias de festividades (11-13 de Set). Se você não puder participar do fim de semana inteiro, adoraríamos te ver na cerimônia no dia 12 de setembro (após às 15h). Reserve a data!",
     "about.story": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo nossos dois filhos – finalmente estamos celebrando nosso amor com todos que mais importam.",
+    "about.noGifts": "Sua presença é o nosso presente – não precisamos de presentes, apenas de vocês!",
     "about.soon": "Mais detalhes em breve!",
     "dialog.select-cal": "Qual calendário?",
     "dialog.other-cals": "Outros calendários (arquivo .ics)",
@@ -149,6 +153,8 @@ const translations = {
     "faq.q4.answer": "Amamos os pequenos! Crianças são bem-vindas em nossa celebração. Quanto a acompanhantes adicionais, por favor nos avise no RSVP para que possamos planejar adequadamente. Seu convite formal especificará os convidados incluídos.",
     "faq.q5.question": "☀️ Como é o clima em setembro?",
     "faq.q5.answer": "Setembro em Atibaia é o início da primavera no Brasil! Espere temperaturas amenas entre 15-25°C. As noites podem ser frescas, então traga uma jaqueta leve. Geralmente é seco, mas recomendamos ter uma camada extra por precaução.",
+    "faq.q6.question": "🎁 E quanto aos presentes?",
+    "faq.q6.answer": "Sua presença é o maior presente! Não temos lista de presentes – a única coisa que pedimos é que você passe esses 3 dias celebrando conosco. Isso é tudo que precisamos.",
 
     // Travel Section
     "travel.title": "Viagem & Estadia",
