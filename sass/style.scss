@@ -1421,7 +1421,7 @@ form {
 // FAQ Section Styles
 // ========================================================
 
-#fh5co-faq {
+#faq {
   .faq-accordion {
     .panel {
       border: none;
@@ -1434,6 +1434,7 @@ form {
         background: $brand-white;
         padding: 0;
         border: none;
+        cursor: pointer;
 
         .panel-title {
           margin: 0;
