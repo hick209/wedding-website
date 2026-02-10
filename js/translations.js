@@ -40,7 +40,7 @@ const translations = {
     "faq.q5.question": "☀️ What's the weather like in September?",
     "faq.q5.answer": "September in Atibaia is the beginning of spring in Brazil! Expect mild temperatures around 15-25°C (60-77°F). Evenings can be cool, so bring a light jacket. It's generally dry, but we recommend having a light layer just in case.",
     "faq.q6.question": "🎁 What about gifts?",
-    "faq.q6.answer": "Your presence is the greatest gift! We don't have a registry – the only thing we ask is that you spend these 3 days celebrating with us. That's all we need.",
+    "faq.q6.answer": "Your presence is the greatest gift! No registry needed – just celebrate with us. (Plus, luggage space for gifts across the Atlantic is tricky!)",
 
     // Travel Section
     "travel.title": "Travel & Stay",
@@ -154,7 +154,7 @@ const translations = {
     "faq.q5.question": "☀️ Como é o clima em setembro?",
     "faq.q5.answer": "Setembro em Atibaia é o início da primavera no Brasil! Espere temperaturas amenas entre 15-25°C. As noites podem ser frescas, então traga uma jaqueta leve. Geralmente é seco, mas recomendamos ter uma camada extra por precaução.",
     "faq.q6.question": "🎁 E quanto aos presentes?",
-    "faq.q6.answer": "Sua presença é o maior presente! Não temos lista de presentes – a única coisa que pedimos é que você passe esses 3 dias celebrando conosco. Isso é tudo que precisamos.",
+    "faq.q6.answer": "Sua presença é o maior presente! Não precisamos de lista – apenas celebre conosco. (Além disso, espaço na mala para presentes atravessando o Atlântico é complicado!)",
 
     // Travel Section
     "travel.title": "Viagem & Estadia",
