@@ -41,7 +41,7 @@ function doPost(e) {
       // Add headers
       sheet.getRange(1, 1, 1, 9).setValues([[
         'Name', 'Email', 'Phone', 'Attending',
-        'Adults', 'Children (6-12)', 'Children (<6)', 'Notes', 'Timestamp'
+        'Adults', 'Children (5-12)', 'Children (<5)', 'Notes', 'Timestamp'
       ]]);
     }
 

@@ -202,9 +202,12 @@ First-party assets are referenced with a `?v=YYYYMMDD` query string in
 returning visitors run stale JS against new markup. Vendor libraries are
 deliberately left unversioned so they stay cached across deploys.
 
+For a second deploy on the same day, append `-2`, `-3`, etc.
+(`?v=20260824-2`) - the token just has to differ from what is already live.
+
 ```bash
 # bump all at once
-sed -i '' 's/?v=[0-9]\{8\}/?v=20260901/g' index.html
+sed -i '' 's/?v=[0-9-]*"/?v=20260901"/g' index.html
 ```
 
 ### Adding/Changing Images
