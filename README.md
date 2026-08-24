@@ -5,8 +5,11 @@ To set the countdown date see below section in `js/clock.js`
 
 ````
   // Target future date/24 hour time/Timezone
-  let targetDate = moment.tz("2023-10-29 12:00", "Asia/Kolkata");
+  let targetDate = new Date("2026-09-12T16:30:00-03:00");
 ````
+
+Write the UTC offset explicitly rather than naming a timezone - it keeps the
+countdown independent of any timezone database.
 
 ## Screenshot
 ![screenshot](https://repository-images.githubusercontent.com/698651028/d9cbed4d-10e2-44bd-bca8-e26a251ff182)

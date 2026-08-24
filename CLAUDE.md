@@ -38,7 +38,6 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 - **Styling**: SCSS (compiled to CSS), Bootstrap SASS
 - **Key Libraries**:
   - FlipClock.js - countdown timer
-  - Moment.js with timezone support
   - Magnific Popup - lightbox
   - Waypoints - scroll animations
   - Stellar.js - parallax effects
@@ -109,10 +108,16 @@ ipconfig getifaddr en0
 
 ### Countdown Timer
 - Located in `js/clock.js`
-- **IMPORTANT**: To change the event date, modify line 8:
+- **IMPORTANT**: To change the event date, modify the `targetDate` line:
   ```javascript
-  let targetDate = moment.tz("2026-09-12 16:30", "America/Sao_Paulo");
+  let targetDate = new Date("2026-09-12T16:30:00-03:00");
   ```
+- **Always write the UTC offset explicitly.** `-03:00` is Brazil standard time;
+  the country has had no DST since 2019, so the offset is fixed. This used to
+  go through `moment.tz(..., "America/Sao_Paulo")`, but the pinned
+  moment-timezone bundle shipped 2017-era rules that still believed in
+  Brazilian DST and resolved the target an hour early. Moment and
+  moment-timezone (~209KB, used only for this one line) were removed.
 - Uses FlipClock.js with DailyCounter face
 - Clock labels are translated dynamically after DOM load
 - **Mobile centering**: Handled by `sass/style.scss` with flexbox layout. The wrapper uses `display: inline-block` and `width: auto` to override FlipClock's default `width: 100%`, allowing proper centering while maintaining the library's internal float-based layout for correct element ordering.
@@ -179,9 +184,28 @@ ipconfig getifaddr en0
 ## Common Tasks
 
 ### Updating Event Date/Time
-1. Edit `js/clock.js` line 8 (countdown timer)
+1. Edit the `targetDate` line in `js/clock.js` (countdown timer)
 2. Edit event dates in `index.html` itinerary section (lines 167-221)
-3. Update `save-the-date.ics` DTSTART/DTEND fields
+3. Update `save-the-date.ics` DTSTART/DTEND, and bump its `SEQUENCE` so
+   clients treat the re-import as an update to the existing entry
+4. Update the ceremony time in `about.description` and `faq.q1.answer`
+   (`js/translations.js`, EN + PT) and their `data-i18n` fallback text in
+   `index.html` - the two must stay in sync
+
+### Cache Busting
+First-party assets are referenced with a `?v=YYYYMMDD` query string in
+`index.html` (`css/style.css`, `css/bootstrap.css`, `js/clock.js`,
+`js/main.js`, `js/translations.js`, `js/rsvp.js`,
+`js/magnific-popup-options.js`).
+
+**Bump the version on every deploy that changes those files**, otherwise
+returning visitors run stale JS against new markup. Vendor libraries are
+deliberately left unversioned so they stay cached across deploys.
+
+```bash
+# bump all at once
+sed -i '' 's/?v=[0-9]\{8\}/?v=20260901/g' index.html
+```
 
 ### Adding/Changing Images
 - Place images in `/images/` directory
