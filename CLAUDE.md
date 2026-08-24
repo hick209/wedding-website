@@ -111,7 +111,7 @@ ipconfig getifaddr en0
 - Located in `js/clock.js`
 - **IMPORTANT**: To change the event date, modify line 8:
   ```javascript
-  let targetDate = moment.tz("2026-09-12 12:00", "America/Sao_Paulo");
+  let targetDate = moment.tz("2026-09-12 16:30", "America/Sao_Paulo");
   ```
 - Uses FlipClock.js with DailyCounter face
 - Clock labels are translated dynamically after DOM load
