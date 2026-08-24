@@ -3,46 +3,72 @@ PRODID:-//Google Inc//Google Calendar 70.9054//EN
 VERSION:2.0
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Sao_Paulo
+X-LIC-LOCATION:America/Sao_Paulo
+BEGIN:STANDARD
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0300
+TZNAME:-03
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
-DTSTART;VALUE=DATE:20260911
-DTEND;VALUE=DATE:20260914
-DTSTAMP:20251114T120000Z
+DTSTART;TZID=America/Sao_Paulo:20260912T160000
+DTEND;TZID=America/Sao_Paulo:20260913T000000
+DTSTAMP:20260824T190000Z
 UID:1gsrokuip8tvdmsp8142b5u7dj@google.com
-ORGANIZER;CN="Nivaldo Henrique Bondança";CUTYPE=INDIVIDUAL:mailto:hick209@gmail.com
-ATTENDEE;CN="Roberta Bondança";CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;X-NUM-GUESTS=0:mailto:rostefanny@gmail.com
+ORGANIZER;CN="Nivaldo Henrique Bondança";CUTYPE=INDIVIDUAL:mailto:hick209@
+ gmail.com
+ATTENDEE;CN="Roberta Bondança";CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PART
+ STAT=ACCEPTED;X-NUM-GUESTS=0:mailto:rostefanny@gmail.com
 CREATED:20251114T120000Z
 SUMMARY;LANGUAGE=en-US:Nivaldo ❤️ Roberta – 10-year celebration
-DESCRIPTION;LANGUAGE=en-US:<b>Save the date</b> for <b>Nivaldo &amp\; Roberta's 10-year</b> celebration weekend!<br>
- Events will be held from Sept 11-13\, 2026.<br>
+DESCRIPTION;LANGUAGE=en-US:Join us to celebrate <b>Nivaldo &amp\; Roberta's
+  10 years</b> together!<br>
  <br>
- Formal invitation and a full schedule to follow.<br>
+ <b>4:30 PM</b> – Ceremony<br>
+ <b>7:00 PM</b> – Party<br>
  <br>
- <a href='https://www.nivaldo-roberta.com/?lang=en'>www.nivaldo-roberta.com</a>
+ Please plan to arrive after 3 PM.<br>
+ <br>
+ <a href='https://www.nivaldo-roberta.com/?lang=en'>www.nivaldo-roberta.com
+ </a>
 SUMMARY;LANGUAGE=pt-BR:Nivaldo ❤️ Roberta – Celebração de 10 anos
-DESCRIPTION;LANGUAGE=pt-BR:<b>Reserve a data</b> para o fim de semana de celebração de <b>10 anos</b> juntos de <b>Nivaldo e Roberta</b>!<br>
- Os eventos serão realizados de 11 a 13 de setembro de 2026.<br>
+DESCRIPTION;LANGUAGE=pt-BR:Venha celebrar os <b>10 anos</b> de Nivaldo e Ro
+ berta!<br>
  <br>
- Convite formal e a programação completa serão enviados em breve.<br>
+ <b>16h30</b> – Cerimônia<br>
+ <b>19h</b> – Festa<br>
  <br>
- <a href='https://www.nivaldo-roberta.com/?lang=pt'>www.nivaldo-roberta.com</a>
-SUMMARY:Nivaldo ❤️ Roberta – Celebração de 10 anos / 10-year celebration
-DESCRIPTION:<b>Reserve a data</b> para o fim de semana de celebração de <b>10 anos</b> juntos de <b>Nivaldo e Roberta</b>!<br>
- Os eventos serão realiza dos de 11 a 13 de setembro de 2026.<br>
+ Por favor chegue após às 15h.<br>
  <br>
- Convite formal e a programação completa serão enviados em breve.<br>
+ <a href='https://www.nivaldo-roberta.com/?lang=pt'>www.nivaldo-roberta.com
+ </a>
+SUMMARY:Nivaldo ❤️ Roberta – Celebração de 10 anos / 10-year celebr
+ ation
+DESCRIPTION:Venha celebrar os <b>10 anos</b> de Nivaldo e Roberta!<br>
+ <br>
+ <b>16h30</b> – Cerimônia<br>
+ <b>19h</b> – Festa<br>
+ <br>
+ Por favor chegue após às 15h.<br>
  <br>
  –––<br>
  <br>
- <b>Save the date</b> for <b>Nivaldo &amp\; Roberta's 10-year</b> celebration weekend!<br>
- Events will be held from Sept 11-13\, 2026.<br>
+ Join us to celebrate <b>Nivaldo &amp\; Roberta's 10 years</b> together!<br
+ >
  <br>
- Formal invitation and a full schedule to follow.<br>
+ <b>4:30 PM</b> – Ceremony<br>
+ <b>7:00 PM</b> – Party<br>
+ <br>
+ Please plan to arrive after 3 PM.<br>
  <br>
  <a href='https://www.nivaldo-roberta.com/'>www.nivaldo-roberta.com</a>
-LAST-MODIFIED:20251114T120000Z
-LOCATION:Recanto da Paz Hotel Fazenda\, Estrada Gertrudes Peinado Lara Monteoliva - 300\, Atibaia - SP\, 12949-268\, Brazil
-SEQUENCE:2
-SUMMARY:Nivaldo ❤️ Roberta – Celebração de 10 anos / 10-year celebration
-TRANSP:TRANSPARENT
+LAST-MODIFIED:20260824T190000Z
+LOCATION:Recanto da Paz Hotel Fazenda\, Estrada Gertrudes Peinado Lara Mont
+ eoliva - 300\, Atibaia - SP\, 12949-268\, Brazil
+SEQUENCE:3
+TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR
