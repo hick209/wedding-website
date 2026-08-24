@@ -33,15 +33,22 @@ function validatePhone(phone) {
 }
 
 /**
- * Validate that at least one valid contact method is provided
+ * Validate the contact fields
+ *
+ * Email and phone are interchangeable - one is enough, never both. When
+ * `requireContact` is false (guest isn't attending) both may be left blank,
+ * but anything actually typed still has to be well-formed.
+ *
  * Returns an object with 'valid' boolean and optional 'reason' for error display
  */
-function validateContact() {
+function validateContact(requireContact = true) {
   const email = document.getElementById('rsvp-email').value.trim();
   const phone = document.getElementById('rsvp-phone').value.trim();
 
-  // At least one must be provided
-  if (!email && !phone) return { valid: false, reason: 'missing' };
+  // Neither provided: only a problem when we need a way to reach them
+  if (!email && !phone) {
+    return requireContact ? { valid: false, reason: 'missing' } : { valid: true };
+  }
 
   // If email provided, it must be valid
   if (email && !validateEmail(email)) return { valid: false, reason: 'invalidEmail' };
@@ -50,6 +57,25 @@ function validateContact() {
   if (phone && !validatePhone(phone)) return { valid: false, reason: 'invalidPhone' };
 
   return { valid: true };
+}
+
+/**
+ * Point the contact hint at a translation key and render it in the current
+ * language. Keeping data-i18n in sync means toggling the language later
+ * re-translates it correctly.
+ */
+function setContactHint(key) {
+  const hint = document.getElementById('contact-hint');
+  if (!hint) return;
+
+  hint.setAttribute('data-i18n', key);
+
+  if (typeof translations !== 'undefined' && typeof getCurentLanguage === 'function') {
+    const lang = getCurentLanguage();
+    if (translations[lang] && translations[lang][key]) {
+      hint.textContent = translations[lang][key];
+    }
+  }
 }
 
 /**
@@ -66,12 +92,19 @@ function setupAttendanceToggle() {
       const isAttending = e.target.value === 'yes';
       details.style.display = isAttending ? 'block' : 'none';
 
+      // Contact is only required from guests who are coming
+      setContactHint(isAttending ? 'rsvp.contactHint' : 'rsvp.contactHintOptional');
+
       // If not attending, clear the detail fields
       if (!isAttending) {
         document.getElementById('rsvp-adults').value = '1';
         document.getElementById('rsvp-children-paying').value = '0';
         document.getElementById('rsvp-children-free').value = '0';
         document.getElementById('rsvp-notes').value = '';
+
+        // A "contact required" error from a previous attempt no longer applies
+        const contactError = document.getElementById('contact-error');
+        if (contactError) contactError.style.display = 'none';
       }
     });
   });
@@ -143,7 +176,7 @@ function getContactErrorMessage(reason) {
 
   // Fallback messages
   if (reason === 'invalidEmail') return 'Please enter a valid email address';
-  if (reason === 'invalidPhone') return 'Please enter a valid phone number (at least 8 digits)';
+  if (reason === 'invalidPhone') return 'Please enter a valid phone number (at least 11 digits)';
   return 'Please provide email or phone number';
 }
 
@@ -165,15 +198,6 @@ async function handleSubmit(event) {
     return;
   }
 
-  // Validate contact info (at least one valid email or phone)
-  const contactResult = validateContact();
-  if (!contactResult.valid) {
-    const contactError = document.getElementById('contact-error');
-    contactError.textContent = getContactErrorMessage(contactResult.reason);
-    contactError.style.display = 'block';
-    return;
-  }
-
   const attendingRadio = document.querySelector('input[name="attending"]:checked');
   if (!attendingRadio) {
     // HTML5 validation should catch this, but just in case
@@ -181,6 +205,16 @@ async function handleSubmit(event) {
   }
 
   const isAttending = attendingRadio.value === 'yes';
+
+  // Validate contact info. Attending guests must leave one way to reach them
+  // (email or phone, either is enough); guests who can't make it may skip both.
+  const contactResult = validateContact(isAttending);
+  if (!contactResult.valid) {
+    const contactError = document.getElementById('contact-error');
+    contactError.textContent = getContactErrorMessage(contactResult.reason);
+    contactError.style.display = 'block';
+    return;
+  }
 
   // Build RSVP data payload
   const data = {
@@ -253,6 +287,7 @@ async function handleSubmit(event) {
       // Reset form (hidden while in success state)
       document.getElementById('rsvp-form').reset();
       document.getElementById('attendance-details').style.display = 'none';
+      setContactHint('rsvp.contactHint');
 
       // Show success state
       dialog.dataset.state = 'success';
@@ -291,6 +326,7 @@ function closeRsvpDialog() {
     document.getElementById('rsvp-form')?.reset();
     const details = document.getElementById('attendance-details');
     if (details) details.style.display = 'none';
+    setContactHint('rsvp.contactHint');
   }
 }
 

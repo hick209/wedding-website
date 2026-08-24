@@ -826,7 +826,11 @@
                    autocomplete="tel">
           </div>
 
-          <!-- Contact error (at least one required) -->
+          <!-- Contact hint (swapped by JS: required when attending, optional when not) -->
+          <small class="text-muted" id="contact-hint" style="display:block; margin-bottom:10px"
+                 data-i18n="rsvp.contactHint">Either one is enough - email or phone.</small>
+
+          <!-- Contact error (at least one required when attending) -->
           <small class="text-danger" id="contact-error" style="display:none"
                  data-i18n="rsvp.contactError">Please provide email or phone number</small>
 
