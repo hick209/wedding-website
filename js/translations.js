@@ -19,7 +19,6 @@ const translations = {
     "about.description": "We're hosting an intimate celebration at Recanto da Paz, exclusively reserved for our wedding. Guests staying at the venue will enjoy a 3-day weekend of festivities (Sept 11-13). If you can't join us for the full weekend, we'd love to see you at the ceremony on September 12th at 4:30 PM. Save the date!",
     "about.story": "After 10 years of adventures – moving countries, building our home, and welcoming our two boys – we're finally celebrating our love with everyone who matters most.",
     "about.noGifts": "Your presence is our present – no gifts needed, just you!",
-    "about.soon": "Details coming soon!",
     "dialog.select-cal": "Which calendar?",
     "dialog.other-cals": "Other calendars (.ics file)",
 
@@ -131,7 +130,6 @@ const translations = {
     "about.description": "Estamos organizando uma celebração intimista no Recanto da Paz, reservado exclusivamente para nosso casamento. Os hóspedes do local aproveitarão um fim de semana de 3 dias de festividades (11-13 de Set). Se você não puder participar do fim de semana inteiro, adoraríamos te ver na cerimônia no dia 12 de setembro às 16h30. Reserve a data!",
     "about.story": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo nossos dois filhos – finalmente estamos celebrando nosso amor com todos que mais importam.",
     "about.noGifts": "Sua presença é o nosso presente – não precisamos de presentes, apenas de vocês!",
-    "about.soon": "Mais detalhes em breve!",
     "dialog.select-cal": "Qual calendário?",
     "dialog.other-cals": "Outros calendários (arquivo .ics)",
 
