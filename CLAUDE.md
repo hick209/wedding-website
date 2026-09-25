@@ -309,8 +309,11 @@ sed -i '' 's/?v=[0-9-]*"/?v=20260926"/g' index.html
 
 See `TODO.md`. Next up is a section with video and photos from the celebration.
 
-The `og:image` is still `images/SaveTheDate_Back.jpg`. Once there are photos
-from the event, one of those would make a better link preview.
+The `og:image` is `images/og-family-2026.jpg` - the four of them walking out
+after the ceremony, cropped from a 4K frame of the teaser to 1200x630. When
+replacing it, **change the filename too**: Facebook and WhatsApp cache
+`og:image` by URL, so overwriting the file leaves everyone who already shared
+the link seeing the old art.
 
 ## Browser Compatibility Notes
 - IE 9+ support (conditional comments in HTML)

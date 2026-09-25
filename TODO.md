@@ -160,8 +160,14 @@ tense about an event that already happened.
 #### Remaining
 - [ ] Swap in the real photos when the photographer delivers, and replace the
       placeholder card
-- [ ] Consider swapping `og:image` (still `SaveTheDate_Back.jpg`) for a photo
-      from the day
+- [x] `og:image` swapped from the save-the-date art to `og-family-2026.jpg` -
+      the four of them walking out after the ceremony, cropped 1200x630 from a
+      4K frame of the teaser. Also added `og:image:alt` and
+      `twitter:card=summary_large_image`
+- [ ] **Re-scrape the link preview** once deployed, or shares will keep showing
+      the old save-the-date image from cache:
+      https://developers.facebook.com/tools/debug/ -> "Scrape Again".
+      Then send yourself the link on WhatsApp to confirm the large preview
 
 #### Hero Loop - Decisions Made
 - **Source clip:** 14 seconds starting at 16:5 into the teaser
