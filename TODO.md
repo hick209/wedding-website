@@ -102,10 +102,32 @@ made sense beforehand and delete the two sections that were never finished.
 - `save-the-date.ics`, `apps-script/` (RSVP backend + its README),
   `images/save_the_date.svg`, former gallery photos - unreferenced, archival
 
-#### Remaining
-- [ ] Rewrite the copy in the past tense - hero tagline, "Join Us" blurb
-      (still ends with "Save the date!"), page `<title>`, `og:description`.
-      Needs the couple's own words.
+### Milestone 5: Thank-You Copy ✅
+**Goal:** Say thank you to everyone who came, and stop writing in the future
+tense about an event that already happened.
+
+#### Completed (2026-09-25)
+- [x] Removed the "Join Us" section - it invited people to something that has
+      already taken place
+- [x] Added a `#thanks` section in its place: three paragraphs thanking guests
+      for the flights, the long drives and the days off work, and closing on
+      "your presence was the greatest gift"
+- [x] Renamed `about.*` keys to `thanks.*` and `.about-description` to
+      `.thanks-description`; added a "Thank You" nav link
+- [x] Hero tagline is now "Ten years together, celebrated with you." The
+      `details.subtitle` line was folded into it and the key deleted
+- [x] 2026 timeline card rewritten in the past tense
+- [x] Page `<title>`, `meta description` and `og:description` no longer say
+      "Save the date"
+- [x] Full EN + PT pass; verified all 28 `data-i18n` keys resolve in both
+      tables with no orphans and no fallback drift
+
+### Milestone 6: Event Video and Photos 🚧
+**Goal:** Share the video and photos from the celebration
+
+- [ ] Add a section with video and photos of the event
+- [ ] Consider swapping `og:image` (still `SaveTheDate_Back.jpg`) for a photo
+      from the day
 
 ## Pending Features
 

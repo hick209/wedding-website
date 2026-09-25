@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a static website for Nivaldo & Roberta's 10-year celebration, which took
 place on **September 12, 2026**. The event has passed, so the site is now a
-keepsake page: a hero banner, a short "Join Us" blurb, and the "Our Story"
-photo timeline, with bilingual support (English/Portuguese).
+keepsake page: a hero banner, a thank-you message to the guests, and the
+"Our Story" photo timeline, with bilingual support (English/Portuguese).
 
 It is built on a free HTML5/Bootstrap template from freehtml5.co.
 
@@ -39,6 +39,16 @@ Domain: www.nivaldo-roberta.com
   a `.wip` class: Itinerary (Lorem ipsum) and Gallery (3 placeholder photos)
 - Dropped the now-unused libraries: FlipClock (CDN), Magnific Popup,
   Bootstrap JS (Bootstrap CSS stays for the grid)
+
+**Milestone 5: Thank-you copy** (Complete, 2026-09-25)
+- Rewrote every remaining string in the past tense (EN + PT)
+- Replaced the "Join Us" section with a `#thanks` section addressed to the
+  guests; `about.*` keys became `thanks.*`, `.about-description` became
+  `.thanks-description`
+- Page title and Open Graph description no longer say "Save the date"
+
+**Milestone 6: Event video and photos** (Planned)
+- A section with video and photos from the celebration itself
 
 See `TODO.md` for detailed task breakdown and progress tracking.
 
@@ -114,10 +124,10 @@ ipconfig getifaddr en0
 ## Key Features & Architecture
 
 ### Page Structure
-Only three content blocks remain, in order: the `<header id="header">` hero
-(names, tagline, date, venue link), `<div id="about">` ("Join Us" copy), and
-`<div id="story">` (the timeline). The nav has two entries: "Our Story" and the
-language toggle.
+Three content blocks, in order: the `<header id="header">` hero (names,
+tagline, date, venue link), `<div id="thanks">` (the thank-you message), and
+`<div id="story">` (the timeline). The nav has three entries: "Thank You",
+"Our Story" and the language toggle.
 
 ### Internationalization (i18n)
 - Translation system in `js/translations.js` with English/Portuguese support
@@ -147,8 +157,8 @@ language toggle.
 ## Important Files to Know
 
 ### `index.html`
-- Meta tags, Open Graph tags for social sharing (still say "Save the date")
-- Nav, hero header, "Join Us" section, "Our Story" timeline, footer
+- Meta tags, Open Graph tags for social sharing
+- Nav, hero header, "Thank You" section, "Our Story" timeline, footer
 
 ### `js/main.js`
 - `contentWayPoint()`: Scroll-triggered animations
@@ -202,12 +212,10 @@ sed -i '' 's/?v=[0-9-]*"/?v=20260926"/g' index.html
 
 ## Pending Work
 
-See `TODO.md`.
+See `TODO.md`. Next up is a section with video and photos from the celebration.
 
-The remaining copy is still written in the future tense ("We're hosting...",
-"Save the date!", the `og:description`, the page title, the countdown-era hero
-tagline). Rewriting it in the past tense is the obvious next step and needs the
-couple's own words.
+The `og:image` is still `images/SaveTheDate_Back.jpg`. Once there are photos
+from the event, one of those would make a better link preview.
 
 ## Browser Compatibility Notes
 - IE 9+ support (conditional comments in HTML)

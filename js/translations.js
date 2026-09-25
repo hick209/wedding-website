@@ -3,12 +3,14 @@ const translations = {
     "tab.language": "🇺🇸 English",
     "landing.date": "2026.Sep.12",
     "landing.location": "Recanto da Paz | Brazil, São Paulo, Atibaia",
-    "details.title": "We're celebrating 10 years together,",
-    "details.subtitle": "a decade of love, laughter and adventure!",
-    "about.title": "Join Us",
-    "about.description": "We're hosting an intimate celebration at Recanto da Paz, exclusively reserved for our wedding. Guests staying at the venue will enjoy a 3-day weekend of festivities (Sept 11-13). If you can't join us for the full weekend, we'd love to see you at the ceremony on September 12th at 4:30 PM. Save the date!",
-    "about.story": "After 10 years of adventures – moving countries, building our home, and welcoming our two boys – we're finally celebrating our love with everyone who matters most.",
-    "about.noGifts": "Your presence is our present – no gifts needed, just you!",
+    "details.title": "Ten years together, celebrated with you.",
+
+    // Thank You Section
+    "tab.thanks": "Thank You",
+    "thanks.title": "Thank You",
+    "thanks.inPerson": "On September 12th we stood in front of the people who have shaped our ten years together and said thank you in person. This is us saying it again.",
+    "thanks.travel": "Thank you for the flights, the long drives and the days taken off work. Thank you to everyone who stayed the whole weekend, and to everyone who came just for the ceremony – you all made Recanto da Paz feel like home.",
+    "thanks.gift": "After 10 years of adventures – moving countries, building our home, and welcoming Levy and Leo – we got to celebrate with everyone who matters most. Your presence was the greatest gift we could have asked for.",
 
     // Our Story Section
     "tab.story": "Our Story",
@@ -29,18 +31,20 @@ const translations = {
     "story.2023.title": "Welcome Leo",
     "story.2023.description": "Just when we thought our hearts were full, Leo came along and proved there's always room for more love. Our little family was now complete - two boys, endless energy, and twice the joy (and trouble 😅)",
     "story.2026.title": "Celebrating 10 Years",
-    "story.2026.description": "Ten years of love, adventures, trips, and two amazing boys - time to celebrate with everyone we love. We hope to see you there!",
+    "story.2026.description": "Ten years of love, adventures, trips, and two amazing boys - celebrated with everyone we love. Thank you for being there with us.",
   },
   pt: {
     "tab.language": "🇧🇷 Português",
     "landing.date": "2026.Set.12",
     "landing.location": "Recanto da Paz | São Paulo, Atibaia",
-    "details.title": "Estamos celebrando 10 anos juntos,",
-    "details.subtitle": "uma decada de amor, risadas e aventuras!",
-    "about.title": "Junte-se a Nós",
-    "about.description": "Estamos organizando uma celebração intimista no Recanto da Paz, reservado exclusivamente para nosso casamento. Os hóspedes do local aproveitarão um fim de semana de 3 dias de festividades (11-13 de Set). Se você não puder participar do fim de semana inteiro, adoraríamos te ver na cerimônia no dia 12 de setembro às 16h30. Reserve a data!",
-    "about.story": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo nossos dois filhos – finalmente estamos celebrando nosso amor com todos que mais importam.",
-    "about.noGifts": "Sua presença é o nosso presente – não precisamos de presentes, apenas de vocês!",
+    "details.title": "Dez anos juntos, celebrados com vocês.",
+
+    // Obrigado
+    "tab.thanks": "Obrigado",
+    "thanks.title": "Muito Obrigado",
+    "thanks.inPerson": "No dia 12 de setembro, olhamos para as pessoas que construíram conosco esses dez anos e agradecemos pessoalmente. Aqui estamos dizendo de novo.",
+    "thanks.travel": "Obrigado pelos voos, pelas viagens longas de carro e pelos dias de folga tirados do trabalho. Obrigado a quem ficou o fim de semana inteiro e a quem veio só para a cerimônia – vocês fizeram do Recanto da Paz a nossa casa.",
+    "thanks.gift": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo o Levy e o Leo – pudemos celebrar com todos que mais importam. A presença de vocês foi o maior presente que poderíamos pedir.",
 
     // Nossa História
     "tab.story": "Nossa História",
@@ -61,7 +65,7 @@ const translations = {
     "story.2023.title": "Bem-vindo Leo",
     "story.2023.description": "Quando pensávamos que nossos corações estavam cheios, Leo chegou e provou que sempre há espaço para mais amor. Nossa pequena família estava agora completa - dois meninos, energia infinita e o dobro de alegria (e trabalho 😅)",
     "story.2026.title": "Celebrando 10 Anos",
-    "story.2026.description": "Dez anos de amor, aventuras, viagens e dois meninos incríveis - hora de celebrar com todos que amamos. Esperamos ver vocês lá!",
+    "story.2026.description": "Dez anos de amor, aventuras, viagens e dois meninos incríveis - celebrados com todos que amamos. Obrigado por estarem lá com a gente.",
   },
 };
 

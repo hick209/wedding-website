@@ -308,14 +308,14 @@ h1, h2, h3, h4, h5, h6, figure {
   color: rgba(0, 0, 0, 0.4);
 }
 
-.fh5co-heading .about-description {
+.fh5co-heading .thanks-description {
   font-size: 20px;
   line-height: 1.8;
   margin: 38px auto 0 auto;
   font-weight: 300;
 }
 @media screen and (max-width: 768px) {
-  .fh5co-heading .about-description {
+  .fh5co-heading .thanks-description {
     font-size: 18px;
   }
 }
