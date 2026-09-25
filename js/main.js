@@ -1,13 +1,20 @@
 ;(function () {
   'use strict';
 
+  // One way to close the mobile menu. body.offcanvas is what the CSS keys on;
+  // overflow tags along because burgerMenu has always set the two together.
+  const closeOffcanvas = () => {
+    $('body').removeClass('overflow offcanvas');
+    $('.js-fh5co-nav-toggle').removeClass('active');
+  };
+
+
   let mobileMenuOutsideClick = () => {
     $(document).click((e) => {
       let container = $("#fh5co-offcanvas, .js-fh5co-nav-toggle");
       if (!container.is(e.target) && container.has(e.target).length === 0) {
         if ( $('body').hasClass('offcanvas') ) {
-          $('body').removeClass('offcanvas');
-          $('.js-fh5co-nav-toggle').removeClass('active');
+          closeOffcanvas();
         }
       }
     });
@@ -22,10 +29,31 @@
     $('#fh5co-offcanvas').append(clone1);
     $('#fh5co-offcanvas').append(clone2);
 
+    // A link inside the menu never reached mobileMenuOutsideClick, since that
+    // only fires for clicks outside #fh5co-offcanvas. So the menu stayed open,
+    // body.offcanvas kept #page at position:absolute/overflow:hidden on top of
+    // height:100%, the document stayed collapsed to a single viewport, and the
+    // anchor jump went nowhere. The next click anywhere then removed the class,
+    // restored the real page height and snapped the scroll back.
+    $('body').on('click', '#fh5co-offcanvas a[href^="#"]', function (event) {
+      const hash = $(this).attr('href');
+
+      closeOffcanvas();
+
+      // The bare "#" of the toggle link, or a target that is not on the page
+      if (!hash || hash.length < 2) return;
+      const $target = $(hash);
+      if (!$target.length) return;
+
+      // Measured after closing, so offset() sees the restored layout rather
+      // than the collapsed one
+      event.preventDefault();
+      $('html, body').animate({ scrollTop: $target.offset().top }, 700, 'easeInOutExpo');
+    });
+
     $(window).resize(() => {
       if ( $('body').hasClass('offcanvas') ) {
-        $('body').removeClass('offcanvas');
-        $('.js-fh5co-nav-toggle').removeClass('active');
+        closeOffcanvas();
       }
     });
   };
@@ -33,15 +61,18 @@
 
   let burgerMenu = () => {
     $('body').on('click', '.js-fh5co-nav-toggle', function(event) {
-      let $this = $(this);
+      event.preventDefault();
 
-      if ( $('body').hasClass('overflow offcanvas') ) {
-        $('body').removeClass('overflow offcanvas');
+      // Was hasClass('overflow offcanvas'), which jQuery treats as a substring
+      // match on the class attribute - it only held while those two classes
+      // stayed adjacent and in that order. Anything inserting a class between
+      // them would have left the burger unable to close its own menu.
+      if ($('body').hasClass('offcanvas')) {
+        closeOffcanvas();
       } else {
         $('body').addClass('overflow offcanvas');
+        $(this).addClass('active');
       }
-      $this.toggleClass('active');
-      event.preventDefault();
     });
   };
 
