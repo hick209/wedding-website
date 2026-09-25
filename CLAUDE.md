@@ -309,9 +309,13 @@ sed -i '' 's/?v=[0-9-]*"/?v=20260926"/g' index.html
 
 See `TODO.md`. Next up is a section with video and photos from the celebration.
 
-The `og:image` is `images/og-family-2026.jpg` - the four of them walking out
-after the ceremony, cropped from a 4K frame of the teaser to 1200x630. When
-replacing it, **change the filename too**: Facebook and WhatsApp cache
+The `og:image` is `images/og-petals-2026.jpg` - the two of them laughing under
+a shower of petals on the way out of the ceremony, cropped from a 4K frame to
+1200x630. Two things that make it work as a thumbnail: both faces are visible
+and readable at preview size, and the frame has enough headroom that 1.91:1
+comes entirely off the top, so nothing is clipped and no padding is needed.
+
+When replacing it, **change the filename too**: Facebook and WhatsApp cache
 `og:image` by URL, so overwriting the file leaves everyone who already shared
 the link seeing the old art.
 

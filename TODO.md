@@ -160,10 +160,13 @@ tense about an event that already happened.
 #### Remaining
 - [ ] Swap in the real photos when the photographer delivers, and replace the
       placeholder card
-- [x] `og:image` swapped from the save-the-date art to `og-family-2026.jpg` -
-      the four of them walking out after the ceremony, cropped 1200x630 from a
-      4K frame of the teaser. Also added `og:image:alt` and
-      `twitter:card=summary_large_image`
+- [x] `og:image` swapped from the save-the-date art to `og-petals-2026.jpg` -
+      the two of them laughing under a shower of petals, cropped 1200x630 from
+      a 4K frame. Also added `og:image:alt` and
+      `twitter:card=summary_large_image`.
+      A family-of-four frame was tried first (`og-family-2026.jpg`, removed in
+      the following commit): it needed blurred side padding to reach 1.91:1
+      without clipping anyone, and neither face was readable at preview size
 - [ ] **Re-scrape the link preview** once deployed, or shares will keep showing
       the old save-the-date image from cache:
       https://developers.facebook.com/tools/debug/ -> "Scrape Again".
