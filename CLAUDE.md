@@ -154,11 +154,23 @@ players looked like a file dump and cost four times the bandwidth.
 
 The teaser is also the source of the hero loop.
 
-**Known broken:** `initVideoPicker()` also tries to pause the player when it
-scrolls out of view and resume it on the way back, over postMessage with
-`enablejsapi=1`. The player never answers the `listening` handshake, so this
-never fires - see TODO.md for the suspected cause. The picker itself works;
-only the scroll behaviour is dead.
+**Scroll pause/resume:** `initVideoPicker()` pauses the player when it scrolls
+out of view and resumes it on the way back, but only resumes what it paused -
+a manual pause is never overridden. It needs to know whether the player is
+playing, which means the **IFrame Player API**, not raw postMessage: the
+undocumented `{"event":"listening"}` handshake went unanswered, state never
+arrived, and the whole thing was dead code for a while. Details that matter:
+
+- The API script is fetched lazily, 400px before the section enters view, so
+  visitors who never scroll that far never pay for it
+- `YT.Player` attaches to the iframe **already in the markup** rather than
+  creating one. That keeps the player working with JS disabled, and requires
+  `enablejsapi=1` on the src plus `id="video-player"` on the iframe - do not
+  remove either
+- `host: 'https://www.youtube-nocookie.com'` keeps the player on the
+  no-cookie origin even though the API script itself comes from youtube.com
+- Pills call `loadVideoById()` when the API is up, and fall back to rewriting
+  `src` if someone clicks before it lands
 
 **Trap:** the eight `video.<key>.title` / `video.<key>.description` keys are
 applied at runtime by `initVideoPicker()` in `js/main.js`, so they never appear

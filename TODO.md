@@ -143,19 +143,19 @@ tense about an event that already happened.
       into the teaser, 1280x720, no audio track, 1.7MB. Fixed to the viewport
       so the page scrolls over it; Stellar parallax removed
 
-#### Known Broken
-- [ ] **Scroll pause/resume on the videos-section player does not work.**
-      `initVideoPicker()` in `js/main.js` sends `listening` / `pauseVideo` /
-      `playVideo` to the embed over postMessage with `enablejsapi=1`, and the
-      player never answers - so `isPlaying` stays false and nothing fires.
-      Harmless (the player itself works; it just never auto-pauses), but it is
-      dead code until fixed.
-      Prime suspect: YouTube's postMessage protocol wants `id` and `channel`
-      fields, i.e. `{"event":"listening","id":1,"channel":"widget"}` rather
-      than the bare `{"event":"listening"}` being sent now. Second candidate:
-      `enablejsapi=1` needs an `origin=<page origin>` parameter alongside it.
-      Cannot be tested over `file://` - needs a real origin, so use
-      `python -m http.server`.
+#### Scroll Pause/Resume - Reimplemented, Needs Testing
+- [x] First attempt used raw postMessage and never worked: the undocumented
+      `{"event":"listening"}` handshake went unanswered, so `isPlaying` stayed
+      false and `pauseVideo` was never even sent
+- [x] Rewritten on YouTube's supported **IFrame Player API**, which reports
+      state through `onStateChange`. Attached to the existing iframe rather
+      than creating one, so the player still works with JS off. API script
+      loads lazily, 400px before the section comes into view
+- [ ] **Verify in a browser** - served over `python -m http.server`, not
+      `file://`, which has no usable origin. Check: play the short film,
+      scroll to Our Story, audio should stop; scroll back, it should resume.
+      Then pause it by hand, scroll away and back - it should stay paused.
+      Also check the pills still switch cuts and autoplay
 
 #### Remaining
 - [ ] Swap in the real photos when the photographer delivers, and replace the
