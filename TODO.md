@@ -261,7 +261,9 @@ the 2018 timeline card.
 - ❌ Add more venue information - dropped, venue section removed in Milestone 4
 - ❌ Add more photos to gallery section - dropped, gallery removed in Milestone 4
 - ❌ Add venue video - dropped, see Pending Features #1
-- [ ] Add social media sharing buttons
+- ❌ Add social media sharing buttons - dropped. It was written when the job was
+      spreading a save-the-date link. Sharing now works through Open Graph, and
+      the audience is people who were already there
 - [x] **"Our Story" section** - Photo-centric vertical timeline telling the couple's journey (see Milestone 3)
 
 ### Technical Improvements
@@ -275,9 +277,12 @@ the 2018 timeline card.
   - Resized to 800px width for retina displays
   - Original backups in `images/story/originals/` (gitignored)
 - [x] **Clean section IDs** - Removed 'fh5co-' prefix for cleaner URLs (#venue instead of #fh5co-venue)
-- [ ] Add loading states/animations
+- ❌ Add loading states/animations - dropped. Four sections of largely static
+      content; the story carousels, the video embeds and the YouTube API all
+      load lazily already
 - [x] **Lazy loading images** - Intersection Observer defers story carousel images until near viewport
-- [ ] Consider modern CSS framework migration
+- ❌ Consider modern CSS framework migration - dropped. A rewrite of a working
+      site, worth it only to keep building on it, and the site is finished
 
 ## Reference Resources
 
