@@ -294,6 +294,18 @@ For a second deploy on the same day, append `-2`, `-3`, etc.
 sed -i '' 's/?v=[0-9-]*"/?v=20260926"/g' index.html
 ```
 
+### Re-scraping the Link Preview
+Cache busting does not reach the social scrapers. After any deploy that
+changes `og:image` or the other Open Graph tags, re-scrape or existing shares
+keep serving the old card from cache:
+
+https://developers.facebook.com/tools/debug/ -> paste the URL -> "Scrape Again"
+
+That covers Facebook and WhatsApp. **Google Chat has no equivalent tool** - its
+cache expires on its own, usually within a day. To force a fresh fetch sooner,
+share a URL with a query string (`?lang=en` works and behaves identically),
+which is a different cache key.
+
 ### Adding/Changing Images
 - Place images in `/images/` directory
 - Story photos go in `/images/story/` using `YYYY-N.jpg` naming, 800px wide

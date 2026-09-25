@@ -174,9 +174,6 @@ tense about an event that already happened.
       preview. The long-standing note claiming anything above 300px breaks in
       WhatsApp was wrong - the constraint is file size (~600KB), not
       dimensions. Do not reintroduce a tiny og:image on that basis
-- [ ] **Re-scrape the link preview** after each deploy that changes it, or
-      existing shares keep showing the cached image:
-      https://developers.facebook.com/tools/debug/ -> "Scrape Again"
 
 #### Hero Loop - Decisions Made
 - **Source clip:** 14 seconds starting at 16:5 into the teaser
