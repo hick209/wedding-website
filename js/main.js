@@ -194,6 +194,25 @@
   };
 
 
+  // The hero's scroll cue: smooth-scrolls like the rest of the page, and gets
+  // out of the way the moment the visitor starts scrolling on their own.
+  const heroScrollCue = () => {
+    const $cue = $('.js-hero-scroll');
+    const $target = $('#thanks');
+    if (!$cue.length) return;
+
+    $cue.on('click', (event) => {
+      if (!$target.length) return;
+      event.preventDefault();
+      $('html, body').animate({ scrollTop: $target.offset().top }, 700, 'easeInOutExpo');
+    });
+
+    const toggleCue = () => $cue.toggleClass('is-hidden', $(window).scrollTop() > 80);
+    $(window).scroll(toggleCue);
+    toggleCue();
+  };
+
+
   // One player, four cuts. The pills swap the iframe src so only the video the
   // visitor actually picks gets loaded.
   const initVideoPicker = () => {
@@ -327,6 +346,7 @@
     loaderPage();
     initTimelineCarousels();
     heroVideo();
+    heroScrollCue();
     initVideoPicker();
   });
 

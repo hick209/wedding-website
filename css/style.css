@@ -154,6 +154,20 @@ h1, h2, h3, h4, h5, h6, figure {
   background-position: top center;
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 110px 0 175px;
+}
+@media screen and (max-width: 768px) {
+  .fh5co-cover {
+    padding: 90px 0 165px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fh5co-cover {
+    padding-bottom: 175px;
+  }
 }
 .fh5co-cover .container {
   padding-left: 15px;
@@ -195,94 +209,128 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-cover .subheader {
   color: white;
-  margin: 24px 0 0 0;
+  margin: 48px 0 0 0;
   font-family: cursive; /* TODO see if this is a good enough font */
   font-size: 26px;
 }
 @media screen and (max-width: 768px) {
   .fh5co-cover .subheader {
     font-size: 22px;
+    margin-top: 36px;
   }
 }
 @media screen and (max-width: 480px) {
   .fh5co-cover .subheader {
     font-size: 18px;
+    margin-top: 28px;
   }
 }
-.fh5co-cover > .fh5co-container {
-  position: relative;
-  z-index: 10;
-}
-.fh5co-cover .display-t,
-.fh5co-cover .display-tc {
-  height: 100%;
-  width: 100%;
-  display: table;
-}
 
-.fh5co-cover .display-tc {
-  display: table-cell !important;
-  vertical-align: middle;
-  padding-top: 130px;
-}
-.fh5co-cover .display-tc h1,
-.fh5co-cover .display-tc h2 {
+.fh5co-cover .hero-content h1,
+.fh5co-cover .hero-content h2 {
   margin: 0;
   padding: 0;
   color: white;
 }
-.fh5co-cover .display-tc h1 {
-  margin-bottom: 0px;
+.fh5co-cover .hero-content h1 {
   font-size: 65px;
-  line-height: 1.5;
+  line-height: 1.3;
   font-family: "Amsterdam", Arial, serif;
 }
 @media screen and (max-width: 768px) {
-  .fh5co-cover .display-tc h1 {
+  .fh5co-cover .hero-content h1 {
     font-size: 40px;
   }
 }
 @media screen and (max-width: 480px) {
-  .fh5co-cover .display-tc h1 {
+  .fh5co-cover .hero-content h1 {
     font-size: 30px;
   }
 }
-.fh5co-cover .display-tc h2 {
-  font-size: 20px;
-  line-height: 1.5;
-  margin-top: 20px;
-  font-family: Engagement;
+.fh5co-cover .hero-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  z-index: 2;
+  text-align: center;
 }
 @media screen and (max-width: 480px) {
-  .fh5co-cover .display-tc h2 {
-    font-size: 16px;
+  .fh5co-cover .hero-foot {
+    bottom: 20px;
   }
 }
-.fh5co-cover .display-tc h2 a {
+.fh5co-cover .hero-meta {
+  margin: 0;
   color: white;
+  font-family: Engagement;
+  font-size: 18px;
+  line-height: 1.5;
 }
-.fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
-  font-size: 40px;
+.fh5co-cover .hero-meta span[data-i18n="landing.date"] {
+  display: block;
+  font-size: 26px;
   font-weight: bold;
   letter-spacing: 2px;
 }
-@media screen and (max-width: 992px) {
-  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
-    font-size: 35px;
+@media screen and (max-width: 768px) {
+  .fh5co-cover .hero-meta span[data-i18n="landing.date"] {
+    font-size: 23px;
   }
 }
-@media screen and (max-width: 768px) {
-  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
-    font-size: 30px;
-  }
+.fh5co-cover .hero-meta a {
+  display: inline-block;
+  margin-top: 8px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+.fh5co-cover .hero-meta a:hover, .fh5co-cover .hero-meta a:focus {
+  border-bottom-color: white;
 }
 @media screen and (max-width: 480px) {
-  .fh5co-cover .display-tc h2 span[data-i18n="landing.date"] {
-    font-size: 28px;
-    letter-spacing: 1px;
+  .fh5co-cover .hero-meta {
+    font-size: 16px;
+  }
+}
+.fh5co-cover .hero-scroll {
+  display: inline-block;
+  width: 44px;
+  height: 30px;
+  margin-top: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: white;
+  opacity: 0.75;
+  animation: hero-bob 2.4s ease-in-out infinite;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+}
+.fh5co-cover .hero-scroll i {
+  font-size: 22px;
+}
+.fh5co-cover .hero-scroll:hover, .fh5co-cover .hero-scroll:focus {
+  color: white;
+  opacity: 1;
+}
+.fh5co-cover .hero-scroll.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fh5co-cover .hero-scroll {
+    animation: none;
   }
 }
 
+@keyframes hero-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
 .fh5co-section {
   padding: 7em 0;
   clear: both;

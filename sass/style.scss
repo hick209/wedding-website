@@ -239,6 +239,28 @@ h1, h2, h3, h4, h5, h6, figure {
   position: relative;
   width: 100%;
 
+  // Centres the hero block in the viewport. Column direction on purpose:
+  // in a row, flex-grow would stretch Bootstrap's fixed-width .container,
+  // and flex-basis auto would shrink-wrap it below 768px where the container
+  // has no width of its own. Down the column axis it keeps both behaviours.
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // Top padding clears the absolutely positioned nav, so "centred" lands
+  // optically centred rather than tucked under the menu. Bottom padding
+  // reserves room for .hero-foot, which is absolute and would otherwise
+  // collide with the centred block on short viewports.
+  padding: 110px 0 175px;
+
+  @media screen and (max-width: $screen-sm) {
+    padding: 90px 0 165px;
+  }
+
+  // Venue can wrap to a second line here, so the foot is taller again
+  @media screen and (max-width: $screen-xs) {
+    padding-bottom: 175px;
+  }
+
   .container {
     padding-left: 15px;
     padding-right: 15px;
@@ -285,45 +307,35 @@ h1, h2, h3, h4, h5, h6, figure {
 
   .subheader {
     color: $brand-white;
-    margin: 24px 0 0 0;
+    // Was 24px back when a <br> sat between this and the name
+    margin: 48px 0 0 0;
     font-family: cursive; /* TODO see if this is a good enough font */
     font-size: 26px;
     @media screen and (max-width: $screen-sm) {
       font-size: 22px;
+      margin-top: 36px;
     }
     @media screen and (max-width: $screen-xs) {
       font-size: 18px;
+      margin-top: 28px;
     }
   }
 
-  > .fh5co-container {
-    position: relative;
-    z-index: 10;
-  }
-  .display-t,
-  .display-tc {
-    height: 100%;
-    width: 100%;
-    display: table;
-  }
 }
 
 
 .fh5co-cover {
-  .display-tc {
-    display: table-cell!important;
-    vertical-align: middle;
-    padding-top: 130px;
+  .hero-content {
     h1,
     h2 {
       margin: 0;
       padding: 0;
       color: $brand-white;
     }
+
     h1 {
-      margin-bottom: 0px;
       font-size: 65px;
-      line-height: 1.5;
+      line-height: 1.3;
       font-family: $font-secondary;
       @media screen and (max-width: $screen-sm) {
         font-size: 40px;
@@ -332,36 +344,102 @@ h1, h2, h3, h4, h5, h6, figure {
         font-size: 30px;
       }
     }
-    h2 {
-      font-size: 20px;
-      line-height: 1.5;
-      margin-top: 20px;
-      font-family: Engagement;
-      @media screen and (max-width: $screen-xs) {
-        font-size: 16px;
-      }
-      a {
-        color: $brand-white;
-      }
+  }
 
-      // Make date more prominent
-      span[data-i18n="landing.date"] {
-        font-size: 40px;
-        font-weight: bold;
-        letter-spacing: 2px;
+  // When and where, anchored to the foot of the hero with the scroll cue.
+  // Absolute rather than a flex item so it cannot pull the centred block
+  // off centre.
+  .hero-foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index: 2;
+    text-align: center;
 
-        @media screen and (max-width: $screen-md) {
-          font-size: 35px;
-        }
-        @media screen and (max-width: $screen-sm) {
-          font-size: 30px;
-        }
-        @media screen and (max-width: $screen-xs) {
-          font-size: 28px;
-          letter-spacing: 1px;
-        }
+    @media screen and (max-width: $screen-xs) {
+      bottom: 20px;
+    }
+  }
+
+  .hero-meta {
+    margin: 0;
+    color: $brand-white;
+    font-family: Engagement;
+    font-size: 18px;
+    line-height: 1.5;
+
+    // Date on its own line, venue stacked beneath it
+    span[data-i18n="landing.date"] {
+      display: block;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      @media screen and (max-width: $screen-sm) {
+        font-size: 23px;
       }
     }
+
+    a {
+      // inline-block, not block: keeps the underline hugging the text rather
+      // than stretching the full width of the hero
+      display: inline-block;
+      margin-top: 8px;
+      color: $brand-white;
+      border-bottom: 1px solid rgba($brand-white, .35);
+      &:hover,
+      &:focus {
+        border-bottom-color: $brand-white;
+      }
+    }
+
+    @media screen and (max-width: $screen-xs) {
+      font-size: 16px;
+    }
+  }
+
+  // Invitation to scroll. Four sections sit below the fold now.
+  .hero-scroll {
+    display: inline-block;
+    width: 44px;
+    height: 30px;
+    margin-top: 26px;
+    line-height: 30px;
+    text-align: center;
+    color: $brand-white;
+    opacity: .75;
+    animation: hero-bob 2.4s ease-in-out infinite;
+    @include transition(.4s);
+
+    i {
+      font-size: 22px;
+    }
+
+    &:hover,
+    &:focus {
+      color: $brand-white;
+      opacity: 1;
+    }
+
+    // main.js adds this as soon as the visitor starts scrolling
+    &.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
   }
 }
 
