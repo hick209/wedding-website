@@ -77,30 +77,42 @@ This document tracks pending tasks and future improvements for the wedding websi
 #### Remaining Steps (Manual)
 - [ ] Replace placeholder images with actual photos
 
+### Milestone 4: Post-Event Cleanup ✅
+**Goal:** The celebration happened on 2026-09-12. Strip everything that only
+made sense beforehand and delete the two sections that were never finished.
+
+#### Completed (2026-09-25)
+- [x] Removed the countdown clock (markup, `js/clock.js`, FlipClock CDN CSS/JS,
+      ~320 lines of responsive clock SCSS, `date.*` translation keys)
+- [x] Removed "Save the date" (hero image + button, `.ics` download wiring in
+      `main.js`, `#dialog-cal`, `createGoogleCalendarLink()`, `dialog.*` keys)
+- [x] Removed RSVP (nav link, hero button, `#dialog-rsvp`, `js/rsvp.js`,
+      dialog SCSS, all `rsvp.*` keys)
+- [x] Removed the Venue map, FAQ and Travel & Stay sections with their SCSS and
+      translation keys
+- [x] Deleted the never-shipped `.wip` sections: Itinerary (Lorem ipsum) and
+      Gallery (3 placeholder photos), plus the `.wip` helper class
+- [x] Dropped libraries left with no callers: Magnific Popup (CSS + JS +
+      options) and Bootstrap JS; Bootstrap CSS stays for the grid
+- [x] Recompiled `css/style.css` (-862 lines) and bumped cache-busting to
+      `?v=20260925`
+- [x] Updated CLAUDE.md to describe the post-event site
+
+#### Deliberately Kept
+- `save-the-date.ics`, `apps-script/` (RSVP backend + its README),
+  `images/save_the_date.svg`, former gallery photos - unreferenced, archival
+
+#### Remaining
+- [ ] Rewrite the copy in the past tense - hero tagline, "Join Us" blurb
+      (still ends with "Save the date!"), page `<title>`, `og:description`.
+      Needs the couple's own words.
+
 ## Pending Features
 
 ### 1. Video Popup Configuration
-**Location:** `index.html:270-276` (Highlights section)
-**Status:** ✅ Updated to remove video (Milestone 1 requirement)
-**Priority:** Low (Optional enhancement)
-
-**Current State:**
-- Video popup UI exists with placeholder background image
-- Link currently points to `#` (non-functional)
-- Uses Magnific Popup library with `popup-vimeo` class
-
-**What Needs to be Done (if adding video later):**
-1. Upload wedding highlight video to Vimeo or YouTube
-2. Replace `href="#"` with actual video URL
-3. Test popup functionality
-4. Optional: Update background image
-
-**Example:**
-```html
-<a href="https://vimeo.com/123456789" class="popup-vimeo"><i class="icon-video2"></i></a>
-```
-
-**Alternative:** Consider using venue video from Instagram ([example](https://www.instagram.com/p/DK2O9RcgGdO/))
+**Status:** ❌ Dropped in Milestone 4 - the popup markup and Magnific Popup
+itself are gone. The only video on the site is the YouTube proposal embed in
+the 2018 timeline card.
 
 ### 2. Event Information / Context
 **Status:** ✅ Completed
@@ -158,9 +170,9 @@ This document tracks pending tasks and future improvements for the wedding websi
 - [x] Improve CSS for landscape orientation on mobile (partially addressed)
 
 ### Content Enhancements
-- [ ] Add more venue information
-- [ ] Add more photos to gallery section
-- [ ] Add venue video (see [Instagram example](https://www.instagram.com/p/DK2O9RcgGdO/))
+- ❌ Add more venue information - dropped, venue section removed in Milestone 4
+- ❌ Add more photos to gallery section - dropped, gallery removed in Milestone 4
+- ❌ Add venue video - dropped, see Pending Features #1
 - [ ] Add social media sharing buttons
 - [x] **"Our Story" section** - Photo-centric vertical timeline telling the couple's journey (see Milestone 3)
 

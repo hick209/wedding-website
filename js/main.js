@@ -109,22 +109,6 @@
     $(".fh5co-loader").fadeOut("slow");
   };
 
-  // Save to calendar
-  const saveTheDate = () => {
-    const inviteFile = "save-the-date.ics";
-    $(".save-date-btn").attr({
-      "href": inviteFile,
-      "download": inviteFile,
-    });
-
-    // const dialog = document.getElementById("dialog-cal");
-    // const openCalDialog = () => dialog.showModal();
-    // $(".cal-btn").click(() => dialog.close());
-    // $("#save-date-img").click(openCalDialog);
-    // $("#save-date-btn").click(openCalDialog);
-  };
-
-
   // Timeline Carousel with Lazy Loading
   const initTimelineCarousels = () => {
     const carousels = document.querySelectorAll('.timeline-carousel');
@@ -217,7 +201,6 @@
     contentWayPoint();
     goToTop();
     loaderPage();
-    saveTheDate();
     initTimelineCarousels();
   });
 
