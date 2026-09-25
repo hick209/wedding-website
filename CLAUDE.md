@@ -50,7 +50,12 @@ Domain: www.nivaldo-roberta.com
 **Milestone 6: Event video and photos** (In progress)
 - `#video`: the short film featured full-width, with the 18-minute celebration
   cut and the 29-minute full ceremony below it. All embeds are `loading="lazy"`
-- `#photos`: placeholder card - the photos are still with the photographer
+- `#photos`: placeholder card while the professional photos are still with the
+  photographer, plus a CTA linking to the guests' shared Google Photos album.
+  Google Photos **cannot be embedded** - the album API was retired and
+  photos.google.com sends `X-Frame-Options`, so an iframe renders blank. The
+  copy asks guests to add their own photos, which only works while Collaborate
+  is enabled on that album
 - The 42-second teaser (https://youtu.be/Lzh4KVrDsoE) is deliberately not
   embedded; it is held back for a possible muted hero loop
 

@@ -29,6 +29,8 @@ const translations = {
     "tab.photos": "Photos",
     "photos.title": "Photos",
     "photos.pending": "The photos are still with our photographer. We'll put them here as soon as they reach us.",
+    "photos.contribute": "Until then, here is what you all captured. If you have photos you have not shared yet, please add them — we would love to see the day through your eyes.",
+    "photos.album": "See and add photos",
 
     // Our Story Section
     "tab.story": "Our Story",
@@ -81,6 +83,8 @@ const translations = {
     "tab.photos": "Fotos",
     "photos.title": "Fotos",
     "photos.pending": "As fotos ainda estão com o nosso fotógrafo. Vamos colocá-las aqui assim que chegarem.",
+    "photos.contribute": "Enquanto isso, aqui está o que vocês registraram. Se você tem fotos que ainda não compartilhou, adicione ao álbum — adoraríamos ver o dia pelo olhar de vocês.",
+    "photos.album": "Ver e adicionar fotos",
 
     // Nossa História
     "tab.story": "Nossa História",

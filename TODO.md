@@ -158,8 +158,13 @@ tense about an event that already happened.
       Also check the pills still switch cuts and autoplay
 
 #### Remaining
+- [x] Guest album linked from the photos card, with copy asking people to add
+      their own. Depends on **Collaborate being on** for that Google Photos
+      album - confirmed on 2026-09-25. If it is ever switched off, reword
+      `photos.contribute`, which currently asks people to contribute directly
 - [ ] Swap in the real photos when the photographer delivers, and replace the
-      placeholder card
+      placeholder card (keep the album link - it is where the guest photos
+      live, and people are still adding to it)
 - [x] `og:image` swapped from the save-the-date art to `og-petals-2026.jpg` -
       the two of them laughing under a shower of petals, cropped 1200x630 from
       a 4K frame. Also added `og:image:alt` and

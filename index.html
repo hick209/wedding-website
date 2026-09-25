@@ -55,10 +55,10 @@
   <!-- Icomoon Icon Fonts-->
   <link rel="stylesheet" href="css/icomoon.css">
   <!-- Bootstrap  -->
-  <link rel="stylesheet" href="css/bootstrap.css?v=20260925-12">
+  <link rel="stylesheet" href="css/bootstrap.css?v=20260925-16">
 
   <!-- Theme style  -->
-  <link rel="stylesheet" href="css/style.css?v=20260925-12">
+  <link rel="stylesheet" href="css/style.css?v=20260925-16">
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
@@ -233,6 +233,34 @@
             <div class="photos-pending">
               <i class="icon-camera"></i>
               <p data-i18n="photos.pending">The photos are still with our photographer. We'll put them here as soon as they reach us.</p>
+              <!--
+                Google Photos cannot be embedded - the album API was retired and
+                photos.google.com sends X-Frame-Options, so an iframe renders
+                blank. Linking out is the only option that does not depend on
+                scraping URLs that expire.
+              -->
+              <!--
+                The invitation to contribute only works if the album has
+                collaboration enabled in Google Photos. If that ever gets turned
+                off, reword photos.contribute or it asks for something
+                impossible.
+
+                data-i18n sits on the inner span, not on the anchor itself:
+                applyTranslations sets textContent, which would wipe the icon
+                out of the button.
+              -->
+              <div class="photos-cta">
+                <p data-i18n="photos.contribute">Until then, here is what you all captured. If you have photos you have not shared yet, please add them — we would love to see the day through your eyes.</p>
+                <a
+                  class="photos-album-btn"
+                  href="https://photos.app.goo.gl/KvgbGQhNtk9Dauny9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="icon-cloud-upload" aria-hidden="true"></i>
+                  <span data-i18n="photos.album">See and add photos</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -517,9 +545,9 @@
   <script src="js/jquery.waypoints.min.js"></script>
 
   <!-- Main -->
-  <script src="js/main.js?v=20260925-12"></script>
+  <script src="js/main.js?v=20260925-16"></script>
   <!-- i18n -->
-  <script src="js/translations.js?v=20260925-12"></script>
+  <script src="js/translations.js?v=20260925-16"></script>
 
   <footer class="fh5co-footer" role="contentinfo">
     <div class="container">
