@@ -167,10 +167,13 @@ tense about an event that already happened.
       A family-of-four frame was tried first (`og-family-2026.jpg`, removed in
       the following commit): it needed blurred side padding to reach 1.91:1
       without clipping anyone, and neither face was readable at preview size
-- [ ] **Re-scrape the link preview** once deployed, or shares will keep showing
-      the old save-the-date image from cache:
-      https://developers.facebook.com/tools/debug/ -> "Scrape Again".
-      Then send yourself the link on WhatsApp to confirm the large preview
+- [x] **WhatsApp confirmed 2026-09-25**: 1200x630 at 132KB renders as a large
+      preview. The long-standing note claiming anything above 300px breaks in
+      WhatsApp was wrong - the constraint is file size (~600KB), not
+      dimensions. Do not reintroduce a tiny og:image on that basis
+- [ ] **Re-scrape the link preview** after each deploy that changes it, or
+      existing shares keep showing the cached image:
+      https://developers.facebook.com/tools/debug/ -> "Scrape Again"
 
 #### Hero Loop - Decisions Made
 - **Source clip:** 14 seconds starting at 16:5 into the teaser
