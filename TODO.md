@@ -75,7 +75,8 @@ This document tracks pending tasks and future improvements for the wedding websi
 8. 2026 - Celebrating 10 Years (brief)
 
 #### Remaining Steps (Manual)
-- [ ] Replace placeholder images with actual photos
+- [x] Replace placeholder images with actual photos - 49 real photos are in
+      `images/story/`, optimised to 800px (~6MB total, originals gitignored)
 
 ### Milestone 4: Post-Event Cleanup ✅
 **Goal:** The celebration happened on 2026-09-12. Strip everything that only
@@ -151,11 +152,8 @@ tense about an event that already happened.
       state through `onStateChange`. Attached to the existing iframe rather
       than creating one, so the player still works with JS off. API script
       loads lazily, 400px before the section comes into view
-- [ ] **Verify in a browser** - served over `python -m http.server`, not
-      `file://`, which has no usable origin. Check: play the short film,
-      scroll to Our Story, audio should stop; scroll back, it should resume.
-      Then pause it by hand, scroll away and back - it should stay paused.
-      Also check the pills still switch cuts and autoplay
+- [x] **Verified in a browser 2026-09-25** - pauses on scroll away, resumes on
+      scroll back, a manual pause survives, and the pills still switch cuts
 
 #### Remaining
 - [x] Guest album linked from the photos card, with copy asking people to add
