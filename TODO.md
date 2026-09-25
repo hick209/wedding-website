@@ -125,9 +125,60 @@ tense about an event that already happened.
 ### Milestone 6: Event Video and Photos 🚧
 **Goal:** Share the video and photos from the celebration
 
-- [ ] Add a section with video and photos of the event
+#### Completed (2026-09-25)
+- [x] `#video` section: one player plus four pills (teaser, short film, longer
+      cut, ceremony). Clicking a pill swaps the iframe `src` and the caption,
+      so only the chosen cut loads. First layout stacked four players, which
+      read as a file dump - replaced
+- [x] Titles and one-line descriptions per cut, EN + PT, applied at runtime
+- [x] All footage is from September 12th only; copy corrected away from
+      "the weekend", including the photos placeholder
+- [x] Page went from 5 YouTube iframes to 2
+- [x] `#photos` section with a placeholder card explaining the photos are still
+      with the photographer
+- [x] Nav links and EN/PT copy for both sections
+- [x] All embeds moved to `youtube-nocookie.com` - no tracking cookies until
+      the visitor presses play
+- [x] **Hero background loop shipped.** `video/hero-loop.mp4`, 14s from 16.5s
+      into the teaser, 1280x720, no audio track, 1.7MB. Fixed to the viewport
+      so the page scrolls over it; Stellar parallax removed
+
+#### Known Broken
+- [ ] **Scroll pause/resume on the videos-section player does not work.**
+      `initVideoPicker()` in `js/main.js` sends `listening` / `pauseVideo` /
+      `playVideo` to the embed over postMessage with `enablejsapi=1`, and the
+      player never answers - so `isPlaying` stays false and nothing fires.
+      Harmless (the player itself works; it just never auto-pauses), but it is
+      dead code until fixed.
+      Prime suspect: YouTube's postMessage protocol wants `id` and `channel`
+      fields, i.e. `{"event":"listening","id":1,"channel":"widget"}` rather
+      than the bare `{"event":"listening"}` being sent now. Second candidate:
+      `enablejsapi=1` needs an `origin=<page origin>` parameter alongside it.
+      Cannot be tested over `file://` - needs a real origin, so use
+      `python -m http.server`.
+
+#### Remaining
+- [ ] Swap in the real photos when the photographer delivers, and replace the
+      placeholder card
 - [ ] Consider swapping `og:image` (still `SaveTheDate_Back.jpg`) for a photo
       from the day
+
+#### Hero Loop - Decisions Made
+- **Source clip:** 14 seconds starting at 16:5 into the teaser
+  (`Roberta e Henrique - InstaFilm.mp4`, 3840x2160, 41.9s). Scale to 1280 wide,
+  drop the audio track, target under ~2MB
+- **Not a YouTube embed:** looping needs the IFrame Player API (`loop=1` also
+  requires `playlist=<id>`), the player carries branding and end-screen
+  overlays, mobile browsers frequently refuse iframe autoplay, and it costs
+  ~1MB of player JS
+- **Parallax dropped.** Stellar cannot drive a `<video>`; the library and its
+  script tag were removed. The fixed-position video is arguably closer to the
+  old effect than a scrolling one would have been
+- **Shown on mobile too**, not hidden - fixed to the viewport so it holds still
+  while content scrolls over it. `heroVideo()` in `js/main.js` pauses it once
+  the header leaves the viewport so it does not decode behind the page
+- `prefers-reduced-motion` hides the video and shows the poster
+- Pick a clip whose first and last frames are close, or the loop seam shows
 
 ## Pending Features
 

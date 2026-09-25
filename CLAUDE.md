@@ -47,8 +47,12 @@ Domain: www.nivaldo-roberta.com
   `.thanks-description`
 - Page title and Open Graph description no longer say "Save the date"
 
-**Milestone 6: Event video and photos** (Planned)
-- A section with video and photos from the celebration itself
+**Milestone 6: Event video and photos** (In progress)
+- `#video`: the short film featured full-width, with the 18-minute celebration
+  cut and the 29-minute full ceremony below it. All embeds are `loading="lazy"`
+- `#photos`: placeholder card - the photos are still with the photographer
+- The 42-second teaser (https://youtu.be/Lzh4KVrDsoE) is deliberately not
+  embedded; it is held back for a possible muted hero loop
 
 See `TODO.md` for detailed task breakdown and progress tracking.
 
@@ -58,7 +62,7 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 - **Styling**: SCSS (compiled to CSS), Bootstrap SASS
 - **Key Libraries**:
   - Waypoints - scroll animations
-  - Stellar.js - parallax effects
+  - (no parallax library - the hero is a fixed-position `<video>`)
   - jQuery Easing - scroll-to-top easing
 
 ## Project Structure
@@ -69,7 +73,7 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 ├── js/
 │   ├── main.js            # Core functionality (menu, animations, carousels)
 │   ├── translations.js    # i18n system for EN/PT
-│   └── [vendor libs]      # jQuery, Waypoints, Stellar, Easing, Modernizr
+│   └── [vendor libs]      # jQuery, Waypoints, Easing, Modernizr
 ├── apps-script/           # Retired RSVP backend, kept as a record
 │   ├── Code.gs            # Google Apps Script that fed the RSVP sheet
 │   └── README.md          # Deployment instructions
@@ -124,10 +128,59 @@ ipconfig getifaddr en0
 ## Key Features & Architecture
 
 ### Page Structure
-Three content blocks, in order: the `<header id="header">` hero (names,
-tagline, date, venue link), `<div id="thanks">` (the thank-you message), and
-`<div id="story">` (the timeline). The nav has three entries: "Thank You",
-"Our Story" and the language toggle.
+Content blocks, in order: the `<header id="header">` hero (names, tagline,
+date, venue link), `<div id="thanks">` (the thank-you message),
+`<div id="video">` (three YouTube cuts of the celebration), `<div id="photos">`
+(placeholder until the photographer delivers), and `<div id="story">` (the
+timeline). The nav mirrors that, plus the language toggle.
+
+### Event Video
+**Everything was filmed on September 12th only** - nothing exists from the
+other two days of the weekend. Do not let copy drift back to "the weekend"
+when describing the videos; the thank-you section legitimately says "weekend"
+because the event was three days, but the footage is not.
+
+The section is **one player plus four pills**. Clicking a pill rewrites the
+single iframe's `src` (adding `autoplay=1`, which the click permits) and swaps
+the caption. Only the cut the visitor picks is ever loaded - four stacked
+players looked like a file dump and cost four times the bandwidth.
+
+| Cut | ID | Real length | Pill / caption |
+|---|---|---|---|
+| Teaser | `PH18aIHQgJc` | 0:42 | Teaser |
+| Short film (default) | `Lzh4KVrDsoE` | 4:12 | 4 min |
+| Longer cut | `T0jS9c1l9b8` | 18:20 | 18 min |
+| Ceremony | `yBclaaoS9Aw` | 28:48 | 29 min |
+
+The teaser is also the source of the hero loop.
+
+**Known broken:** `initVideoPicker()` also tries to pause the player when it
+scrolls out of view and resume it on the way back, over postMessage with
+`enablejsapi=1`. The player never answers the `listening` handshake, so this
+never fires - see TODO.md for the suspected cause. The picker itself works;
+only the scroll behaviour is dead.
+
+**Trap:** the eight `video.<key>.title` / `video.<key>.description` keys are
+applied at runtime by `initVideoPicker()` in `js/main.js`, so they never appear
+as `data-i18n` attributes for the inactive cuts. A script that deletes
+"unused" translation keys by grepping `index.html` will happily delete seven of
+them. `initVideoPicker()` retranslates in place rather than calling
+`applyTranslations()`, which would push a history entry on every click.
+
+**The YouTube titles do not match the content.** The video titled "Teaser" is
+the 4-minute short film, "ShortFilm" is the 18-minute celebration cut, and
+"InstaFilm" is the 42-second teaser. Trust the durations above, not the titles;
+this already caused one round of mislabelled embeds.
+
+Embeds use `youtube-nocookie.com` so no tracking cookies are set until the
+visitor presses play. Keep it that way - a good share of the guest list is in
+the EU and UK.
+
+The videos are unlisted, not private - the IDs are in this page's source and in
+this public repo, so treat them as effectively public.
+
+Durations are plain text, not `data-i18n` keys: "4 min" and "29 min" are
+identical in both languages.
 
 ### Internationalization (i18n)
 - Translation system in `js/translations.js` with English/Portuguese support
@@ -139,11 +192,41 @@ tagline, date, venue link), `<div id="thanks">` (the thank-you message), and
 
 ### Animations & Effects
 - Waypoints trigger fade-in animations on scroll
-- Parallax background using Stellar.js
 - Mobile-responsive menu with offcanvas navigation
 - Smooth scroll-to-top functionality
 - Timeline carousels auto-advance every 3s, pause on hover, and lazy-load their
   images via Intersection Observer
+
+### The Hero Loop
+`.hero-video` is a muted, looping, `playsinline` `<video>` fixed to the
+viewport, so it holds still while the page scrolls and the sections below slide
+over it. This replaced the Stellar parallax, which cannot drive a `<video>`;
+Stellar was removed entirely.
+
+Three things this depends on, all easy to break:
+- **Every section below the hero must be opaque.** `.fh5co-section`,
+  `.fh5co-section-gray` and `.fh5co-footer` carry `position: relative`,
+  `z-index: 2` and a solid `background-color`. The greys are written as opaque
+  hex (`#f5f5f5`, `#fafafa`) rather than `rgba(black, .04)` for exactly this
+  reason - a translucent section lets the video show through as you scroll.
+- **The hero overlay is `position: fixed`, not absolute**, at `z-index: 1`, so
+  it tints the fixed video rather than scrolling away from it.
+- **`poster` is the fallback for everything.** Reduced motion, iOS low power
+  mode, autoplay refusal or a missing file all degrade to the poster image.
+  `js/main.js` `heroVideo()` pauses the video via Intersection Observer once the
+  header scrolls out of view, so it does not decode behind the page.
+
+To regenerate the clip (14s from 16.5s into the teaser, no audio track):
+
+```bash
+ffmpeg -ss 16.5 -i "<teaser source>.mp4" -t 14 -an \
+  -vf "scale=1280:-2" -c:v libx264 -crf 28 -preset slow \
+  -pix_fmt yuv420p -movflags +faststart video/hero-loop.mp4
+```
+
+Keep it under ~2MB - it loads on mobile too. Do not use macOS `avconvert` for
+this: its presets have no bitrate control and produced 11-18MB for the same
+clip.
 
 ### Styling System
 - SCSS variables in `sass/style.scss` define brand colors and fonts

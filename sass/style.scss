@@ -248,14 +248,39 @@ h1, h2, h3, h4, h5, h6, figure {
     }
   }
 
+  // Decorative hero loop. Fixed to the viewport rather than scrolling with
+  // the header, so it holds still while the page moves over it - the sections
+  // below are opaque and cover it as they arrive. Replaces the old Stellar
+  // parallax, which could not drive a <video>.
+  .hero-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100lvh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+
+    // Respect a system-level request for less motion; the poster shows instead
+    @media (prefers-reduced-motion: reduce) {
+      display: none;
+    }
+  }
+
   .overlay {
-    z-index:0;
-    position: absolute;
+    z-index: 1;
+    position: fixed;
     bottom: 0;
     top: 0;
     left: 0;
     right: 0;
     background: rgba(147, 147, 147, .5);
+  }
+
+  > .container {
+    position: relative;
+    z-index: 2;
   }
 
   .subheader {
@@ -341,16 +366,22 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 
+// Everything below the hero has to be opaque and sit above the fixed hero
+// loop, otherwise the video shows through as the page scrolls over it.
 .fh5co-section {
   padding: 7em 0;
   clear: both;
+  position: relative;
+  z-index: 2;
+  background-color: $brand-white;
   @media screen and (max-width: $screen-sm) {
     padding: 3em 0;
   }
 }
 
+// #f5f5f5 is rgba(black, .04) over white - same colour, but opaque
 .fh5co-section-gray{
-  background: rgba($brand-black,.04);
+  background-color: #f5f5f5;
 }
 
 
@@ -390,6 +421,152 @@ h1, h2, h3, h4, h5, h6, figure {
     font-weight: 300;
     @media screen and (max-width: $screen-sm){
       font-size: 18px;
+    }
+  }
+}
+
+// ===================================
+// Event Video
+// ===================================
+
+#video {
+  .fh5co-heading {
+    margin-bottom: 3em;
+  }
+}
+
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: rgba($brand-black, .06);
+  @include border-radius(8px);
+  overflow: hidden;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+}
+
+.video-feature {
+  margin-bottom: 55px;
+  @media screen and (max-width: $screen-sm) {
+    margin-bottom: 35px;
+  }
+}
+
+.video-caption {
+  margin-top: 18px;
+  text-align: center;
+
+  // Duration lives on the pills, not here
+  h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: $brand-darker;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+  }
+
+  p {
+    margin: 8px 0 0 0;
+    font-size: 17px;
+    font-weight: 300;
+    color: $brand-body-color;
+  }
+}
+
+// The four cuts. Swapping the player beats stacking four of them.
+.video-picker {
+  margin-top: 28px;
+  text-align: center;
+
+  .video-pill {
+    display: inline-block;
+    margin: 0 5px 12px;
+    padding: 9px 18px;
+    border: 1px solid rgba($brand-black, .12);
+    background: $brand-white;
+    color: $brand-darker;
+    cursor: pointer;
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 17px;
+    line-height: 1.2;
+    @include border-radius(30px);
+    @include transition(.3s);
+
+    em {
+      margin-left: 8px;
+      font-style: normal;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: rgba($brand-black, .4);
+    }
+
+    &:hover {
+      border-color: rgba($brand-secondary, .5);
+      color: $brand-secondary;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $brand-secondary;
+      outline-offset: 2px;
+    }
+
+    &.active {
+      background: $brand-secondary;
+      border-color: $brand-secondary;
+      color: $brand-white;
+
+      em {
+        color: rgba($brand-white, .75);
+      }
+    }
+
+    @media screen and (max-width: $screen-xs) {
+      font-size: 15px;
+      padding: 8px 14px;
+      margin: 0 3px 10px;
+    }
+  }
+}
+
+// ===================================
+// Photos - placeholder until the photographer delivers
+// ===================================
+
+#photos {
+  .fh5co-heading {
+    margin-bottom: 2em;
+  }
+}
+
+.photos-pending {
+  padding: 50px 30px;
+  text-align: center;
+  background: $brand-white;
+  border: 2px dashed rgba($brand-black, .12);
+  @include border-radius(8px);
+  @media screen and (max-width: $screen-sm) {
+    padding: 35px 20px;
+  }
+
+  i {
+    font-size: 44px;
+    color: rgba($brand-secondary, .6);
+  }
+
+  p {
+    margin: 20px auto 0 auto;
+    max-width: 520px;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: $brand-body-color;
+    @media screen and (max-width: $screen-sm) {
+      font-size: 16px;
     }
   }
 }
@@ -798,7 +975,10 @@ h1, h2, h3, h4, h5, h6, figure {
 // Footer
 .fh5co-footer {
   padding: 30px 0;
-  background: rgba($brand-black, 0.02);
+  // Opaque equivalent of rgba(black, .02) on white - must cover the hero loop
+  background-color: #fafafa;
+  position: relative;
+  z-index: 2;
   border-top: 1px solid rgba($brand-black, 0.05);
   p {
     margin: 0;

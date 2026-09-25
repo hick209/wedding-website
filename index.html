@@ -45,10 +45,10 @@
   <!-- Icomoon Icon Fonts-->
   <link rel="stylesheet" href="css/icomoon.css">
   <!-- Bootstrap  -->
-  <link rel="stylesheet" href="css/bootstrap.css?v=20260925-3">
+  <link rel="stylesheet" href="css/bootstrap.css?v=20260925-7">
 
   <!-- Theme style  -->
-  <link rel="stylesheet" href="css/style.css?v=20260925-3">
+  <link rel="stylesheet" href="css/style.css?v=20260925-7">
 
   <!-- Modernizr JS -->
   <script src="js/modernizr-2.6.2.min.js"></script>
@@ -71,6 +71,8 @@
           <div class="col-xs-10 text-right menu-1">
             <ul>
               <li class="active"><a href="#thanks" data-i18n="tab.thanks">Thank You</a></li>
+              <li class="active"><a href="#video" data-i18n="tab.video">Videos</a></li>
+              <li class="active"><a href="#photos" data-i18n="tab.photos">Photos</a></li>
               <li class="active"><a href="#story" data-i18n="tab.story">Our Story</a></li>
               <li class="active" title="🇧🇷 🔄 🇺🇸">
                 <a href="javascript:toggleLanguage();" data-i18n="tab.language">🇺🇸 English</a>
@@ -86,8 +88,23 @@
       class="fh5co-cover"
       role="banner"
       style="background-image: url(images/NR-191021-74.jpg), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));"
-      data-stellar-background-ratio="0.5"
     >
+      <!--
+        Decorative hero loop, 14s cut from the teaser. Fixed to the viewport:
+        it stays put while the page scrolls and later sections cover it.
+        The poster is the old hero still, so anything that blocks autoplay
+        (reduced motion, iOS low power mode, a missing file) degrades to it.
+      -->
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+        poster="images/NR-191021-74.jpg">
+        <source src="video/hero-loop.mp4" type="video/mp4">
+      </video>
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -123,6 +140,87 @@
             <p data-i18n="thanks.inPerson" class="thanks-description">On September 12th we stood in front of the people who have shaped our ten years together and said thank you in person. This is us saying it again.</p>
             <p data-i18n="thanks.travel" class="thanks-description">Thank you for the flights, the long drives and the days taken off work. Thank you to everyone who stayed the whole weekend, and to everyone who came just for the ceremony – you all made our celebration at Recanto da Paz that much more special.</p>
             <p data-i18n="thanks.gift" class="thanks-description">After 10 years of adventures – moving countries, building our home, and welcoming Levy and Leo – we got to celebrate with everyone who matters most. Your presence was the greatest gift we could have asked for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      Video from the celebration (September 12th only - nothing was filmed on
+      the other two days). One player; the pills swap its src, so only the cut
+      the visitor picks is ever loaded. The teaser is also the source of the
+      muted hero loop (video/hero-loop.mp4).
+    -->
+    <div id="video" class="fh5co-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+            <h2 data-i18n="video.title">Videos</h2>
+            <p data-i18n="video.subtitle">Four cuts of September 12th. Pick one.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 animate-box">
+            <div class="video-feature">
+              <div class="video-embed">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/Lzh4KVrDsoE?rel=0&amp;enablejsapi=1"
+                  title="Short film"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+              <!-- Reflects the selected pill; data-i18n keys are swapped by JS -->
+              <div class="video-caption">
+                <h3 data-i18n="video.short.title">Short film</h3>
+                <p data-i18n="video.short.description">The day, cut to music.</p>
+              </div>
+
+              <div class="video-picker">
+                <button type="button" class="video-pill"
+                        data-video-id="PH18aIHQgJc" data-video-key="teaser" data-duration="0:42">
+                  <span data-i18n="video.teaser.title">Teaser</span>
+                  <em>0:42</em>
+                </button>
+                <button type="button" class="video-pill active"
+                        data-video-id="Lzh4KVrDsoE" data-video-key="short" data-duration="4 min">
+                  <span data-i18n="video.short.title">Short film</span>
+                  <em>4 min</em>
+                </button>
+                <button type="button" class="video-pill"
+                        data-video-id="T0jS9c1l9b8" data-video-key="long" data-duration="18 min">
+                  <span data-i18n="video.long.title">The longer cut</span>
+                  <em>18 min</em>
+                </button>
+                <button type="button" class="video-pill"
+                        data-video-id="yBclaaoS9Aw" data-video-key="ceremony" data-duration="29 min">
+                  <span data-i18n="video.ceremony.title">The ceremony</span>
+                  <em>29 min</em>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photos from the celebration - still with the photographer -->
+    <div id="photos" class="fh5co-section fh5co-section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+            <h2 data-i18n="photos.title">Photos</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 animate-box">
+            <div class="photos-pending">
+              <i class="icon-camera"></i>
+              <p data-i18n="photos.pending">The photos are still with our photographer. We'll put them here as soon as they reach us.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -206,7 +304,7 @@
                 <div class="timeline-card">
                   <div class="timeline-video">
                     <iframe
-                      src="https://www.youtube.com/embed/kd2htsyJSbU"
+                      src="https://www.youtube-nocookie.com/embed/kd2htsyJSbU"
                       title="Proposal Video"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen>
@@ -404,13 +502,11 @@
   <script src="js/jquery.easing.1.3.js"></script>
   <!-- Waypoints -->
   <script src="js/jquery.waypoints.min.js"></script>
-  <!-- Stellar -->
-  <script src="js/jquery.stellar.min.js"></script>
 
   <!-- Main -->
-  <script src="js/main.js?v=20260925-3"></script>
+  <script src="js/main.js?v=20260925-7"></script>
   <!-- i18n -->
-  <script src="js/translations.js?v=20260925-3"></script>
+  <script src="js/translations.js?v=20260925-7"></script>
 
   <footer class="fh5co-footer" role="contentinfo">
     <div class="container">

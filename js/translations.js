@@ -12,6 +12,24 @@ const translations = {
     "thanks.travel": "Thank you for the flights, the long drives and the days taken off work. Thank you to everyone who stayed the whole weekend, and to everyone who came just for the ceremony – you all made our celebration at Recanto da Paz that much more special.",
     "thanks.gift": "After 10 years of adventures – moving countries, building our home, and welcoming Levy and Leo – we got to celebrate with everyone who matters most. Your presence was the greatest gift we could have asked for.",
 
+    // Video Section
+    "tab.video": "Videos",
+    "video.title": "Videos",
+    "video.subtitle": "Four cuts of September 12th. Pick one.",
+    "video.teaser.title": "Teaser",
+    "video.teaser.description": "The mood of the day in under a minute.",
+    "video.short.title": "Short film",
+    "video.short.description": "The day, cut to music.",
+    "video.long.title": "The longer cut",
+    "video.long.description": "More of the day, less compressed.",
+    "video.ceremony.title": "The ceremony",
+    "video.ceremony.description": "Start to finish, uncut.",
+
+    // Photos Section
+    "tab.photos": "Photos",
+    "photos.title": "Photos",
+    "photos.pending": "The photos are still with our photographer. We'll put them here as soon as they reach us.",
+
     // Our Story Section
     "tab.story": "Our Story",
     "story.title": "Our Story",
@@ -45,6 +63,24 @@ const translations = {
     "thanks.inPerson": "No dia 12 de setembro, olhamos para as pessoas que construíram conosco esses dez anos e agradecemos pessoalmente. Aqui estamos dizendo de novo.",
     "thanks.travel": "Obrigado pelos voos, pelas viagens longas de carro e pelos dias de folga tirados do trabalho. Obrigado a quem ficou o fim de semana inteiro e a quem veio só para a cerimônia – vocês deixaram a nossa celebração no Recanto da Paz ainda mais especial.",
     "thanks.gift": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo o Levy e o Leo – pudemos celebrar com todos que mais importam. A presença de vocês foi o maior presente que poderíamos pedir.",
+
+    // Vídeo
+    "tab.video": "Vídeos",
+    "video.title": "Vídeos",
+    "video.subtitle": "Quatro versões do dia 12 de setembro. Escolha uma.",
+    "video.teaser.title": "Teaser",
+    "video.teaser.description": "O clima do dia em menos de um minuto.",
+    "video.short.title": "O filme",
+    "video.short.description": "O dia inteiro, editado com música.",
+    "video.long.title": "A versão estendida",
+    "video.long.description": "Mais do dia, com menos cortes.",
+    "video.ceremony.title": "A cerimônia",
+    "video.ceremony.description": "Do início ao fim, sem cortes.",
+
+    // Fotos
+    "tab.photos": "Fotos",
+    "photos.title": "Fotos",
+    "photos.pending": "As fotos ainda estão com o nosso fotógrafo. Vamos colocá-las aqui assim que chegarem.",
 
     // Nossa História
     "tab.story": "Nossa História",

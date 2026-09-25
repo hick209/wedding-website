@@ -194,6 +194,130 @@
   };
 
 
+  // One player, four cuts. The pills swap the iframe src so only the video the
+  // visitor actually picks gets loaded.
+  const initVideoPicker = () => {
+    const section = document.getElementById('video');
+    if (!section) return;
+
+    const frame = section.querySelector('.video-embed iframe');
+    const embed = section.querySelector('.video-embed');
+    const title = section.querySelector('.video-caption h3');
+    const description = section.querySelector('.video-caption p');
+    const pills = section.querySelectorAll('.video-pill');
+    if (!frame || !pills.length) return;
+
+    const YT_ORIGIN = 'https://www.youtube-nocookie.com';
+
+    // Talk to the embed over postMessage rather than pulling in YouTube's
+    // ~40KB IFrame API - the player exposes this as long as the src carries
+    // enablejsapi=1.
+    const command = (func) => {
+      if (frame.contentWindow) {
+        frame.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: func, args: [] }), YT_ORIGIN);
+      }
+    };
+
+    // Handshake: without this the player never reports state back to us
+    const listen = () => {
+      if (frame.contentWindow) {
+        frame.contentWindow.postMessage(JSON.stringify({ event: 'listening' }), YT_ORIGIN);
+      }
+    };
+    frame.addEventListener('load', listen);
+    listen();
+
+    let isPlaying = false;
+    let pausedByScroll = false;
+
+    window.addEventListener('message', (event) => {
+      if (event.origin !== YT_ORIGIN) return;
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch (err) {
+        return;
+      }
+      if (data && data.event === 'onStateChange') {
+        isPlaying = Number(data.info) === 1;
+        // Anything the visitor does by hand overrides our bookkeeping
+        if (isPlaying) pausedByScroll = false;
+      }
+    });
+
+    // Pause when the player scrolls away, resume when it comes back. We only
+    // resume what we paused - starting playback unbidden would be rude, and
+    // browsers block unmuted autoplay anyway.
+    if (embed && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const visible = entry.intersectionRatio >= 0.5;
+          if (!visible && isPlaying) {
+            command('pauseVideo');
+            pausedByScroll = true;
+          } else if (visible && pausedByScroll) {
+            command('playVideo');
+            pausedByScroll = false;
+          }
+        });
+      }, { threshold: [0, 0.5] });
+
+      observer.observe(embed);
+    }
+
+    // Retranslate a single element in place. Deliberately not applyTranslations(),
+    // which pushes a history entry - that would add one per click.
+    const setText = (el, key) => {
+      el.setAttribute('data-i18n', key);
+      const lang = typeof getCurentLanguage === 'function' ? getCurentLanguage() : 'en';
+      if (typeof translations !== 'undefined' && translations[lang] && key in translations[lang]) {
+        el.textContent = translations[lang][key];
+      }
+    };
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const { videoId, videoKey } = pill.dataset;
+
+        pills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        // The click is the user gesture that lets autoplay through
+        frame.src = `${YT_ORIGIN}/embed/${videoId}?rel=0&enablejsapi=1&autoplay=1`;
+        pausedByScroll = false;
+
+        setText(title, `video.${videoKey}.title`);
+        setText(description, `video.${videoKey}.description`);
+        frame.title = title.textContent;
+      });
+    });
+  };
+
+
+  // The hero loop is fixed to the viewport, so it keeps decoding even once the
+  // page has scrolled past it. Pause it while it is covered.
+  const heroVideo = () => {
+    const video = document.querySelector('.hero-video');
+    const header = document.getElementById('header');
+    if (!video || !header || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Autoplay can be refused (low power mode, reduced motion); the
+          // poster stays in that case, so swallow the rejection.
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(header);
+  };
+
+
   $(() => {
     mobileMenuOutsideClick();
     offcanvasMenu();
@@ -202,14 +326,8 @@
     goToTop();
     loaderPage();
     initTimelineCarousels();
-  });
-
-  // Parallax
-  document.addEventListener('DOMContentLoaded', () => {
-    $(window).stellar({
-      horizontalScrolling: false,
-      responsive: true,
-    });
+    heroVideo();
+    initVideoPicker();
   });
 
 }());
