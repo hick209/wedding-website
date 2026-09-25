@@ -9,7 +9,7 @@ const translations = {
     "tab.thanks": "Thank You",
     "thanks.title": "Thank You",
     "thanks.inPerson": "On September 12th we stood in front of the people who have shaped our ten years together and said thank you in person. This is us saying it again.",
-    "thanks.travel": "Thank you for the flights, the long drives and the days taken off work. Thank you to everyone who stayed the whole weekend, and to everyone who came just for the ceremony – you all made Recanto da Paz feel like home.",
+    "thanks.travel": "Thank you for the flights, the long drives and the days taken off work. Thank you to everyone who stayed the whole weekend, and to everyone who came just for the ceremony – you all made our celebration at Recanto da Paz that much more special.",
     "thanks.gift": "After 10 years of adventures – moving countries, building our home, and welcoming Levy and Leo – we got to celebrate with everyone who matters most. Your presence was the greatest gift we could have asked for.",
 
     // Our Story Section
@@ -43,7 +43,7 @@ const translations = {
     "tab.thanks": "Obrigado",
     "thanks.title": "Muito Obrigado",
     "thanks.inPerson": "No dia 12 de setembro, olhamos para as pessoas que construíram conosco esses dez anos e agradecemos pessoalmente. Aqui estamos dizendo de novo.",
-    "thanks.travel": "Obrigado pelos voos, pelas viagens longas de carro e pelos dias de folga tirados do trabalho. Obrigado a quem ficou o fim de semana inteiro e a quem veio só para a cerimônia – vocês fizeram do Recanto da Paz a nossa casa.",
+    "thanks.travel": "Obrigado pelos voos, pelas viagens longas de carro e pelos dias de folga tirados do trabalho. Obrigado a quem ficou o fim de semana inteiro e a quem veio só para a cerimônia – vocês deixaram a nossa celebração no Recanto da Paz ainda mais especial.",
     "thanks.gift": "Depois de 10 anos de aventuras – mudando de país, construindo nosso lar e recebendo o Levy e o Leo – pudemos celebrar com todos que mais importam. A presença de vocês foi o maior presente que poderíamos pedir.",
 
     // Nossa História
