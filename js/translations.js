@@ -52,6 +52,7 @@ const translations = {
     "story.2023.description": "Just when we thought our hearts were full, Leo came along and proved there's always room for more love. Our little family was now complete - two boys, endless energy, and twice the joy (and trouble 😅)",
     "story.2026.title": "Celebrating 10 Years",
     "story.2026.description": "Ten years of love, adventures, trips, and two amazing boys - celebrated with everyone we love. Thank you for being there with us.",
+    "story.closing": "Ten years down. Here's to the next ten.",
   },
   pt: {
     "tab.language": "🇧🇷 Português",
@@ -106,6 +107,7 @@ const translations = {
     "story.2023.description": "Quando pensávamos que nossos corações estavam cheios, Leo chegou e provou que sempre há espaço para mais amor. Nossa pequena família estava agora completa - dois meninos, energia infinita e o dobro de alegria (e trabalho 😅)",
     "story.2026.title": "Celebrando 10 Anos",
     "story.2026.description": "Dez anos de amor, aventuras, viagens e dois meninos incríveis - celebrados com todos que amamos. Obrigado por estarem lá com a gente.",
+    "story.closing": "Dez anos feitos. Que venham os próximos dez.",
   },
 };
 

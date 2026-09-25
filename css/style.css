@@ -605,6 +605,25 @@ h1, h2, h3, h4, h5, h6, figure {
   top: 0;
 }
 
+.story-closing {
+  margin: 70px 0 0 0;
+  font-family: "Amsterdam", Arial, serif;
+  font-size: 40px;
+  line-height: 1.4;
+  color: #646464;
+}
+@media screen and (max-width: 768px) {
+  .story-closing {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .story-closing {
+    font-size: 26px;
+  }
+}
+
 .timeline-item {
   position: relative;
   width: 50%;

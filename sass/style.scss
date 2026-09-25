@@ -735,6 +735,24 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
+// Sign-off under the timeline. Script face rather than the body font, so it
+// reads as a closing flourish and not as one more paragraph.
+.story-closing {
+  margin: 70px 0 0 0;
+  font-family: $font-secondary;
+  font-size: 40px;
+  line-height: 1.4;
+  color: $brand-primary;
+
+  @media screen and (max-width: $screen-sm) {
+    margin-top: 50px;
+    font-size: 30px;
+  }
+  @media screen and (max-width: $screen-xs) {
+    font-size: 26px;
+  }
+}
+
 .timeline-item {
   position: relative;
   width: 50%;
