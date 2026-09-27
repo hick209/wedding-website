@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Nivaldo ❤️ Roberta - Page not found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
+  <link rel="shortcut icon" href="/fav/favicon.ico" />
+
+  <!--
+    Deliberately self-contained: no external CSS or JS. A page that only ever
+    renders when something is already missing should not itself depend on
+    other files resolving.
+
+    Cloudflare Pages serves this with a real 404 status. That status is the
+    point - it is what stops a typo'd URL looking like a working page to
+    crawlers, link checkers and monitoring. The redirect below is only a
+    courtesy for humans, and it happens late enough to read the message first.
+  -->
+  <style>
+    @font-face {
+      font-family: 'Amsterdam';
+      src: url('/fonts/AmsterdamOne.ttf');
+      font-display: swap;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: #f5f5f5;
+      color: #646464;
+      font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-weight: 300;
+      text-align: center;
+      line-height: 1.7;
+    }
+    .box { max-width: 520px; }
+    h1 {
+      margin: 0 0 28px;
+      font-family: 'Amsterdam', Georgia, serif;
+      font-size: 64px;
+      line-height: 1.2;
+      color: #646464;
+      font-weight: normal;
+    }
+    p { margin: 0 0 8px; font-size: 18px; }
+    .muted { color: #9a9a9a; font-size: 15px; }
+    a.home {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 12px 28px;
+      background: #118DF0;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 17px;
+      transition: background .3s ease;
+    }
+    a.home:hover, a.home:focus { background: #0d75c8; }
+    @media screen and (max-width: 480px) {
+      h1 { font-size: 44px; }
+      p { font-size: 16px; }
+    }
+  </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1 id="title">Lost?</h1>
+      <p id="message">That link does not go anywhere.</p>
+      <p class="muted" id="countdown"></p>
+      <a class="home" id="home" href="/">Take me home</a>
+    </div>
+
+    <script>
+      (function () {
+        var SECONDS = 8;
+
+        var copy = {
+          en: {
+            title: 'Lost?',
+            message: 'That link does not go anywhere.',
+            home: 'Take me home',
+            countdown: function (n) {
+              return 'Taking you home in ' + n + ' second' + (n === 1 ? '' : 's');
+            }
+          },
+          pt: {
+            title: 'Perdido?',
+            message: 'Esse link não leva a lugar nenhum.',
+            home: 'Voltar ao inicio',
+            countdown: function (n) {
+              return 'Voltando ao inicio em ' + n + ' segundo' + (n === 1 ? '' : 's');
+            }
+          }
+        };
+
+        // Respect ?lang= if it is there, otherwise fall back to the browser
+        var params = new URLSearchParams(window.location.search);
+        var lang = params.get('lang');
+        if (lang !== 'pt' && lang !== 'en') {
+          lang = (navigator.language || 'en').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+        }
+        var t = copy[lang];
+
+        document.documentElement.lang = lang;
+        document.getElementById('title').textContent = t.title;
+        document.getElementById('message').textContent = t.message;
+
+        var home = '/?lang=' + lang;
+        document.getElementById('home').href = home;
+        document.getElementById('home').textContent = t.home;
+
+        var left = SECONDS;
+        var el = document.getElementById('countdown');
+        el.textContent = t.countdown(left);
+
+        var timer = setInterval(function () {
+          left -= 1;
+          if (left <= 0) {
+            clearInterval(timer);
+            // replace() so the dead URL does not sit in history and the back
+            // button goes somewhere useful
+            window.location.replace(home);
+            return;
+          }
+          el.textContent = t.countdown(left);
+        }, 1000);
+      }());
+    </script>
+  </body>
+</html>

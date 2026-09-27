@@ -16,3 +16,8 @@ images/originals/
 
 # Original unoptimized story images
 images/story/originals/
+
+# Photo pipeline working data: web derivatives, face crops, embeddings.
+# ~1GB, regenerable from the originals, and the embeddings are biometric
+# data that must never be committed or published.
+.photo-pipeline/
