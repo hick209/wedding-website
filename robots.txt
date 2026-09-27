@@ -1,0 +1,19 @@
+# Crawling is deliberately ALLOWED here.
+#
+# The goal is to keep this site out of search results, and the tag that does
+# that is <meta name="robots" content="noindex"> in the pages themselves.
+# Google has to fetch a page to see that tag. Adding "Disallow: /" here would
+# stop it fetching, so pages already in the index would never learn they are
+# meant to drop out - they would linger as bare URL listings instead.
+#
+# Sequence, if the pages are currently indexed:
+#   1. noindex meta on every page          (done)
+#   2. leave crawling allowed               (this file)
+#   3. Search Console -> Removals for the fast take-down
+#   4. once Search Console shows them gone, a Disallow could be added here
+#
+# Note: a noindex meta only covers HTML. Image files need an
+# X-Robots-Tag: noindex response header, set as a Cloudflare Transform Rule.
+
+User-agent: *
+Allow: /
