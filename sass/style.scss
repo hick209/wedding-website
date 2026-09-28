@@ -621,7 +621,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
-.photos-pending {
+.photos-card {
   padding: 50px 30px;
   text-align: center;
   background: $brand-white;
@@ -659,7 +659,7 @@ h1, h2, h3, h4, h5, h6, figure {
     @include border-radius(8px);
 
     p {
-      // auto side margins, not 0: .photos-pending p caps these at 520px, and
+      // auto side margins, not 0: .photos-card p caps these at 520px, and
       // dropping the auto left the block flush against the panel's left edge
       margin: 0 auto;
       color: $brand-darker;

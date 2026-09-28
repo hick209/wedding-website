@@ -28,8 +28,9 @@ const translations = {
     // Photos Section
     "tab.photos": "Photos",
     "photos.title": "Photos",
-    "photos.pending": "The photos are still with our photographer. We'll put them here as soon as they reach us.",
-    "photos.contribute": "Until then, here is what you all captured. If you have photos you have not shared yet, please add them — we would love to see the day through your eyes.",
+    "photos.intro": "Every photo from the day is here. You can filter them by who is in them.",
+    "photos.gallery": "Open the gallery",
+    "photos.contribute": "Took photos yourself? Add them to the shared album — we would love to see the day through your eyes.",
     "photos.album": "See and add photos",
 
     // Our Story Section
@@ -83,8 +84,9 @@ const translations = {
     // Fotos
     "tab.photos": "Fotos",
     "photos.title": "Fotos",
-    "photos.pending": "As fotos ainda estão com o nosso fotógrafo. Vamos colocá-las aqui assim que chegarem.",
-    "photos.contribute": "Enquanto isso, aqui está o que vocês registraram. Se você tem fotos que ainda não compartilhou, adicione ao álbum — adoraríamos ver o dia pelo olhar de vocês.",
+    "photos.intro": "Todas as fotos do dia estão aqui. Você pode filtrar por quem aparece nelas.",
+    "photos.gallery": "Abrir a galeria",
+    "photos.contribute": "Você também tirou fotos? Adicione ao álbum compartilhado — adoraríamos ver o dia pelo olhar de vocês.",
     "photos.album": "Ver e adicionar fotos",
 
     // Nossa História
@@ -125,6 +127,15 @@ function applyTranslations(lang) {
     }
     element.textContent = translations[lang][key];
   });
+
+  // The gallery is a separate page that reads its language from the URL
+  // fragment, not from ?lang=, because its fragment already carries the
+  // access token. Rebuild the link so the choice survives the jump.
+  const gallery = document.querySelector('[data-gallery-link]');
+  if (gallery) {
+    const base = gallery.getAttribute('data-gallery-link');
+    gallery.href = lang === 'en' ? base : `${base}&lang=${lang}`;
+  }
 
   const newUrl = new URL(window.location.href);
   newUrl.searchParams.set('lang', lang);

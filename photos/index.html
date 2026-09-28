@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Nivaldo ❤️ Roberta - Photos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!--
+    This page holds no photos, no names and no data. Everything comes from
+    R2 at run time, keyed by a token in the URL fragment:
+
+        /photos/#k=<prefix>
+
+    Fragments are never sent to a server and never committed here, which
+    matters because this repository is public. Without a token the page
+    renders an explanation and nothing else.
+  -->
+
+  <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
+  <link rel="shortcut icon" href="/fav/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="/css/photos.css?v=20260927-3">
+  </head>
+  <body>
+
+  <div id="gallery-root" hidden>
+    <header class="gx-head" id="gx-head">
+      <div class="gx-head-top">
+        <a class="gx-home" href="/" data-i18n="back">&larr; Home</a>
+        <h1 data-i18n="title">Photos</h1>
+        <button type="button" class="gx-lang" id="gx-lang">🇺🇸 English</button>
+      </div>
+
+      <p class="gx-count" id="gx-count"></p>
+
+      <div class="gx-filter">
+        <input type="search" id="gx-search" autocomplete="off"
+               data-i18n-placeholder="search" placeholder="Find someone…">
+        <div class="gx-mode" id="gx-mode" hidden>
+          <button type="button" data-mode="any" class="on" data-i18n="any">Any of them</button>
+          <button type="button" data-mode="all" data-i18n="all">All of them</button>
+        </div>
+      </div>
+
+      <div class="gx-chips" id="gx-chips"></div>
+      <div class="gx-people" id="gx-people" hidden></div>
+    </header>
+
+    <main>
+      <div class="gx-grid" id="gx-grid"></div>
+      <div id="gx-sentinel"></div>
+      <p class="gx-empty" id="gx-empty" hidden data-i18n="none">No photos match that.</p>
+    </main>
+  </div>
+
+  <div class="gx-message" id="gx-message">
+    <div>
+      <h1 data-i18n="lockedTitle">This link is incomplete</h1>
+      <p data-i18n="lockedBody">Photo links include a code at the end. Use the full
+        link that was shared with you, or ask us for it again.</p>
+      <p><a href="/" data-i18n="back">&larr; Home</a></p>
+    </div>
+  </div>
+
+  <div class="gx-lightbox" id="gx-lightbox" hidden>
+    <button type="button" class="gx-close" id="gx-close" aria-label="Close">&times;</button>
+    <button type="button" class="gx-prev" id="gx-prev" aria-label="Previous">&#8249;</button>
+    <button type="button" class="gx-next" id="gx-next" aria-label="Next">&#8250;</button>
+    <figure>
+      <img id="gx-full" alt="">
+      <figcaption>
+        <span id="gx-caption"></span>
+        <a id="gx-download" href="#" data-i18n="download">Download</a>
+      </figcaption>
+    </figure>
+  </div>
+
+  <script src="/js/photos.js?v=20260927-3"></script>
+  </body>
+</html>
