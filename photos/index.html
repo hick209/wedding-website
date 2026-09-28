@@ -21,7 +21,7 @@
   <link rel="icon" type="image/png" href="/fav/favicon-96x96.png" sizes="96x96" />
   <link rel="shortcut icon" href="/fav/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
-  <link rel="stylesheet" href="/css/photos.css?v=20260927-4">
+  <link rel="stylesheet" href="/css/photos.css?v=20260927-8">
   </head>
   <body>
 
@@ -55,7 +55,9 @@
     </main>
   </div>
 
-  <div class="gx-message" id="gx-message">
+  <div class="gx-message" id="gx-loading"><div><p data-i18n="loading">Loading photos…</p></div></div>
+
+  <div class="gx-message" id="gx-message" hidden>
     <div>
       <h1 data-i18n="lockedTitle">This link is incomplete</h1>
       <p data-i18n="lockedBody">Photo links include a code at the end. Use the full
@@ -69,14 +71,26 @@
     <button type="button" class="gx-prev" id="gx-prev" aria-label="Previous">&#8249;</button>
     <button type="button" class="gx-next" id="gx-next" aria-label="Next">&#8250;</button>
     <figure>
-      <img id="gx-full" alt="">
-      <figcaption>
-        <span id="gx-caption"></span>
-        <a id="gx-download" href="#" data-i18n="download">Download</a>
-      </figcaption>
+      <!--
+        The stage wraps the image so the download button can sit in its corner.
+        data-i18n is on the inner span, not the anchor: applyLang sets
+        textContent and would delete the icon.
+      -->
+      <div class="gx-stage">
+        <img id="gx-full" alt="">
+        <div class="gx-spinner" id="gx-spinner" hidden></div>
+        <a class="gx-dl" id="gx-download" href="#" aria-label="Download">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <path d="M12 3v11m0 0l-4.5-4.5M12 14l4.5-4.5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span data-i18n="download">Download</span>
+        </a>
+      </div>
     </figure>
   </div>
 
-  <script src="/js/photos.js?v=20260927-4"></script>
+  <script src="/js/photos.js?v=20260927-8"></script>
   </body>
 </html>

@@ -160,9 +160,36 @@ tense about an event that already happened.
       their own. Depends on **Collaborate being on** for that Google Photos
       album - confirmed on 2026-09-25. If it is ever switched off, reword
       `photos.contribute`, which currently asks people to contribute directly
-- [ ] Swap in the real photos when the photographer delivers, and replace the
-      placeholder card (keep the album link - it is where the guest photos
-      live, and people are still adding to it)
+- [x] Professional photos delivered and shipped as a gallery at `/photos/` -
+      see Milestone 7. The guest album link stays alongside it for
+      contributions
+
+### Milestone 7: Photo Gallery ✅
+**Goal:** Put 3,329 photos online, findable by who is in them
+
+#### Completed (2026-09-27)
+- [x] Derivatives: 400px thumb, 1600px display, 2560px download copy
+- [x] 8,216 faces detected and embedded with InsightFace, clustered offline
+- [x] Local labelling tool: name clusters, split mixed ones, review a person's
+      whole set, hover any face for the photo it came from
+- [x] 122 people named, covering 81% of photos (84% of the welcome day)
+- [x] Gallery at `/photos/`: person filter with Any/All, lightbox, swipe and
+      pinch on mobile, infinite scroll, EN/PT
+- [x] Only display names published ("Gabriel P"); full names stay local
+- [x] Random key prefix, `X-Robots-Tag: noindex`, token in the URL fragment
+- [x] Pipeline version-controlled in `tools/photo-pipeline/`
+
+#### Tried and dropped
+- ❌ Sections of the day (Arrival, Ceremony, Party...) - derived boundaries
+      from contact sheets, but the day does not divide into clean contiguous
+      runs and the edges were wrong often enough to mislead. A filter that is
+      confidently wrong is worse than no filter
+
+#### Remaining
+- [ ] Decide whether to link the two Google Photos albums for bulk download.
+      They hold 13.1MP versions - three times our 2560px copy - so they are
+      the better source for anyone who wants to print
+- [ ] Delete the R2 API token once no further exports are planned
 - [x] `og:image` swapped from the save-the-date art to `og-petals-2026.jpg` -
       the two of them laughing under a shower of petals, cropped 1200x630 from
       a 4K frame. Also added `og:image:alt` and
