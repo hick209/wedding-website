@@ -6,8 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a static website for Nivaldo & Roberta's 10-year celebration, which took
 place on **September 12, 2026**. The event has passed, so the site is now a
-keepsake page: a hero banner, a thank-you message to the guests, and the
-"Our Story" photo timeline, with bilingual support (English/Portuguese).
+keepsake page plus a photo gallery: a hero banner, a thank-you message, the
+videos, the "Our Story" timeline, and 3,329 photographs at `/photos/` that
+can be filtered by who appears in them. Bilingual throughout (English and
+Portuguese).
 
 It is built on a free HTML5/Bootstrap template from freehtml5.co.
 
@@ -47,15 +49,22 @@ Domain: www.nivaldo-roberta.com
   `.thanks-description`
 - Page title and Open Graph description no longer say "Save the date"
 
-**Milestone 6: Event video and photos** (In progress)
+**Milestone 6: Event video and photos** (Complete)
 - `#video`: the short film featured full-width, with the 18-minute celebration
   cut and the 29-minute full ceremony below it. All embeds are `loading="lazy"`
-- `#photos`: placeholder card while the professional photos are still with the
-  photographer, plus a CTA linking to the guests' shared Google Photos album.
-  Google Photos **cannot be embedded** - the album API was retired and
-  photos.google.com sends `X-Frame-Options`, so an iframe renders blank. The
-  copy asks guests to add their own photos, which only works while Collaborate
-  is enabled on that album
+- `#photos`: leads with the gallery, and keeps a CTA for the guests' shared
+  Google Photos album underneath for contributions. Google Photos **cannot be
+  embedded** - the album API was retired and photos.google.com sends
+  `X-Frame-Options`, so an iframe renders blank. The contribute copy only
+  works while Collaborate is enabled on that album
+
+**Milestone 7: Photo gallery** (Complete, 2026-09-27)
+- 3,329 photos, web derivatives on Cloudflare R2, filterable by person
+- Faces detected and clustered offline with InsightFace; names applied by
+  hand through a local tool; only the resulting name->photo index is published
+- Lives at `/photos/`, addressed by a token in the URL fragment
+- Pipeline in `tools/photo-pipeline/`, data in gitignored `.photo-pipeline/`
+
 - The 42-second teaser (https://youtu.be/Lzh4KVrDsoE) is deliberately not
   embedded; it is held back for a possible muted hero loop
 
@@ -74,9 +83,15 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 
 ```
 /
-├── index.html             # Main HTML file (single-page application)
+├── index.html             # Main page
+├── photos/index.html      # Photo gallery (no data of its own - see below)
+├── tools/photo-pipeline/  # Scripts that build the gallery. See its README
+├── robots.txt             # Allows crawling on purpose; noindex does the work
+├── _headers               # Cloudflare Pages response headers
+├── 404.html               # Real 404, self-contained
 ├── js/
 │   ├── main.js            # Core functionality (menu, animations, carousels)
+│   ├── photos.js          # Gallery: grid, person filter, lightbox
 │   ├── translations.js    # i18n system for EN/PT
 │   └── [vendor libs]      # jQuery, Waypoints, Easing, Modernizr
 ├── apps-script/           # Retired RSVP backend, kept as a record
@@ -84,6 +99,7 @@ See `TODO.md` for detailed task breakdown and progress tracking.
 │   └── README.md          # Deployment instructions
 ├── sass/
 │   ├── style.scss         # Main stylesheet with variables and mixins
+│   ├── photos.scss        # Gallery styles (third entry point)
 │   ├── bootstrap.scss     # Bootstrap customizations
 │   └── bootstrap/         # Bootstrap SASS components
 ├── css/                   # Compiled CSS files
@@ -110,11 +126,15 @@ sass sass/style.scss css/style.css
 # Compile Bootstrap customizations
 sass sass/bootstrap.scss css/bootstrap.css
 
+# Compile the gallery
+sass sass/photos.scss css/photos.css
+
 # Watch for changes (auto-compile)
 sass --watch sass:css
 ```
 
-Note: Both `style.scss` and `bootstrap.scss` need to be compiled separately as they are independent entry points.
+Note: `style.scss`, `bootstrap.scss` and `photos.scss` are independent entry
+points and each needs compiling separately.
 
 Dart Sass emits a wall of `@import` / `lighten()` deprecation warnings from the
 vendored Bootstrap 3 SASS. They are pre-existing and harmless.
@@ -198,6 +218,56 @@ this public repo, so treat them as effectively public.
 
 Durations are plain text, not `data-i18n` keys: "4 min" and "29 min" are
 identical in both languages.
+
+### The Photo Gallery (`/photos/`)
+
+3,329 photographs, filterable by who appears in them.
+
+**The page holds no data.** No photos, no names, nothing sensitive - it fetches
+everything at run time from R2, addressed by a token in the URL fragment:
+
+```
+https://www.nivaldo-roberta.com/photos/#k=<prefix>
+```
+
+That shape exists because **this repository is public**. A fragment is never
+sent to a server, so the token can be shared without the repo revealing where
+the photos live. Without a token the page explains itself and renders nothing.
+(The home page does link the gallery *with* its token, which was a deliberate
+decision - see the comment above the Photos section in `index.html`.)
+
+**Only display names are published.** `export.py` shortens "Gabriel Paiva" to
+"Gabriel P" - first name, escalating to an initial, a surname, then the full
+name, but only as far as uniqueness requires. The couple are pinned to bare
+first names and get "(groom)" / "(bride)", translated in the browser so one
+index serves both languages. Full names never leave `.photo-pipeline/`.
+
+**Where things live:**
+
+| | |
+|---|---|
+| `photos/index.html`, `js/photos.js`, `sass/photos.scss` | The gallery, in this repo |
+| `photos.nivaldo-roberta.com` (R2 `wedding-10y-photos`) | thumb 400px, display 1600px, large 2560px, `index.json` |
+| `.photo-pipeline/` (gitignored) | Derivatives, crops, embeddings, labels, guest list, R2 token |
+| `tools/photo-pipeline/` | The scripts. See its README |
+
+**Four things this depends on live in the Cloudflare dashboard, not in this
+repo, and nothing here will warn you if they are switched off:**
+
+1. The R2 bucket and its custom domain
+2. A **CORS policy** allowing `https://www.nivaldo-roberta.com`. Without it the
+   gallery loads and renders empty - images are exempt from CORS but the
+   `fetch()` of `index.json` is not
+3. A **Response Header Transform Rule** putting `X-Robots-Tag: noindex` on that
+   hostname. This is the only thing keeping 3,329 photos of guests out of
+   Google Images: `_headers` governs Pages, not R2, and a `noindex` meta tag
+   cannot reach a JPEG. It was briefly ineffective because the header was
+   spelled `x-Robot-Tag`; verify with `curl -sI`, matching both spellings
+4. Cache purge, after replacing any object under a key that already existed
+
+**Refreshing after more labelling:** re-run `export.py`. The index carries
+`max-age=300`, so the gallery picks it up within five minutes. Nothing else
+needs redeploying.
 
 ### Internationalization (i18n)
 - Translation system in `js/translations.js` with English/Portuguese support
@@ -324,7 +394,7 @@ which is a different cache key.
 
 ## Pending Work
 
-See `TODO.md`. Next up is a section with video and photos from the celebration.
+See `TODO.md`.
 
 The `og:image` is `images/og-petals-2026.jpg` - the two of them laughing under
 a shower of petals on the way out of the ceremony, cropped from a 4K frame to

@@ -112,6 +112,11 @@
   function displayUrl(p) {
     return state.data.base + '/display/' + state.data.prefix + '/' + p[0] + '.jpg';
   }
+  // 2560px, for downloading rather than viewing - the display copy is sized
+  // for a screen and prints badly. The 6891x4594 originals are not online.
+  function largeUrl(p) {
+    return state.data.base + '/large/' + state.data.prefix + '/' + p[0] + '.jpg';
+  }
 
   /* ------------------------------------------------ translation */
 
@@ -249,7 +254,7 @@
 
     var names = p[4].map(personLabel);
     $('gx-caption').textContent = names.join(' · ');
-    $('gx-download').href = displayUrl(p);
+    $('gx-download').href = largeUrl(p);
 
     box.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -273,7 +278,7 @@
   function download(e) {
     e.preventDefault();
     var p = state.data.photos[state.filtered[state.lightbox]];
-    var url = displayUrl(p);
+    var url = largeUrl(p);
     // Cross-origin, so the download attribute is ignored. Fetching as a blob
     // gives a real save, but only if the bucket allows this origin via CORS -
     // fall back to opening the image when it does not.
