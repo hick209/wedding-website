@@ -33,6 +33,14 @@ BASE_URL = "https://photos.nivaldo-roberta.com"
 INDEX_CACHE = "public, max-age=300"
 
 
+# What someone is actually called, when it is not their first name. Applied
+# after the shortening below, and excluded from it - so removing "Maria Zita
+# Silva" from the pool can let another Maria shorten further.
+DISPLAY_OVERRIDES = {
+    "Maria Zita Silva": "Zita",
+}
+
+
 # The two who get a role instead of a surname initial.
 COUPLE = {
     "Nivaldo Henrique Bondança": "groom",
@@ -45,7 +53,7 @@ def read_json(p, default):
     return json.loads(p.read_text()) if p.exists() else default
 
 
-def display_names(names, pinned=()):
+def display_names(names, pinned=(), reserved=()):
     """First names, with only as much surname as it takes to stay unique.
 
     'Gabriel' if he is the only one, 'Gabriel P' if there are several
@@ -71,7 +79,8 @@ def display_names(names, pinned=()):
 
     level = {n: 0 for n in names}
     for _ in range(4):
-        seen = {}
+        # names handed to us already spoken for count as taken
+        seen = {r: ["<reserved>"] for r in reserved}
         for n in names:
             seen.setdefault(cand(n, level[n]), []).append(n)
         clashes = [g for g in seen.values() if len(g) > 1]
@@ -119,7 +128,12 @@ def main():
             counts[n] = counts.get(n, 0) + 1
     people = sorted(counts, key=lambda n: (-counts[n], n))
     pidx = {n: i for i, n in enumerate(people)}
-    shown = display_names(people, pinned=set(COUPLE) & set(people))
+    overridden = {n: DISPLAY_OVERRIDES[n] for n in people if n in DISPLAY_OVERRIDES}
+    rest = [n for n in people if n not in overridden]
+    shown = display_names(rest,
+                          pinned=set(COUPLE) & set(rest),
+                          reserved=set(overridden.values()))
+    shown.update(overridden)
 
     def sort_key(pid):
         """welcome before ceremony, then by the photographer's numbering."""
